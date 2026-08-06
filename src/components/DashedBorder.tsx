@@ -14,7 +14,6 @@ export default function DashedBorder({
   className?: string;
 }) {
   const r = size / 2 - 4;
-  const circumference = 2 * Math.PI * r;
 
   return (
     <svg

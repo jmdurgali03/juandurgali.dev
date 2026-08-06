@@ -42,7 +42,7 @@ export default function ContactSection() {
           icon: <AlertCircle className="w-5 h-5 text-rose-400 shrink-0" />,
         });
       }
-    } catch (err: any) {
+    } catch {
       toast.error(t.contact.form.connectionError, {
         icon: <AlertCircle className="w-5 h-5 text-rose-400 shrink-0" />,
       });

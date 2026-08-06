@@ -4,12 +4,16 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, FileText, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import type { Language } from "@/i18n/translations";
+import { localizedPath } from "@/i18n/routing";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const SECTIONS = ["home", "about", "resume", "projects", "contact"] as const;
 
 export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -75,6 +79,15 @@ export default function Navbar() {
     setMobileMenuOpen(false);
   };
 
+  const switchLanguage = (lang: Language) => {
+    const hash = activeSection && activeSection !== "home" ? `#${activeSection}` : window.location.hash;
+
+    setLanguage(lang);
+    setLangDropdownOpen(false);
+    setMobileMenuOpen(false);
+    router.push(localizedPath(lang, hash));
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full glass-nav px-4 lg:px-8 py-3 transition-all">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -135,10 +148,7 @@ export default function Navbar() {
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
-                      onClick={() => {
-                        setLanguage(lang.code);
-                        setLangDropdownOpen(false);
-                      }}
+                      onClick={() => switchLanguage(lang.code)}
                       className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold transition-colors ${
                         language === lang.code
                           ? "bg-purple-600/20 text-purple-300"
@@ -190,10 +200,7 @@ export default function Navbar() {
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
-                      onClick={() => {
-                        setLanguage(lang.code);
-                        setLangDropdownOpen(false);
-                      }}
+                      onClick={() => switchLanguage(lang.code)}
                       className={`w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold ${
                         language === lang.code
                           ? "bg-purple-600/20 text-purple-300"

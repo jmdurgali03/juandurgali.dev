@@ -14,6 +14,10 @@ const requestMap = new Map<string, number>();
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+function getErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : "Ocurrió un error al intentar enviar el mensaje.";
+}
+
 export async function POST(req: Request) {
   try {
     const body: ContactRequestBody = await req.json();
@@ -182,12 +186,12 @@ export async function POST(req: Request) {
       success: true,
       message: "¡Mensaje enviado con éxito!",
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error al enviar email con Nodemailer:", error);
     return NextResponse.json(
       {
         success: false,
-        error: error?.message || "Ocurrió un error al intentar enviar el mensaje.",
+        error: getErrorMessage(error),
       },
       { status: 500 }
     );

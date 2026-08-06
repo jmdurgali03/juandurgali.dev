@@ -1,23 +1,6 @@
-"use client";
-
-import HomeSection from "@/components/sections/HomeSection";
-import AboutSection from "@/components/sections/AboutSection";
-import ResumeSection from "@/components/sections/ResumeSection";
-import ProjectsSection from "@/components/sections/ProjectsSection";
-import ContactSection from "@/components/sections/ContactSection";
+import { redirect } from "next/navigation";
+import { defaultLocale } from "@/i18n/routing";
 
 export default function Page() {
-  return (
-    <main>
-      <HomeSection />
-      <div className="section-divider mx-auto max-w-5xl" />
-      <AboutSection />
-      <div className="section-divider mx-auto max-w-5xl" />
-      <ResumeSection />
-      <div className="section-divider mx-auto max-w-5xl" />
-      <ProjectsSection />
-      <div className="section-divider mx-auto max-w-5xl" />
-      <ContactSection />
-    </main>
-  );
+  redirect(`/${defaultLocale}`);
 }

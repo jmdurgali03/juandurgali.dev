@@ -116,7 +116,7 @@ export default function HomeSection() {
             <DashedBorder size={410} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
             <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-slate-800/60 border border-slate-700/50 flex items-center justify-center overflow-hidden">
               <Image
-                src="/assets/images/home.png"
+                src="/assets/images/home.webp"
                 alt={t.home.name}
                 width={500}
                 height={500}

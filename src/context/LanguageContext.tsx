@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { translations, Language } from "@/i18n/translations";
 
 interface LanguageContextType {
@@ -12,19 +12,22 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguageState] = useState<Language>("es");
-
-  useEffect(() => {
-    const savedLang = localStorage.getItem("portfolio_lang") as Language;
-    if (savedLang && (savedLang === "es" || savedLang === "en")) {
-      setLanguageState(savedLang);
-    }
-  }, []);
+export const LanguageProvider = ({
+  children,
+  initialLanguage = "en",
+}: {
+  children: React.ReactNode;
+  initialLanguage?: Language;
+}) => {
+  const [language, setLanguageState] = useState<Language>(initialLanguage);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem("portfolio_lang", lang);
+    try {
+      localStorage.setItem("portfolio_lang", lang);
+    } catch {
+      // Local storage can be unavailable in privacy-restricted browsers.
+    }
   };
 
   const toggleLanguage = () => {

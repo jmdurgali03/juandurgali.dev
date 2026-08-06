@@ -43,7 +43,7 @@ export default function AboutSection() {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-sm aspect-[4/5] rounded-2xl overflow-hidden border border-slate-700/60 bg-slate-800/60 shadow-xl group">
               <Image
-                src="/assets/images/about-me.png"
+                src="/assets/images/about-me.webp"
                 alt={t.about.title}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
