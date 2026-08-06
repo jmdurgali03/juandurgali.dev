@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, FileText, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
 
 const SECTIONS = ["home", "about", "resume", "projects", "contact"] as const;
 
@@ -154,7 +155,7 @@ export default function Navbar() {
           </div>
 
           {/* Resume CTA */}
-          <a
+          <Link
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -162,7 +163,7 @@ export default function Navbar() {
           >
             <FileText className="w-3.5 h-3.5" />
             <span>{t.nav.resumeBtn}</span>
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Controls */}
@@ -243,7 +244,7 @@ export default function Navbar() {
                 </button>
               );
             })}
-            <a
+            <Link
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
@@ -251,7 +252,7 @@ export default function Navbar() {
             >
               <FileText className="w-4 h-4" />
               {t.nav.resumeBtn}
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

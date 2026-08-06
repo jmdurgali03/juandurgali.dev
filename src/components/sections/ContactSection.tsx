@@ -2,10 +2,12 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Send, MapPin, CheckCircle2 } from "lucide-react";
+import { Mail, Send, MapPin, CheckCircle2, AlertCircle } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
 import { useLanguage } from "@/context/LanguageContext";
 import Globe from "@/components/Globe";
+import Link from "next/link";
+import { toast } from "sonner";
 
 export default function ContactSection() {
   const { t } = useLanguage();
@@ -15,16 +17,38 @@ export default function ContactSection() {
     subject: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
+  const [isSending, setIsSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("sending");
+    setIsSending(true);
 
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 1200);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        toast.success(t.contact.form.success, {
+          icon: <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />,
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        toast.error(data.error || t.contact.form.error, {
+          icon: <AlertCircle className="w-5 h-5 text-rose-400 shrink-0" />,
+        });
+      }
+    } catch (err: any) {
+      toast.error(t.contact.form.connectionError, {
+        icon: <AlertCircle className="w-5 h-5 text-rose-400 shrink-0" />,
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -58,9 +82,9 @@ export default function ContactSection() {
         >
           {/* Contact Form Card */}
           <div className="p-6 sm:p-8 rounded-3xl border border-slate-800 bg-slate-900/30 backdrop-blur-md shadow-2xl space-y-5">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="space-y-2.5 flex flex-col">
                   <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     {t.contact.form.name}
                   </label>
@@ -73,7 +97,7 @@ export default function ContactSection() {
                     className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-600 focus:outline-none focus:border-purple-500 transition-all text-sm"
                   />
                 </div>
-                <div className="space-y-1.5">
+                <div className="space-y-2.5 flex flex-col">
                   <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     {t.contact.form.email}
                   </label>
@@ -88,7 +112,7 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-2.5 flex flex-col">
                 <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                   {t.contact.form.subject}
                 </label>
@@ -102,7 +126,7 @@ export default function ContactSection() {
                 />
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-2.5 flex flex-col">
                 <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                   {t.contact.form.message}
                 </label>
@@ -118,10 +142,10 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                disabled={status === "sending"}
+                disabled={isSending}
                 className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:bg-purple-800 text-white font-medium text-sm border border-purple-400/30 transition-all active:scale-[0.99] shadow-lg shadow-purple-500/20"
               >
-                {status === "sending" ? (
+                {isSending ? (
                   <span>{t.contact.form.sending}</span>
                 ) : (
                   <>
@@ -130,17 +154,6 @@ export default function ContactSection() {
                   </>
                 )}
               </button>
-
-              {status === "success" && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/20 text-emerald-300 text-xs font-medium flex items-center gap-2"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  {t.contact.form.success}
-                </motion.div>
-              )}
             </form>
           </div>
 
@@ -154,9 +167,9 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <span className="text-xs text-slate-500 block font-medium">{t.contact.emailLabel}</span>
-                  <a href={`mailto:${t.contact.emailValue}`} className="text-sm font-semibold text-white hover:text-purple-300 transition-colors">
+                  <Link href={`mailto:${t.contact.emailValue}`} className="text-sm font-semibold text-white hover:text-purple-300 transition-colors">
                     {t.contact.emailValue}
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -173,7 +186,7 @@ export default function ContactSection() {
 
             {/* Social Buttons */}
             <div className="flex sm:flex-col items-center gap-3 w-full sm:w-auto shrink-0 border-t sm:border-t-0 sm:border-l border-slate-800 pt-4 sm:pt-0 sm:pl-6">
-              <a
+              <Link
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -181,8 +194,8 @@ export default function ContactSection() {
               >
                 <GithubIcon className="w-4 h-4" />
                 GitHub
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -190,7 +203,7 @@ export default function ContactSection() {
               >
                 <LinkedinIcon className="w-4 h-4" />
                 LinkedIn
-              </a>
+              </Link>
             </div>
           </div>
         </motion.div>

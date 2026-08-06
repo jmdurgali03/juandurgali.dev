@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-import { Code2, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -21,7 +22,7 @@ export default function Footer() {
         </p>
 
         <div className="flex items-center gap-3">
-          <a
+          <Link
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
@@ -29,8 +30,8 @@ export default function Footer() {
             aria-label="GitHub"
           >
             <GithubIcon className="w-4 h-4" />
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
@@ -38,7 +39,7 @@ export default function Footer() {
             aria-label="LinkedIn"
           >
             <LinkedinIcon className="w-4 h-4" />
-          </a>
+          </Link>
           <button
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             className="p-2 rounded-full border border-slate-800 text-slate-500 hover:text-white hover:border-slate-600 transition-all"

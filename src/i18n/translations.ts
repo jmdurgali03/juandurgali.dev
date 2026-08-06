@@ -11,7 +11,7 @@ export const translations = {
     },
     home: {
       greeting: "Hola, soy",
-      name: "Juan Manuel Durgali",
+      name: "Juan Martin Durgali",
       rolePrefix: "Transformo ideas en",
       solutions: [
         "Soluciones Web Escalables",
@@ -157,6 +157,8 @@ export const translations = {
         sendBtn: "Enviar Mensaje",
         sending: "Enviando...",
         success: "¡Mensaje enviado con éxito! Me pondré en contacto pronto.",
+        error: "Ocurrió un error al enviar el mensaje. Inténtalo de nuevo.",
+        connectionError: "Error de conexión. Por favor reintenta más tarde.",
       },
       directTitle: "Información de Contacto",
       emailLabel: "Email Directo",
@@ -182,7 +184,7 @@ export const translations = {
     },
     home: {
       greeting: "Hello, I am",
-      name: "Juan Manuel Durgali",
+      name: "Juan Martin Durgali",
       rolePrefix: "I transform ideas into",
       solutions: [
         "Scalable Web Solutions",
@@ -328,6 +330,8 @@ export const translations = {
         sendBtn: "Send Message",
         sending: "Sending...",
         success: "Message sent successfully! I'll get back to you soon.",
+        error: "An error occurred while sending the message. Please try again.",
+        connectionError: "Connection error. Please try again later.",
       },
       directTitle: "Contact Information",
       emailLabel: "Direct Email",

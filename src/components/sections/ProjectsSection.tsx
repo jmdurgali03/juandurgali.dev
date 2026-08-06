@@ -6,6 +6,7 @@ import { ExternalLink, Calendar, Star, Code2 } from "lucide-react";
 import { GithubIcon } from "@/components/icons/SocialIcons";
 import { useLanguage } from "@/context/LanguageContext";
 import TechIcon from "@/components/icons/TechIcon";
+import Link from "next/link";
 
 export default function ProjectsSection() {
   const { t } = useLanguage();
@@ -80,7 +81,7 @@ export default function ProjectsSection() {
               </div>
             </div>
 
-            <a
+            <Link
               href={t.projects.featuredProject.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -89,7 +90,7 @@ export default function ProjectsSection() {
               <GithubIcon className="w-4 h-4" />
               {t.projects.viewGithub}
               <ExternalLink className="w-3.5 h-3.5 opacity-70" />
-            </a>
+            </Link>
           </div>
         </div>
       </motion.div>
@@ -136,7 +137,7 @@ export default function ProjectsSection() {
                 ))}
               </div>
 
-              <a
+              <Link
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -144,7 +145,7 @@ export default function ProjectsSection() {
                 aria-label={t.projects.viewGithub}
               >
                 <GithubIcon className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
           </motion.div>
         ))}

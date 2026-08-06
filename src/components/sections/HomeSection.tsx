@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, FileText, Mail, Terminal } from "lucide-react";
+import { FileText, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
 import DashedBorder from "@/components/DashedBorder";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function HomeSection() {
   const { t } = useLanguage();
@@ -30,7 +32,7 @@ export default function HomeSection() {
         >
           {/* Social Links */}
           <div className="flex items-center gap-3">
-            <a
+            <Link
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -38,8 +40,8 @@ export default function HomeSection() {
               aria-label="GitHub"
             >
               <GithubIcon className="w-4 h-4" />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -47,7 +49,7 @@ export default function HomeSection() {
               aria-label="LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
 
           {/* Greeting */}
@@ -91,7 +93,7 @@ export default function HomeSection() {
               {t.home.contactBtn}
             </button>
 
-            <a
+            <Link
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
@@ -99,7 +101,7 @@ export default function HomeSection() {
             >
               <FileText className="w-4 h-4" />
               {t.home.resumeBtn}
-            </a>
+            </Link>
           </div>
         </motion.div>
 
@@ -111,10 +113,16 @@ export default function HomeSection() {
           className="lg:col-span-5 flex justify-center"
         >
           <div className="relative flex items-center justify-center">
-            <DashedBorder size={300} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-            <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-slate-800/60 border border-slate-700/50 flex items-center justify-center overflow-hidden">
-              {/* Replace Terminal icon with your <Image /> when ready */}
-              <Terminal className="w-20 h-20 text-purple-400/60" />
+            <DashedBorder size={410} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-slate-800/60 border border-slate-700/50 flex items-center justify-center overflow-hidden">
+              <Image
+                src="/assets/images/home.png"
+                alt={t.home.name}
+                width={500}
+                height={500}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
           </div>
         </motion.div>

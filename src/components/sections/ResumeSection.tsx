@@ -46,9 +46,9 @@ export default function ResumeSection() {
       </motion.div>
 
       {/* Tab Layout: Lateral/Top Tabs + Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         {/* Tabs Bar */}
-        <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2.5 overflow-x-auto pb-3 lg:pb-0 p-2.5 rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-md shadow-xl scrollbar-none">
+        <div className="lg:col-span-3 flex flex-row lg:flex-col gap-2 overflow-x-auto pb-3 lg:pb-0 p-2 rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-md shadow-xl scrollbar-none">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -56,14 +56,14 @@ export default function ResumeSection() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative flex items-center gap-3.5 px-4 py-3.5 rounded-xl font-medium text-sm transition-all duration-300 whitespace-nowrap lg:whitespace-normal w-full text-left group ${
+                className={`relative flex items-center gap-3 px-3.5 py-3 rounded-xl font-medium text-sm transition-all duration-300 whitespace-nowrap lg:whitespace-normal w-full text-left group ${
                   isActive
                     ? "text-white bg-purple-600/15 border border-purple-500/30 shadow-lg shadow-purple-500/5"
                     : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 border border-transparent"
                 }`}
               >
                 <div
-                  className={`p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center shrink-0 ${
+                  className={`p-2 rounded-xl transition-all duration-300 flex items-center justify-center shrink-0 ${
                     isActive
                       ? "bg-purple-600 text-white shadow-md shadow-purple-500/30 scale-105"
                       : "bg-slate-800/80 text-slate-400 group-hover:bg-slate-700 group-hover:text-slate-200"
@@ -85,7 +85,7 @@ export default function ResumeSection() {
         </div>
 
         {/* Content Area */}
-        <div className="lg:col-span-8 p-6 sm:p-8 rounded-2xl border border-slate-800 bg-slate-900/30 backdrop-blur-md min-h-[420px] shadow-2xl">
+        <div className="lg:col-span-9 p-6 sm:p-8 rounded-2xl border border-slate-800 bg-slate-900/30 backdrop-blur-md min-h-[420px] shadow-2xl">
           <AnimatePresence mode="wait">
             {/* EDUCATION */}
             {activeTab === "education" && (
