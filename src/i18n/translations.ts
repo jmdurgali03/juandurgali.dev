@@ -11,7 +11,7 @@ export const translations = {
     },
     home: {
       greeting: "Hola, soy",
-      name: "Juan Developer",
+      name: "Juan Manuel Durgali",
       rolePrefix: "Transformo ideas en",
       solutions: [
         "Soluciones Web Escalables",
@@ -37,7 +37,7 @@ export const translations = {
       resumeBtn: "Obtener CV",
     },
     resume: {
-      title: "Mi Mi Trayectoria",
+      title: "Mi Trayectoria",
       subtitle: "Educación, Experiencia Profesional, Habilidades e Intereses.",
       tabs: {
         education: "Educación",
@@ -47,30 +47,30 @@ export const translations = {
       },
       educationList: [
         {
-          degree: "Ingeniería / Licenciatura en Sistemas",
-          institution: "Universidad Tecnológica",
+          degree: "Ingeniería en Informática",
+          institution: "Universidad Católica de Salta",
           period: "2020 - Presente",
           description: "Especialización en desarrollo de software, algoritmos, bases de datos y arquitectura de sistemas distribuidos.",
         },
         {
-          degree: "Certificación Full Stack Developer",
-          institution: "Tech Academy Online",
-          period: "2022 - 2023",
-          description: "Desarrollo intensivo en React, Next.js, Node.js, Express, MongoDB y PostgreSQL.",
+          degree: "Bachiller en Economía y Administración",
+          institution: "Colegio Secundario",
+          period: "2014 - 2019",
+          description: "Formación secundaria con orientación en ciencias económicas y administración de empresas.",
         }
       ],
       experienceList: [
         {
-          role: "Senior Full Stack Developer",
-          company: "Tech Solutions Inc.",
+          role: "Desarrollador Full Stack",
+          company: "Freelance",
           period: "2023 - Presente",
-          description: "Liderazgo de desarrollo frontend en Next.js, optimización de renderizado SSR/ISR, integración de microservicios y mentoría de equipo.",
+          description: "Desarrollo de aplicaciones web a medida para diversos clientes con React, Next.js, Node.js y PostgreSQL/MongoDB.",
         },
         {
-          role: "Frontend Developer React",
-          company: "Digital Studio Agency",
-          period: "2021 - 2023",
-          description: "Construcción de interfaces interactivas para clientes internacionales, desarrollo de sistemas de diseño UI en React y Tailwind CSS.",
+          role: "Desarrollador Frontend Jr.",
+          company: "Tech Startup",
+          period: "2022 - 2023",
+          description: "Construcción de interfaces interactivas, desarrollo de componentes reutilizables en React y Tailwind CSS.",
         }
       ],
       interestsList: [
@@ -94,15 +94,15 @@ export const translations = {
       skillsCategories: [
         {
           category: "Frontend",
-          items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "HTML5/CSS3"]
+          items: ["JavaScript", "TypeScript", "React", "Next.js", "Redux", "Tailwind CSS", "GSAP", "Framer Motion", "Sass", "Bootstrap"]
         },
         {
-          category: "Backend",
-          items: ["Node.js", "Express", "REST APIs", "GraphQL", "PostgreSQL", "MongoDB"]
+          category: "Backend & Database",
+          items: ["Node.js", "NestJS", "Express.js", "MySQL", "PostgreSQL", "MongoDB", "Prisma"]
         },
         {
           category: "Herramientas & DevOps",
-          items: ["Git / GitHub", "Docker", "Vercel", "Jest / Vitest", "i18next", "Pnpm / Npm"]
+          items: ["Git", "Docker", "AWS"]
         }
       ]
     },
@@ -115,26 +115,30 @@ export const translations = {
         title: "Next.js Personal Portfolio",
         date: "2024-12-20",
         description: "Portfolio personal SSR de alto rendimiento construido con Next.js 16, React 19 y TypeScript. Incluye sistema de diseño Dark Glassmorphism, enrutamiento i18n (es/en), animaciones dinámicas y componentes altamente optimizados.",
-        githubUrl: "https://github.com/AlejoTorres2001/React-SSR-Personal-Portfolio"
+        githubUrl: "https://github.com/AlejoTorres2001/React-SSR-Personal-Portfolio",
+        techIcons: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"]
       },
       projectList: [
         {
           title: "Chat.io — Real-time Messenger",
           date: "2023-06-10",
           description: "Aplicación de mensajería en tiempo real inspirada en WhatsApp Web. Construida con Node.js, Express, Socket.IO, MongoDB en backend y React en frontend.",
-          githubUrl: "https://github.com"
+          githubUrl: "https://github.com",
+          techIcons: ["React", "Node.js", "Express.js", "MongoDB"]
         },
         {
           title: "URL Shortener Dev Platform",
           date: "2023-08-02",
           description: "Acortador de URLs completo con entorno de desarrollo en contenedores DevContainers. Construido con Next.js, Prisma ORM y API REST con métricas.",
-          githubUrl: "https://github.com"
+          githubUrl: "https://github.com",
+          techIcons: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"]
         },
         {
           title: "JWT Authentication FullStack",
           date: "2023-06-14",
           description: "Estrategia completa de autenticación JWT segura. Cubre mejores prácticas: refresh tokens, cookies httpOnly, rotación de tokens y protección de rutas.",
-          githubUrl: "https://github.com"
+          githubUrl: "https://github.com",
+          techIcons: ["Node.js", "Express.js", "React", "TypeScript"]
         }
       ]
     },
@@ -156,8 +160,9 @@ export const translations = {
       },
       directTitle: "Información de Contacto",
       emailLabel: "Email Directo",
+      emailValue: "juandurgali@gmail.com",
       locationLabel: "Ubicación",
-      locationValue: "Buenos Aires, Argentina",
+      locationValue: "Salta, Argentina",
       socialsTitle: "Redes Sociales",
     },
     footer: {
@@ -177,7 +182,7 @@ export const translations = {
     },
     home: {
       greeting: "Hello, I am",
-      name: "Juan Developer",
+      name: "Juan Manuel Durgali",
       rolePrefix: "I transform ideas into",
       solutions: [
         "Scalable Web Solutions",
@@ -203,7 +208,7 @@ export const translations = {
       resumeBtn: "Get Resume",
     },
     resume: {
-      title: "My Resume & Trajectory",
+      title: "My Trajectory",
       subtitle: "Education, Professional Experience, Technical Skills & Interests.",
       tabs: {
         education: "Education",
@@ -213,30 +218,30 @@ export const translations = {
       },
       educationList: [
         {
-          degree: "Systems Engineering / Computer Science",
-          institution: "Technological University",
+          degree: "Computer Science Engineering",
+          institution: "Universidad Católica de Salta",
           period: "2020 - Present",
           description: "Specialization in software engineering, algorithms, databases, and distributed systems architecture.",
         },
         {
-          degree: "Full Stack Developer Certification",
-          institution: "Tech Academy Online",
-          period: "2022 - 2023",
-          description: "Intensive training in React, Next.js, Node.js, Express, MongoDB, and PostgreSQL.",
+          degree: "High School Diploma in Economics",
+          institution: "Secondary School",
+          period: "2014 - 2019",
+          description: "Secondary education focused on economic sciences and business administration.",
         }
       ],
       experienceList: [
         {
-          role: "Senior Full Stack Developer",
-          company: "Tech Solutions Inc.",
+          role: "Full Stack Developer",
+          company: "Freelance",
           period: "2023 - Present",
-          description: "Leading frontend development in Next.js, optimizing SSR/ISR rendering, microservices integration, and team mentoring.",
+          description: "Custom web application development for clients using React, Next.js, Node.js, and PostgreSQL/MongoDB.",
         },
         {
-          role: "Frontend React Developer",
-          company: "Digital Studio Agency",
-          period: "2021 - 2023",
-          description: "Building interactive user interfaces for international clients, developing UI design systems in React and Tailwind CSS.",
+          role: "Junior Frontend Developer",
+          company: "Tech Startup",
+          period: "2022 - 2023",
+          description: "Building interactive user interfaces, developing reusable UI components in React and Tailwind CSS.",
         }
       ],
       interestsList: [
@@ -260,15 +265,15 @@ export const translations = {
       skillsCategories: [
         {
           category: "Frontend",
-          items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "HTML5/CSS3"]
+          items: ["JavaScript", "TypeScript", "React", "Next.js", "Redux", "Tailwind CSS", "GSAP", "Framer Motion", "Sass", "Bootstrap"]
         },
         {
-          category: "Backend",
-          items: ["Node.js", "Express", "REST APIs", "GraphQL", "PostgreSQL", "MongoDB"]
+          category: "Backend & Database",
+          items: ["Node.js", "NestJS", "Express.js", "MySQL", "PostgreSQL", "MongoDB", "Prisma"]
         },
         {
           category: "Tools & DevOps",
-          items: ["Git / GitHub", "Docker", "Vercel", "Jest / Vitest", "i18next", "Pnpm / Npm"]
+          items: ["Git", "Docker", "AWS"]
         }
       ]
     },
@@ -281,26 +286,30 @@ export const translations = {
         title: "Next.js Personal Portfolio",
         date: "2024-12-20",
         description: "High-performance personal SSR portfolio built with Next.js 16, React 19, and TypeScript. Features Dark Glassmorphism design system, i18n routing (es/en), dynamic animations, and highly optimized components.",
-        githubUrl: "https://github.com/AlejoTorres2001/React-SSR-Personal-Portfolio"
+        githubUrl: "https://github.com/AlejoTorres2001/React-SSR-Personal-Portfolio",
+        techIcons: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"]
       },
       projectList: [
         {
           title: "Chat.io — Real-time Messenger",
           date: "2023-06-10",
           description: "Real-time messaging application inspired by WhatsApp Web. Built with Node.js, Express, Socket.IO, MongoDB on backend, and React on frontend.",
-          githubUrl: "https://github.com"
+          githubUrl: "https://github.com",
+          techIcons: ["React", "Node.js", "Express.js", "MongoDB"]
         },
         {
           title: "URL Shortener Dev Platform",
           date: "2023-08-02",
           description: "Full-featured URL shortener with containerized dev environment using VS Code DevContainers. Built with Next.js, Prisma ORM, and REST API.",
-          githubUrl: "https://github.com"
+          githubUrl: "https://github.com",
+          techIcons: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"]
         },
         {
           title: "JWT Authentication FullStack",
           date: "2023-06-14",
           description: "Complete fullstack example of a secure JWT authentication strategy. Covers best practices: refresh tokens, httpOnly cookies, token rotation, and route protection.",
-          githubUrl: "https://github.com"
+          githubUrl: "https://github.com",
+          techIcons: ["Node.js", "Express.js", "React", "TypeScript"]
         }
       ]
     },
@@ -322,8 +331,9 @@ export const translations = {
       },
       directTitle: "Contact Information",
       emailLabel: "Direct Email",
+      emailValue: "juandurgali@gmail.com",
       locationLabel: "Location",
-      locationValue: "Buenos Aires, Argentina",
+      locationValue: "Salta, Argentina",
       socialsTitle: "Social Links",
     },
     footer: {

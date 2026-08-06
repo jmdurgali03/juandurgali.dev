@@ -8,11 +8,10 @@ import {
   Wrench,
   Heart,
   Calendar,
-  CheckCircle2,
-  Award,
   Sparkles,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import TechIcon from "@/components/icons/TechIcon";
 
 type ResumeTab = "education" | "experience" | "skills" | "interests";
 
@@ -46,10 +45,10 @@ export default function ResumeSection() {
         <div className="section-divider w-20 mx-auto" />
       </motion.div>
 
-      {/* Tab Layout: Lateral Tabs + Content */}
+      {/* Tab Layout: Lateral/Top Tabs + Content */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Lateral Tabs */}
-        <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0 p-2 rounded-2xl border border-slate-800 bg-slate-900/30">
+        {/* Tabs Bar */}
+        <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2.5 overflow-x-auto pb-3 lg:pb-0 p-2.5 rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-md shadow-xl scrollbar-none">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -57,23 +56,36 @@ export default function ResumeSection() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all whitespace-nowrap lg:whitespace-normal w-full text-left ${
+                className={`relative flex items-center gap-3.5 px-4 py-3.5 rounded-xl font-medium text-sm transition-all duration-300 whitespace-nowrap lg:whitespace-normal w-full text-left group ${
                   isActive
-                    ? "text-white bg-purple-600/20 border border-purple-500/30"
-                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"
+                    ? "text-white bg-purple-600/15 border border-purple-500/30 shadow-lg shadow-purple-500/5"
+                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 border border-transparent"
                 }`}
               >
-                <div className={`p-2 rounded-lg ${isActive ? "bg-purple-600 text-white" : "bg-slate-800 text-slate-400"}`}>
+                <div
+                  className={`p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center shrink-0 ${
+                    isActive
+                      ? "bg-purple-600 text-white shadow-md shadow-purple-500/30 scale-105"
+                      : "bg-slate-800/80 text-slate-400 group-hover:bg-slate-700 group-hover:text-slate-200"
+                  }`}
+                >
                   <Icon className="w-4 h-4" />
                 </div>
-                <span>{tab.label}</span>
+                <span className="font-semibold text-sm tracking-wide">{tab.label}</span>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTabGlow"
+                    className="absolute inset-0 rounded-xl border border-purple-500/40 pointer-events-none"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
               </button>
             );
           })}
         </div>
 
         {/* Content Area */}
-        <div className="lg:col-span-8 p-6 sm:p-8 rounded-2xl border border-slate-800 bg-slate-900/20 min-h-[420px]">
+        <div className="lg:col-span-8 p-6 sm:p-8 rounded-2xl border border-slate-800 bg-slate-900/30 backdrop-blur-md min-h-[420px] shadow-2xl">
           <AnimatePresence mode="wait">
             {/* EDUCATION */}
             {activeTab === "education" && (
@@ -86,21 +98,23 @@ export default function ResumeSection() {
                 className="space-y-6"
               >
                 <div className="flex items-center gap-3 mb-1">
-                  <GraduationCap className="w-5 h-5 text-purple-400" />
+                  <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
+                    <GraduationCap className="w-5 h-5" />
+                  </div>
                   <h3 className="text-xl font-bold text-white">{t.resume.tabs.education}</h3>
                 </div>
                 <div className="section-divider w-full" />
 
-                <div className="relative pl-6 sm:pl-8 space-y-6 border-l-2 border-slate-700 ml-2 pt-2">
+                <div className="relative pl-6 sm:pl-8 space-y-6 border-l-2 border-slate-800 ml-2 pt-2">
                   {t.resume.educationList.map((item, idx) => (
                     <div key={idx} className="relative group">
                       <div className="absolute -left-[29px] sm:-left-[37px] top-1.5 w-4 h-4 rounded-full bg-[#0a101e] border-2 border-purple-500 group-hover:border-purple-300 transition-all flex items-center justify-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
                       </div>
-                      <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/30 space-y-2">
+                      <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2 hover:border-purple-500/30 transition-all">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <h4 className="text-base font-bold text-white">{item.degree}</h4>
-                          <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 text-purple-300 text-xs font-medium">
+                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-purple-300 text-xs font-medium border border-slate-700">
                             <Calendar className="w-3 h-3" />{item.period}
                           </span>
                         </div>
@@ -124,21 +138,23 @@ export default function ResumeSection() {
                 className="space-y-6"
               >
                 <div className="flex items-center gap-3 mb-1">
-                  <Briefcase className="w-5 h-5 text-purple-400" />
+                  <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
+                    <Briefcase className="w-5 h-5" />
+                  </div>
                   <h3 className="text-xl font-bold text-white">{t.resume.tabs.experience}</h3>
                 </div>
                 <div className="section-divider w-full" />
 
-                <div className="relative pl-6 sm:pl-8 space-y-6 border-l-2 border-slate-700 ml-2 pt-2">
+                <div className="relative pl-6 sm:pl-8 space-y-6 border-l-2 border-slate-800 ml-2 pt-2">
                   {t.resume.experienceList.map((item, idx) => (
                     <div key={idx} className="relative group">
                       <div className="absolute -left-[29px] sm:-left-[37px] top-1.5 w-4 h-4 rounded-full bg-[#0a101e] border-2 border-purple-500 group-hover:border-purple-300 transition-all flex items-center justify-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
                       </div>
-                      <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/30 space-y-2">
+                      <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2 hover:border-purple-500/30 transition-all">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <h4 className="text-base font-bold text-white">{item.role}</h4>
-                          <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 text-purple-300 text-xs font-medium">
+                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-purple-300 text-xs font-medium border border-slate-700">
                             <Calendar className="w-3 h-3" />{item.period}
                           </span>
                         </div>
@@ -151,7 +167,7 @@ export default function ResumeSection() {
               </motion.div>
             )}
 
-            {/* SKILLS */}
+            {/* SKILLS WITH TECH ICONS */}
             {activeTab === "skills" && (
               <motion.div
                 key="skills"
@@ -159,30 +175,32 @@ export default function ResumeSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -15 }}
                 transition={{ duration: 0.3 }}
-                className="space-y-6"
+                className="space-y-8"
               >
                 <div className="flex items-center gap-3 mb-1">
-                  <Wrench className="w-5 h-5 text-purple-400" />
+                  <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
+                    <Wrench className="w-5 h-5" />
+                  </div>
                   <h3 className="text-xl font-bold text-white">{t.resume.tabs.skills}</h3>
                 </div>
                 <div className="section-divider w-full" />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+                <div className="space-y-6">
                   {t.resume.skillsCategories.map((cat, idx) => (
-                    <div key={idx} className="p-4 rounded-xl border border-slate-800 bg-slate-900/30 space-y-3">
-                      <div className="flex items-center gap-2 text-white font-semibold text-sm border-b border-slate-800 pb-2">
-                        <Award className="w-4 h-4 text-purple-400" />
+                    <div key={idx} className="space-y-3">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-purple-400">
                         {cat.category}
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {cat.items.map((skill, sIdx) => (
-                          <span
+                      </h4>
+                      <div className="flex flex-wrap gap-3">
+                        {cat.items.map((skillName, sIdx) => (
+                          <motion.div
                             key={sIdx}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-xs font-medium hover:border-purple-500/30 hover:text-white transition-all"
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-800/80 border border-slate-700/80 hover:border-purple-500/50 hover:bg-slate-800 text-slate-200 text-sm font-medium transition-all shadow-md cursor-default"
                           >
-                            <CheckCircle2 className="w-3 h-3 text-purple-400" />
-                            {skill}
-                          </span>
+                            <TechIcon name={skillName} className="w-5 h-5 shrink-0" />
+                            <span>{skillName}</span>
+                          </motion.div>
                         ))}
                       </div>
                     </div>
@@ -202,16 +220,21 @@ export default function ResumeSection() {
                 className="space-y-6"
               >
                 <div className="flex items-center gap-3 mb-1">
-                  <Heart className="w-5 h-5 text-purple-400" />
+                  <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
+                    <Heart className="w-5 h-5" />
+                  </div>
                   <h3 className="text-xl font-bold text-white">{t.resume.tabs.interests}</h3>
                 </div>
                 <div className="section-divider w-full" />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                   {t.resume.interestsList.map((interest, idx) => (
-                    <div key={idx} className="p-4 rounded-xl border border-slate-800 bg-slate-900/30 space-y-2">
+                    <div
+                      key={idx}
+                      className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2 hover:border-purple-500/30 transition-all"
+                    >
                       <div className="flex items-center gap-2 text-white font-semibold text-sm">
-                        <Sparkles className="w-4 h-4 text-purple-400" />
+                        <Sparkles className="w-4 h-4 text-purple-400 shrink-0" />
                         {interest.title}
                       </div>
                       <p className="text-xs text-slate-400 leading-relaxed">{interest.description}</p>

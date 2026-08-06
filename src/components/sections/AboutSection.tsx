@@ -2,10 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Code2, FileText, Mail } from "lucide-react";
+import { FileText, Mail, Code2 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
-import DashedBorder from "@/components/DashedBorder";
 import { useLanguage } from "@/context/LanguageContext";
+import Image from "next/image";
 
 export default function AboutSection() {
   const { t } = useLanguage();
@@ -29,98 +29,99 @@ export default function AboutSection() {
         <div className="section-divider w-20 mx-auto" />
       </motion.div>
 
-      {/* Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left: Description */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="lg:col-span-7 flex flex-col gap-6"
-        >
-          <div className="space-y-4">
-            <p className="text-slate-300 text-base leading-relaxed">
-              {t.about.descriptionParagraph1}
-            </p>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              {t.about.descriptionParagraph2}
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-4">
-            <div className="text-center p-4 rounded-xl border border-slate-800 bg-slate-900/30">
-              <span className="text-2xl sm:text-3xl font-extrabold text-gradient block">3+</span>
-              <span className="text-xs text-slate-500">{t.about.stats.experience}</span>
-            </div>
-            <div className="text-center p-4 rounded-xl border border-slate-800 bg-slate-900/30">
-              <span className="text-2xl sm:text-3xl font-extrabold text-gradient block">15+</span>
-              <span className="text-xs text-slate-500">{t.about.stats.projects}</span>
-            </div>
-            <div className="text-center p-4 rounded-xl border border-slate-800 bg-slate-900/30">
-              <span className="text-2xl sm:text-3xl font-extrabold text-gradient block">100%</span>
-              <span className="text-xs text-slate-500">{t.about.stats.satisfaction}</span>
+      {/* Unified Single Container Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="p-6 sm:p-10 rounded-3xl border border-slate-800 bg-slate-900/30 backdrop-blur-md shadow-2xl hover:border-purple-500/20 transition-all"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Rectangular Photo Frame */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative w-full max-w-sm aspect-[4/5] rounded-2xl overflow-hidden border border-slate-700/60 bg-slate-800/60 shadow-xl group">
+              {/* <Image
+                src="/images/profile.jpg"
+                alt="Profile"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              /> */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a101e]/80 via-transparent to-transparent" />
             </div>
           </div>
 
-          {/* Actions */}
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm border border-slate-600 transition-all"
-            >
-              <Mail className="w-4 h-4" />
-              {t.about.contactBtn}
-            </button>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-medium text-sm border border-purple-400/30 transition-all"
-            >
-              <FileText className="w-4 h-4" />
-              {t.about.resumeBtn}
-            </a>
-            <div className="flex items-center gap-2 ml-auto">
+          {/* Description & Details */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            <div className="space-y-4">
+              <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
+                {t.about.descriptionParagraph1}
+              </p>
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+                {t.about.descriptionParagraph2}
+              </p>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-4 pt-2">
+              <div className="text-center p-4 rounded-2xl border border-slate-800 bg-slate-900/40">
+                <span className="text-2xl sm:text-3xl font-extrabold text-gradient block">3+</span>
+                <span className="text-xs text-slate-400 font-medium">{t.about.stats.experience}</span>
+              </div>
+              <div className="text-center p-4 rounded-2xl border border-slate-800 bg-slate-900/40">
+                <span className="text-2xl sm:text-3xl font-extrabold text-gradient block">15+</span>
+                <span className="text-xs text-slate-400 font-medium">{t.about.stats.projects}</span>
+              </div>
+              <div className="text-center p-4 rounded-2xl border border-slate-800 bg-slate-900/40">
+                <span className="text-2xl sm:text-3xl font-extrabold text-gradient block">100%</span>
+                <span className="text-xs text-slate-400 font-medium">{t.about.stats.satisfaction}</span>
+              </div>
+            </div>
+
+            {/* Action Buttons & Socials */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <button
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm border border-slate-600 transition-all hover:scale-105 active:scale-95"
+              >
+                <Mail className="w-4 h-4" />
+                {t.about.contactBtn}
+              </button>
+
               <a
-                href="https://github.com"
+                href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-all"
-                aria-label="GitHub"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-medium text-sm border border-purple-400/30 transition-all hover:scale-105 active:scale-95 shadow-md"
               >
-                <GithubIcon className="w-4 h-4" />
+                <FileText className="w-4 h-4" />
+                {t.about.resumeBtn}
               </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-all"
-                aria-label="LinkedIn"
-              >
-                <LinkedinIcon className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        </motion.div>
 
-        {/* Right: Photo with Dashed Border */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="lg:col-span-5 flex justify-center"
-        >
-          <div className="relative flex items-center justify-center">
-            <DashedBorder size={320} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-            <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-slate-800/60 border border-slate-700/50 flex items-center justify-center overflow-hidden">
-              <Code2 className="w-24 h-24 text-purple-400/50" />
+              <div className="flex items-center gap-2.5 sm:ml-auto">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-all"
+                  aria-label="GitHub"
+                >
+                  <GithubIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-all"
+                  aria-label="LinkedIn"
+                >
+                  <LinkedinIcon className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 }
