@@ -8,10 +8,33 @@
   }
 
   body {
-    background-color: #0a101e;
+    background:
+      radial-gradient(ellipse 1200px 820px at 12% 4%, rgba(168, 85, 247, 0.16), rgba(168, 85, 247, 0.05) 38%, transparent 70%),
+      radial-gradient(ellipse 1100px 760px at 92% 32%, rgba(56, 189, 248, 0.12), rgba(56, 189, 248, 0.04) 42%, transparent 72%),
+      radial-gradient(ellipse 1200px 820px at 10% 82%, rgba(16, 185, 129, 0.08), transparent 68%),
+      linear-gradient(180deg, #0a101e 0%, #080d19 48%, #0a101e 100%);
     color: #e2e8f0;
     font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
+    position: relative;
+    isolation: isolate;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(115deg, rgba(255, 255, 255, 0.045), transparent 24%, transparent 76%, rgba(148, 163, 184, 0.035)),
+      repeating-linear-gradient(90deg, rgba(148, 163, 184, 0.018) 0 1px, transparent 1px 88px);
+    mask-image: linear-gradient(180deg, transparent 0%, black 14%, black 88%, transparent 100%);
+  }
+
+  body > :not(script) {
+    position: relative;
+    z-index: 1;
   }
 }
 
