@@ -14,10 +14,11 @@
       "name": "Juan Martin Durgali",
       "rolePrefix": "Transformo ideas en",
       "solutions": [
-        "Soluciones Web Escalables",
-        "Interfaces Modernas & Glassmorphic",
-        "Arquitecturas React / Next.js",
-        "APIs Robustas & Código Limpio"
+        "Full Stack Developer 💻",
+        "Software Engineer 💡",
+        "Entusiasta del código limpio 🧹",
+        "Solucionador de problemas 🎯",
+        "Desarrollador de software centrado en el usuario 👥"
       ],
       "description": "Desarrollador Full Stack apasionado por construir aplicaciones web de alto rendimiento, código elegante y experiencias de usuario excepcionales.",
       "contactBtn": "Contáctame",
@@ -25,14 +26,9 @@
     },
     "about": {
       "title": "Sobre Mí",
-      "subtitle": "Apasionado por la tecnología, la arquitectura limpia y el diseño moderno.",
-      "descriptionParagraph1": "Soy un desarrollador de software enfocado en crear productos digitales modernos, intuitivos y altamente optimizados. Me especializo en el ecosistema JavaScript / TypeScript (React, Next.js, Node.js).",
-      "descriptionParagraph2": "Mi objetivo es aportar soluciones reales a problemas complejos, aplicando las mejores prácticas de arquitectura de código, pruebas y diseño responsive con estéticas glassmorphism de última generación.",
-      "stats": {
-        "experience": "Años de Experiencia",
-        "projects": "Proyectos Completados",
-        "satisfaction": "Compromiso de Calidad"
-      },
+      "subtitle": "Apasionado por la tecnología, solución de problemas y automatización de procesos.",
+      "descriptionParagraph1": "Soy un Ingeniero especializado en desarrollo de software enfocado en la creación de productos digitales modernos, intuitivos y altamente optimizados. Me especializo en el ecosistema JavaScript / TypeScript (React, Next.js, Node.js).",
+      "descriptionParagraph2": "Mi objetivo es aportar soluciones reales a problemas complejos, aplicando las mejores prácticas de arquitectura de código, testing, diseño responsive y estéticas modernas.",
       "contactBtn": "Contáctame",
       "resumeBtn": "Obtener CV"
     },
@@ -80,10 +76,11 @@
       "name": "Juan Martin Durgali",
       "rolePrefix": "I transform ideas into",
       "solutions": [
-        "Scalable Web Solutions",
-        "Modern & Glassmorphic Interfaces",
-        "React / Next.js Architectures",
-        "Robust APIs & Clean Code"
+        "Full Stack Developer 💻",
+        "Software Engineer 💡",
+        "Clean Code Enthusiast 🧹",
+        "Problem Solver 🎯",
+        "User-Centric Software Developer 👥"
       ],
       "description": "Full Stack Developer passionate about building high-performance web applications, elegant code, and exceptional user experiences.",
       "contactBtn": "Contact Me",
@@ -91,14 +88,9 @@
     },
     "about": {
       "title": "About Me",
-      "subtitle": "Passionate about technology, clean architecture, and modern UI design.",
-      "descriptionParagraph1": "I am a software developer focused on building modern, intuitive, and highly optimized digital products. I specialize in the JavaScript / TypeScript ecosystem (React, Next.js, Node.js).",
-      "descriptionParagraph2": "My goal is to provide real solutions to complex problems by applying code architecture best practices, testing, and responsive design with state-of-the-art glassmorphism aesthetics.",
-      "stats": {
-        "experience": "Years of Experience",
-        "projects": "Completed Projects",
-        "satisfaction": "Quality Commitment"
-      },
+      "subtitle": "Passionate about technology, problem solving, and process automation.",
+      "descriptionParagraph1": "I am a Software Engineer focused on creating modern, intuitive, and highly optimized digital products. I specialize in the JavaScript / TypeScript ecosystem (React, Next.js, Node.js).",
+      "descriptionParagraph2": "My goal is to provide real solutions to complex problems by applying code architecture best practices, testing, responsive design, and modern aesthetics.",
       "contactBtn": "Contact Me",
       "resumeBtn": "Get Resume"
     },

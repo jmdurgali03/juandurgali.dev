@@ -27,7 +27,7 @@ export default function HomeSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 1.4 }}
           className="lg:col-span-7 flex flex-col items-center lg:items-start gap-5 text-center lg:text-left"
         >
           {/* Social Links */}
