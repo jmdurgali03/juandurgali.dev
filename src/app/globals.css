@@ -2,9 +2,13 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     background-color: #0a101e;
     color: #e2e8f0;
+  }
+
+  /* Offset scroll targets so the sticky navbar doesn't cover them */
+  section[id] {
+    scroll-margin-top: 80px;
   }
 
   body {

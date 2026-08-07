@@ -64,7 +64,7 @@ export default function ContactSection() {
         <h2 className="text-3xl sm:text-5xl font-extrabold text-white mb-3">
           {t.contact.title}
         </h2>
-        <p className="text-sm uppercase tracking-widest text-slate-500 mb-2">
+        <p className="text-sm tracking-widest text-slate-500 mb-2">
           {t.contact.subtitle}
         </p>
         <div className="section-divider w-20 mx-auto" />

@@ -72,11 +72,15 @@ export default function Navbar() {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
     setMobileMenuOpen(false);
+    // Small delay lets the mobile drawer close before scrolling,
+    // preventing height reflow from breaking scrollIntoView.
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 50);
   };
 
   const switchLanguage = (lang: Language) => {

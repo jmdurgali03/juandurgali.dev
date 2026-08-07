@@ -17,10 +17,6 @@ export default function Footer() {
           © {year} {t.home.name}. {t.footer.rights}
         </span>
 
-        <p className="text-xs text-slate-600 text-center">
-          {t.footer.builtWith}
-        </p>
-
         <div className="flex items-center gap-3">
           <Link
             href="https://github.com"

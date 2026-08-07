@@ -11,6 +11,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Dev Portfolio | Full Stack Developer",
   description: "Personal developer portfolio built with Next.js, React, Tailwind CSS & Motion.",
+  openGraph: {
+    type: "website",
+    title: "Dev Portfolio | Full Stack Developer",
+    description: "Personal developer portfolio built with Next.js, React, Tailwind CSS & Motion.",
+  },
 };
 
 export default function RootLayout({
@@ -19,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#0a101e] text-[#e2e8f0] relative">
         {children}
         <Toaster

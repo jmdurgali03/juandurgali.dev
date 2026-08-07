@@ -1,0 +1,188 @@
+{
+  "es": {
+    "title": "Mi Trayectoria",
+    "subtitle": "Educación, Experiencia Profesional, Habilidades e Intereses.",
+    "tabs": {
+      "education": "Educación",
+      "experience": "Experiencia",
+      "skills": "Habilidades",
+      "interests": "Intereses"
+    },
+    "educationList": [
+      {
+        "degree": "Ingeniería en Informática",
+        "institution": "Universidad Católica de Salta",
+        "period": "2020 - Presente",
+        "description": "Especialización en desarrollo de software, algoritmos, bases de datos y arquitectura de sistemas distribuidos."
+      },
+      {
+        "degree": "Bachiller en Economía y Administración",
+        "institution": "Colegio Secundario",
+        "period": "2014 - 2019",
+        "description": "Formación secundaria con orientación en ciencias económicas y administración de empresas."
+      }
+    ],
+    "experienceList": [
+      {
+        "role": "Desarrollador Full Stack",
+        "company": "Freelance",
+        "period": "2023 - Presente",
+        "description": "Desarrollo de aplicaciones web a medida para diversos clientes con React, Next.js, Node.js y PostgreSQL/MongoDB."
+      },
+      {
+        "role": "Desarrollador Frontend Jr.",
+        "company": "Tech Startup",
+        "period": "2022 - 2023",
+        "description": "Construcción de interfaces interactivas, desarrollo de componentes reutilizables en React y Tailwind CSS."
+      }
+    ],
+    "interestsList": [
+      {
+        "title": "Arquitectura de Software",
+        "description": "Diseño de patrones limpios, principios SOLID y optimización de rendimiento."
+      },
+      {
+        "title": "Diseño UI/UX Glassmorphic",
+        "description": "Creación de experiencias visuales interactivas y animaciones fluidas con Motion."
+      },
+      {
+        "title": "Open Source & Comunidad",
+        "description": "Colaboración en proyectos de código abierto y contribución al ecosistema dev."
+      },
+      {
+        "title": "Inteligencia Artificial",
+        "description": "Exploración e integración de agentes IA y LLMs en aplicaciones web modernas."
+      }
+    ],
+    "skillsCategories": [
+      {
+        "category": "Frontend",
+        "items": [
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Next.js",
+          "Redux",
+          "Tailwind CSS",
+          "GSAP",
+          "Framer Motion",
+          "Sass",
+          "Bootstrap"
+        ]
+      },
+      {
+        "category": "Backend & Database",
+        "items": [
+          "Node.js",
+          "NestJS",
+          "Express.js",
+          "MySQL",
+          "PostgreSQL",
+          "MongoDB",
+          "Prisma"
+        ]
+      },
+      {
+        "category": "Herramientas & DevOps",
+        "items": [
+          "Git",
+          "Docker",
+          "AWS"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "My Trajectory",
+    "subtitle": "Education, Professional Experience, Technical Skills & Interests.",
+    "tabs": {
+      "education": "Education",
+      "experience": "Experience",
+      "skills": "Skills",
+      "interests": "Interests"
+    },
+    "educationList": [
+      {
+        "degree": "Computer Science Engineering",
+        "institution": "Universidad Católica de Salta",
+        "period": "2020 - Present",
+        "description": "Specialization in software engineering, algorithms, databases, and distributed systems architecture."
+      },
+      {
+        "degree": "High School Diploma in Economics",
+        "institution": "Secondary School",
+        "period": "2014 - 2019",
+        "description": "Secondary education focused on economic sciences and business administration."
+      }
+    ],
+    "experienceList": [
+      {
+        "role": "Full Stack Developer",
+        "company": "Freelance",
+        "period": "2023 - Present",
+        "description": "Custom web application development for clients using React, Next.js, Node.js, and PostgreSQL/MongoDB."
+      },
+      {
+        "role": "Junior Frontend Developer",
+        "company": "Tech Startup",
+        "period": "2022 - 2023",
+        "description": "Building interactive user interfaces, developing reusable UI components in React and Tailwind CSS."
+      }
+    ],
+    "interestsList": [
+      {
+        "title": "Software Architecture",
+        "description": "Designing clean patterns, SOLID principles, and system performance optimizations."
+      },
+      {
+        "title": "UI/UX Glassmorphic Design",
+        "description": "Creating interactive visual experiences and smooth animations using Motion."
+      },
+      {
+        "title": "Open Source & Community",
+        "description": "Collaborating on open-source projects and contributing to the developer ecosystem."
+      },
+      {
+        "title": "Artificial Intelligence",
+        "description": "Exploring and integrating AI agents and LLMs into modern web applications."
+      }
+    ],
+    "skillsCategories": [
+      {
+        "category": "Frontend",
+        "items": [
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Next.js",
+          "Redux",
+          "Tailwind CSS",
+          "GSAP",
+          "Framer Motion",
+          "Sass",
+          "Bootstrap"
+        ]
+      },
+      {
+        "category": "Backend & Database",
+        "items": [
+          "Node.js",
+          "NestJS",
+          "Express.js",
+          "MySQL",
+          "PostgreSQL",
+          "MongoDB",
+          "Prisma"
+        ]
+      },
+      {
+        "category": "Tools & DevOps",
+        "items": [
+          "Git",
+          "Docker",
+          "AWS"
+        ]
+      }
+    ]
+  }
+}

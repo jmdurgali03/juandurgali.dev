@@ -39,7 +39,7 @@ export default function ResumeSection() {
         <h2 className="text-3xl sm:text-5xl font-extrabold text-white mb-3">
           {t.resume.title}
         </h2>
-        <p className="text-sm uppercase tracking-widest text-slate-500 mb-2">
+        <p className="text-sm tracking-widest text-slate-500 mb-2">
           {t.resume.subtitle}
         </p>
         <div className="section-divider w-20 mx-auto" />
@@ -48,7 +48,7 @@ export default function ResumeSection() {
       {/* Tab Layout: Lateral/Top Tabs + Content */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         {/* Tabs Bar */}
-        <div className="lg:col-span-3 flex flex-row lg:flex-col gap-2 overflow-x-auto pb-3 lg:pb-0 p-2 rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-md shadow-xl scrollbar-none">
+        <div className="lg:col-span-3 grid grid-cols-4 lg:flex lg:flex-col gap-2 p-2 rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-md shadow-xl">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -56,7 +56,7 @@ export default function ResumeSection() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative flex items-center gap-3 px-3.5 py-3 rounded-xl font-medium text-sm transition-all duration-300 whitespace-nowrap lg:whitespace-normal w-full text-left group ${
+                className={`relative flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 px-2 lg:px-3.5 py-2.5 lg:py-3 rounded-xl font-medium text-sm transition-all duration-300 w-full text-center lg:text-left group ${
                   isActive
                     ? "text-white bg-purple-600/15 border border-purple-500/30 shadow-lg shadow-purple-500/5"
                     : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 border border-transparent"
@@ -71,7 +71,7 @@ export default function ResumeSection() {
                 >
                   <Icon className="w-4 h-4" />
                 </div>
-                <span className="font-semibold text-sm tracking-wide">{tab.label}</span>
+                <span className="font-semibold text-xs lg:text-sm tracking-wide">{tab.label}</span>
                 {isActive && (
                   <motion.div
                     layoutId="activeTabGlow"

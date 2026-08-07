@@ -1,0 +1,74 @@
+{
+  "es": {
+    "title": "Mis Proyectos",
+    "subtitle": "Una selección de trabajos desarrollados con código limpio y mejores prácticas.",
+    "featuredBadge": "DESTACADO",
+    "viewGithub": "Ver en GitHub",
+    "featuredProject": {
+      "title": "Next.js Personal Portfolio",
+      "date": "2024-12-20",
+      "description": "Portfolio personal SSR de alto rendimiento construido con Next.js 16, React 19 y TypeScript. Incluye sistema de diseño Dark Glassmorphism, enrutamiento i18n (es/en), animaciones dinámicas y componentes altamente optimizados.",
+      "githubUrl": "https://github.com/AlejoTorres2001/React-SSR-Personal-Portfolio",
+      "techIcons": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"]
+    },
+    "projectList": [
+      {
+        "title": "Chat.io — Real-time Messenger",
+        "date": "2023-06-10",
+        "description": "Aplicación de mensajería en tiempo real inspirada en WhatsApp Web. Construida con Node.js, Express, Socket.IO, MongoDB en backend y React en frontend.",
+        "githubUrl": "https://github.com",
+        "techIcons": ["React", "Node.js", "Express.js", "MongoDB"]
+      },
+      {
+        "title": "URL Shortener Dev Platform",
+        "date": "2023-08-02",
+        "description": "Acortador de URLs completo con entorno de desarrollo en contenedores DevContainers. Construido con Next.js, Prisma ORM y API REST con métricas.",
+        "githubUrl": "https://github.com",
+        "techIcons": ["Next.js", "TypeScript", "Prisma", "PostgreSQL"]
+      },
+      {
+        "title": "JWT Authentication FullStack",
+        "date": "2023-06-14",
+        "description": "Estrategia completa de autenticación JWT segura. Cubre mejores prácticas: refresh tokens, cookies httpOnly, rotación de tokens y protección de rutas.",
+        "githubUrl": "https://github.com",
+        "techIcons": ["Node.js", "Express.js", "React", "TypeScript"]
+      }
+    ]
+  },
+  "en": {
+    "title": "My Projects",
+    "subtitle": "A curated selection of projects built with clean code and best practices.",
+    "featuredBadge": "FEATURED",
+    "viewGithub": "View on GitHub",
+    "featuredProject": {
+      "title": "Next.js Personal Portfolio",
+      "date": "2024-12-20",
+      "description": "High-performance personal SSR portfolio built with Next.js 16, React 19, and TypeScript. Features Dark Glassmorphism design system, i18n routing (es/en), dynamic animations, and highly optimized components.",
+      "githubUrl": "https://github.com/AlejoTorres2001/React-SSR-Personal-Portfolio",
+      "techIcons": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"]
+    },
+    "projectList": [
+      {
+        "title": "Chat.io — Real-time Messenger",
+        "date": "2023-06-10",
+        "description": "Real-time messaging application inspired by WhatsApp Web. Built with Node.js, Express, Socket.IO, MongoDB on backend, and React on frontend.",
+        "githubUrl": "https://github.com",
+        "techIcons": ["React", "Node.js", "Express.js", "MongoDB"]
+      },
+      {
+        "title": "URL Shortener Dev Platform",
+        "date": "2023-08-02",
+        "description": "Full-featured URL shortener with containerized dev environment using VS Code DevContainers. Built with Next.js, Prisma ORM, and REST API.",
+        "githubUrl": "https://github.com",
+        "techIcons": ["Next.js", "TypeScript", "Prisma", "PostgreSQL"]
+      },
+      {
+        "title": "JWT Authentication FullStack",
+        "date": "2023-06-14",
+        "description": "Complete fullstack example of a secure JWT authentication strategy. Covers best practices: refresh tokens, httpOnly cookies, token rotation, and route protection.",
+        "githubUrl": "https://github.com",
+        "techIcons": ["Node.js", "Express.js", "React", "TypeScript"]
+      }
+    ]
+  }
+}

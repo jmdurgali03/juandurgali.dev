@@ -28,7 +28,7 @@ export default function HomeSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="lg:col-span-7 flex flex-col items-start gap-5"
+          className="lg:col-span-7 flex flex-col items-center lg:items-start gap-5 text-center lg:text-left"
         >
           {/* Social Links */}
           <div className="flex items-center gap-3">
@@ -110,11 +110,14 @@ export default function HomeSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-5 flex justify-center"
+          className="lg:col-span-5 flex justify-center order-first lg:order-last"
         >
           <div className="relative flex items-center justify-center">
-            <DashedBorder size={410} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-            <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-slate-800/60 border border-slate-700/50 flex items-center justify-center overflow-hidden">
+            {/* Small dashed border for mobile */}
+            <DashedBorder size={220} className="sm:hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            {/* Large dashed border for sm+ screens */}
+            <DashedBorder size={410} className="hidden sm:block top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            <div className="w-48 h-48 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-slate-800/60 border border-slate-700/50 flex items-center justify-center overflow-hidden shadow-2xl shadow-purple-500/10">
               <Image
                 src="/assets/images/home.webp"
                 alt={t.home.name}
