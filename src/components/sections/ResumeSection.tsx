@@ -8,7 +8,6 @@ import {
   Wrench,
   Heart,
   Calendar,
-  Sparkles,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import TechIcon from "@/components/icons/TechIcon";
@@ -48,7 +47,7 @@ export default function ResumeSection() {
       {/* Tab Layout: Lateral/Top Tabs + Content */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         {/* Tabs Bar */}
-        <div className="lg:col-span-3 grid grid-cols-4 lg:flex lg:flex-col gap-2 p-2 rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-md shadow-xl">
+        <div className="lg:col-span-3 grid grid-cols-4 lg:flex lg:flex-col gap-1 sm:gap-2 p-0 lg:p-2 lg:rounded-2xl lg:border lg:border-slate-800 lg:bg-slate-900/40 lg:backdrop-blur-md lg:shadow-xl">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -56,16 +55,16 @@ export default function ResumeSection() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 px-2 lg:px-3.5 py-2.5 lg:py-3 rounded-xl font-medium text-sm transition-all duration-300 w-full text-center lg:text-left group ${
+                className={`relative flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 px-1 lg:px-3.5 py-2 lg:py-3 rounded-xl font-medium text-xs lg:text-sm transition-all duration-300 w-full text-center lg:text-left group ${
                   isActive
                     ? "text-white bg-purple-600/15 border border-purple-500/30 shadow-lg shadow-purple-500/5"
                     : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 border border-transparent"
                 }`}
               >
                 <div
-                  className={`p-2 rounded-xl transition-all duration-300 flex items-center justify-center shrink-0 ${
+                  className={`p-1.5 lg:p-2 rounded-xl transition-all duration-300 flex items-center justify-center shrink-0 ${
                     isActive
-                      ? "bg-purple-600 text-white shadow-md shadow-purple-500/30 scale-105"
+                      ? "bg-purple-600 text-white shadow-md shadow-purple-500/30 lg:scale-105"
                       : "bg-slate-800/80 text-slate-400 group-hover:bg-slate-700 group-hover:text-slate-200"
                   }`}
                 >
@@ -97,29 +96,37 @@ export default function ResumeSection() {
                 transition={{ duration: 0.3 }}
                 className="space-y-6"
               >
-                <div className="flex items-center gap-3 mb-1">
-                  <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 sm:p-2.5 rounded-xl bg-purple-500/15 text-purple-400 border border-purple-500/30">
                     <GraduationCap className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">{t.resume.tabs.education}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">{t.resume.tabs.education}</h3>
                 </div>
-                <div className="section-divider w-full" />
 
-                <div className="relative pl-6 sm:pl-8 space-y-6 border-l-2 border-slate-800 ml-2 pt-2">
+                <div className="space-y-6 pt-2">
                   {t.resume.educationList.map((item, idx) => (
-                    <div key={idx} className="relative group">
-                      <div className="absolute -left-[29px] sm:-left-[37px] top-1.5 w-4 h-4 rounded-full bg-[#0a101e] border-2 border-purple-500 group-hover:border-purple-300 transition-all flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                      </div>
-                      <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2 hover:border-purple-500/30 transition-all">
-                        <div className="flex flex-wrap items-center justify-between gap-2">
-                          <h4 className="text-base font-bold text-white">{item.degree}</h4>
-                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-purple-300 text-xs font-medium border border-slate-700">
-                            <Calendar className="w-3 h-3" />{item.period}
+                    <div key={idx} className="group relative p-5 rounded-2xl bg-slate-800/20 border border-slate-700/50 hover:bg-slate-800/40 hover:border-purple-500/50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="space-y-3 relative z-10">
+                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+                          <div>
+                            <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-purple-300 transition-colors">{item.degree}</h4>
+                            <p className="text-sm font-medium text-purple-400/90 mt-0.5">{item.institution}</p>
+                          </div>
+                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/50 text-purple-300 text-xs font-medium border border-slate-700 shrink-0">
+                            <Calendar className="w-3.5 h-3.5" />{item.period}
                           </span>
                         </div>
-                        <p className="text-sm font-medium text-purple-400">{item.institution}</p>
-                        <p className="text-sm text-slate-400 leading-relaxed">{item.description}</p>
+                        <p className="text-sm text-slate-300 leading-relaxed">{item.description}</p>
+                        {item.tags && (
+                          <div className="flex flex-wrap gap-2 pt-2">
+                            {item.tags.map((tag: string, tIdx: number) => (
+                              <span key={tIdx} className="px-2.5 py-1 rounded-md bg-slate-800/50 text-purple-200 text-xs font-medium border border-slate-700/50">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -137,29 +144,37 @@ export default function ResumeSection() {
                 transition={{ duration: 0.3 }}
                 className="space-y-6"
               >
-                <div className="flex items-center gap-3 mb-1">
-                  <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 sm:p-2.5 rounded-xl bg-purple-500/15 text-purple-400 border border-purple-500/30">
                     <Briefcase className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">{t.resume.tabs.experience}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">{t.resume.tabs.experience}</h3>
                 </div>
-                <div className="section-divider w-full" />
 
-                <div className="relative pl-6 sm:pl-8 space-y-6 border-l-2 border-slate-800 ml-2 pt-2">
+                <div className="space-y-6 pt-2">
                   {t.resume.experienceList.map((item, idx) => (
-                    <div key={idx} className="relative group">
-                      <div className="absolute -left-[29px] sm:-left-[37px] top-1.5 w-4 h-4 rounded-full bg-[#0a101e] border-2 border-purple-500 group-hover:border-purple-300 transition-all flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                      </div>
-                      <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2 hover:border-purple-500/30 transition-all">
-                        <div className="flex flex-wrap items-center justify-between gap-2">
-                          <h4 className="text-base font-bold text-white">{item.role}</h4>
-                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-purple-300 text-xs font-medium border border-slate-700">
-                            <Calendar className="w-3 h-3" />{item.period}
+                    <div key={idx} className="group relative p-5 rounded-2xl bg-slate-800/20 border border-slate-700/50 hover:bg-slate-800/40 hover:border-purple-500/50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="space-y-3 relative z-10">
+                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+                          <div>
+                            <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-purple-300 transition-colors">{item.role}</h4>
+                            <p className="text-sm font-medium text-purple-400/90 mt-0.5">{item.company}</p>
+                          </div>
+                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/50 text-purple-300 text-xs font-medium border border-slate-700 shrink-0">
+                            <Calendar className="w-3.5 h-3.5" />{item.period}
                           </span>
                         </div>
-                        <p className="text-sm font-medium text-purple-400">{item.company}</p>
-                        <p className="text-sm text-slate-400 leading-relaxed">{item.description}</p>
+                        <p className="text-sm text-slate-300 leading-relaxed">{item.description}</p>
+                        {item.tags && (
+                          <div className="flex flex-wrap gap-2 pt-2">
+                            {item.tags.map((tag: string, tIdx: number) => (
+                              <span key={tIdx} className="px-2.5 py-1 rounded-md bg-slate-800/50 text-purple-200 text-xs font-medium border border-slate-700/50">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -177,13 +192,12 @@ export default function ResumeSection() {
                 transition={{ duration: 0.3 }}
                 className="space-y-8"
               >
-                <div className="flex items-center gap-3 mb-1">
-                  <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 sm:p-2.5 rounded-xl bg-purple-500/15 text-purple-400 border border-purple-500/30">
                     <Wrench className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">{t.resume.tabs.skills}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">{t.resume.tabs.skills}</h3>
                 </div>
-                <div className="section-divider w-full" />
 
                 <div className="space-y-6">
                   {t.resume.skillsCategories.map((cat, idx) => (
@@ -219,26 +233,23 @@ export default function ResumeSection() {
                 transition={{ duration: 0.3 }}
                 className="space-y-6"
               >
-                <div className="flex items-center gap-3 mb-1">
-                  <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 sm:p-2.5 rounded-xl bg-purple-500/15 text-purple-400 border border-purple-500/30">
                     <Heart className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">{t.resume.tabs.interests}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">{t.resume.tabs.interests}</h3>
                 </div>
-                <div className="section-divider w-full" />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                   {t.resume.interestsList.map((interest, idx) => (
-                    <div
+                    <motion.div
                       key={idx}
-                      className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2 hover:border-purple-500/30 transition-all"
+                      whileHover={{ y: -3 }}
+                      className="p-5 rounded-xl border border-slate-800 bg-slate-900/40 space-y-2 hover:border-purple-500/30 hover:shadow-lg hover:shadow-purple-500/5 transition-all duration-300"
                     >
-                      <div className="flex items-center gap-2 text-white font-semibold text-sm">
-                        <Sparkles className="w-4 h-4 text-purple-400 shrink-0" />
-                        {interest.title}
-                      </div>
+                      <h4 className="text-white font-semibold text-sm">{interest.title}</h4>
                       <p className="text-xs text-slate-400 leading-relaxed">{interest.description}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>

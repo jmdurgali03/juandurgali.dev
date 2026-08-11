@@ -6,7 +6,7 @@ import { Menu, X, FileText, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/i18n/translations";
 import { localizedPath } from "@/i18n/routing";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 
 const SECTIONS = ["home", "about", "resume", "projects", "contact"] as const;
@@ -14,11 +14,14 @@ const SECTIONS = ["home", "about", "resume", "projects", "contact"] as const;
 export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
   const router = useRouter();
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const langRef = useRef<HTMLDivElement>(null);
   const mobileLangRef = useRef<HTMLDivElement>(null);
+
+  const isHomePage = pathname === `/${language}` || pathname === "/";
 
   const navLinks = [
     { id: "home", label: t.nav.home },
@@ -73,8 +76,12 @@ export default function Navbar() {
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
-    // Small delay lets the mobile drawer close before scrolling,
-    // preventing height reflow from breaking scrollIntoView.
+    
+    if (!isHomePage) {
+      router.push(`/${language}/#${id}`);
+      return;
+    }
+
     setTimeout(() => {
       const el = document.getElementById(id);
       if (el) {
@@ -105,7 +112,7 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
+            const isActive = isHomePage && activeSection === link.id;
             return (
               <button
                 key={link.id}
@@ -240,7 +247,7 @@ export default function Navbar() {
             className="md:hidden mt-3 border-t border-slate-800 pt-3 flex flex-col gap-1 overflow-hidden"
           >
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
+              const isActive = isHomePage && activeSection === link.id;
               return (
                 <button
                   key={link.id}

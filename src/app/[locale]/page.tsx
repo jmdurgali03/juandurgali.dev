@@ -5,18 +5,19 @@ import AboutSection from "@/components/sections/AboutSection";
 import ResumeSection from "@/components/sections/ResumeSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import ContactSection from "@/components/sections/ContactSection";
+import SectionDivider from "@/components/SectionDivider";
 
 export default function LocalePage() {
   return (
     <main>
       <HomeSection />
-      <div className="section-divider mx-auto max-w-5xl" />
+      <SectionDivider variant="terminal" />
       <AboutSection />
-      <div className="section-divider mx-auto max-w-5xl" />
+      <SectionDivider variant="mouse" />
       <ResumeSection />
-      <div className="section-divider mx-auto max-w-5xl" />
+      <SectionDivider variant="monitor" />
       <ProjectsSection />
-      <div className="section-divider mx-auto max-w-5xl" />
+      <SectionDivider variant="cpu" />
       <ContactSection />
     </main>
   );

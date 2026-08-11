@@ -2,14 +2,14 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Calendar, Star, Code2 } from "lucide-react";
+import { ExternalLink, Calendar, Star, Code2, ArrowRight } from "lucide-react";
 import { GithubIcon } from "@/components/icons/SocialIcons";
 import { useLanguage } from "@/context/LanguageContext";
 import TechIcon from "@/components/icons/TechIcon";
 import Link from "next/link";
 
 export default function ProjectsSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <section id="projects" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-24">
@@ -150,6 +150,22 @@ export default function ProjectsSection() {
           </motion.div>
         ))}
       </div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="mt-16 flex justify-center"
+      >
+        <Link 
+          href={`/${language}/projects`} 
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-slate-800 hover:bg-slate-700 text-white font-bold transition-all border border-slate-700 hover:border-slate-500 shadow-xl hover:shadow-2xl hover:-translate-y-1"
+        >
+          {t.language === "es" ? "Ver todos los proyectos" : "View all projects"}
+          <ArrowRight className="w-5 h-5" />
+        </Link>
+      </motion.div>
     </section>
   );
 }

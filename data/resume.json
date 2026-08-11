@@ -13,19 +13,22 @@
         "degree": "Ingeniería en Informática",
         "institution": "Universidad Católica de Salta",
         "period": "2022 - 2026",
-        "description": "Especialización en desarrollo de software, algoritmos, bases de datos y arquitectura de sistemas distribuidos."
+        "description": "Especialización en desarrollo de software, algoritmos, bases de datos y arquitectura de sistemas distribuidos.",
+        "tags": ["Algoritmos", "Bases de Datos", "Sistemas Distribuidos"]
       },
       {
         "degree": "Ayudante de Cátedra - Base de Datos I",
         "institution": "Universidad Católica de Salta",
         "period": "2026",
-        "description": "Ayudante de cátedra en la materia Base de Datos I, colaborando con los alumnos en consultas sobre diseño de bases de datos, consultas SQL y conceptos de gestión de bases de datos."
+        "description": "Ayudante de cátedra en la materia Base de Datos I, colaborando con los alumnos en consultas sobre diseño de bases de datos, consultas SQL y conceptos de gestión de bases de datos.",
+        "tags": ["SQL", "Diseño de BD", "Tutoría"]
       },
       {
         "degree": "Diplomatura en Programación Web Full Stack",
         "institution": "Universidad Tecnológica Nacional (UTN)",
         "period": "2024",
-        "description": "Formación en desarrollo web full stack con tecnologías modernas como React, Node.js, Express.js, MySQL, MongoDB y Prisma."
+        "description": "Formación en desarrollo web full stack con tecnologías modernas como React, Node.js, Express.js, MySQL, MongoDB y Prisma.",
+        "tags": ["React", "Node.js", "MongoDB"]
       }
     ],
     "experienceList": [
@@ -33,40 +36,60 @@
         "role": "Desarrollador de Automatización & IA",
         "company": "KAIZEN Engineering SRL",
         "period": "2026 - Actualidad",
-        "description": "Diseñé e implementé un pipeline de automatización para la recepción y pre-evaluación de solicitudes de cotización de servicios de ingeniería."
+        "description": "Diseñé e implementé un pipeline de automatización para la recepción y pre-evaluación de solicitudes de cotización de servicios de ingeniería.",
+        "tags": ["N8N", "LangChain", "Automatización"]
+      },
+      {
+        "role": "Profesor de Programación y Desarrollo de Videojuegos",
+        "company": "Instituto de Innovación y Tecnología Aplicada (IITA)",
+        "period": "2026",
+        "description": "Diseñé e impartí programas de formación en Python y lideré clases prácticas de Unity y C#, abordando POO, físicas y mecánicas de juego. Mentoricé proyectos finales integradores y traduje conceptos de ingeniería de software a un lenguaje accesible para perfiles junior, fortaleciendo la comunicación y el liderazgo técnico.",
+        "tags": ["Python", "Unity", "C#", "Docencia"]
       },
       {
         "role": "Pasantía en Desarrollo de Software",
         "company": "Kaizen Group SRL",
         "period": "2026",
-        "description": "Diseñé la arquitectura técnica de una plataforma SaaS de mantenimiento (EAM/CMMS) para PyMEs con Next.js, Prisma ORM y PostgreSQL bajo un modelo multi-tenant."
+        "description": "Diseñé la arquitectura técnica de una plataforma SaaS de mantenimiento (EAM/CMMS) para PyMEs con Next.js, Prisma ORM y PostgreSQL bajo un modelo multi-tenant.",
+        "tags": ["Next.js", "Prisma", "PostgreSQL"]
       },
       {
         "role": "Desarrollador Full Stack",
         "company": "Freelance",
         "period": "2023 - Presente",
-        "description": "Desarrollo de aplicaciones web a medida para diversos clientes con React, Next.js, Node.js y PostgreSQL/MongoDB."
+        "description": "Desarrollo de aplicaciones web a medida para diversos clientes con React, Next.js, Node.js y PostgreSQL/MongoDB.",
+        "tags": ["React", "Node.js", "PostgreSQL"]
       }
     ],
     "interestsList": [
       {
         "title": "Arquitectura de Software ⚙️",
+        "icon": "cog",
+        "color": "purple",
         "description": "Diseño de patrones limpios, principios SOLID y optimización de rendimiento."
       },
       {
         "title": "Inteligencia Artificial 🤖",
+        "icon": "brain",
+        "color": "blue",
         "description": "No solo me interesa la IA como herramienta de desarrollo profesional, sino también como una herramienta para mi día a día."
       },
       {
         "title": "Viajar ✈️",
+        "icon": "plane",
+        "color": "emerald",
         "description": "Encuentro en cada viaje, una oportunidad de expandir mi mente, y aprender de diferentes culturas."
       },
       {
         "title": "Música 🎸",
+        "icon": "music",
+        "color": "amber",
         "description": "En mis tiempos libres toco la guitarra y colecciono CD's. Aprendí de manera autodidacta con mucha influencia sobre el Rock, Blues y Folclore regional."
       },
       {
         "title": "Pescar 🎣",
+        "icon": "fish",
+        "color": "rose",
         "description": "Un pasatiempo que compartí durante mucho tiempo con mi familia y que hoy en día disfruto junto a mis amigos."
       }
     ],
@@ -127,19 +150,22 @@
         "degree": "Software Engineering",
         "institution": "Universidad Católica de Salta",
         "period": "2022 - 2026",
-        "description": "Specialization in software development, algorithms, databases, and distributed systems architecture."
+        "description": "Specialization in software development, algorithms, databases, and distributed systems architecture.",
+        "tags": ["Algorithms", "Databases", "Distributed Systems"]
       },
       {
         "degree": "Teaching Assistant - Databases I",
         "institution": "Universidad Católica de Salta",
         "period": "2026",
-        "description": "Teaching assistant for Databases I, assisting students with database design, SQL queries, and database management concepts."
+        "description": "Teaching assistant for Databases I, assisting students with database design, SQL queries, and database management concepts.",
+        "tags": ["SQL", "DB Design", "Tutoring"]
       },
       {
         "degree": "Diploma in Full Stack Web Development",
         "institution": "Universidad Tecnológica Nacional (UTN)",
         "period": "2024",
-        "description": "Full stack web development training with modern technologies such as React, Node.js, Express.js, MySQL, MongoDB, and Prisma."
+        "description": "Full stack web development training with modern technologies such as React, Node.js, Express.js, MySQL, MongoDB, and Prisma.",
+        "tags": ["React", "Node.js", "MongoDB"]
       }
     ],
     "experienceList": [
@@ -147,40 +173,60 @@
         "role": "Automation & AI Developer",
         "company": "KAIZEN Engineering SRL",
         "period": "2026 - Present",
-        "description": "Designed and implemented an automation pipeline for receiving and pre-evaluating engineering service quotation requests."
+        "description": "Designed and implemented an automation pipeline for receiving and pre-evaluating engineering service quotation requests.",
+        "tags": ["N8N", "LangChain", "Automation"]
+      },
+      {
+        "role": "Programming & Game Development Instructor",
+        "company": "Instituto de Innovación y Tecnología Aplicada (IITA)",
+        "period": "2026",
+        "description": "Designed and taught Python training programs, and led practical Unity and C# classes covering OOP, physics, and game mechanics. Mentored final integrative projects and translated software engineering concepts into accessible language for junior profiles, strengthening communication and technical leadership.",
+        "tags": ["Python", "Unity", "C#", "Teaching"]
       },
       {
         "role": "Software Development Internship",
         "company": "Kaizen Group SRL",
         "period": "2026",
-        "description": "Designed the technical architecture of a maintenance SaaS platform (EAM/CMMS) for SMBs using Next.js, Prisma ORM, and PostgreSQL under a multi-tenant model."
+        "description": "Designed the technical architecture of a maintenance SaaS platform (EAM/CMMS) for SMBs using Next.js, Prisma ORM, and PostgreSQL under a multi-tenant model.",
+        "tags": ["Next.js", "Prisma", "PostgreSQL"]
       },
       {
         "role": "Full Stack Developer",
         "company": "Freelance",
         "period": "2023 - Present",
-        "description": "Custom web application development for various clients using React, Next.js, Node.js, and PostgreSQL/MongoDB."
+        "description": "Custom web application development for various clients using React, Next.js, Node.js, and PostgreSQL/MongoDB.",
+        "tags": ["React", "Node.js", "PostgreSQL"]
       }
     ],
     "interestsList": [
       {
         "title": "Software Architecture ⚙️",
+        "icon": "cog",
+        "color": "purple",
         "description": "Designing clean patterns, SOLID principles, and system performance optimizations."
       },
       {
         "title": "Artificial Intelligence 🤖",
+        "icon": "brain",
+        "color": "blue",
         "description": "I am interested in AI not only as a professional development tool, but also as an everyday asset."
       },
       {
         "title": "Traveling ✈️",
+        "icon": "plane",
+        "color": "emerald",
         "description": "In every trip, I find an opportunity to expand my mind and learn from different cultures."
       },
       {
         "title": "Music 🎸",
+        "icon": "music",
+        "color": "amber",
         "description": "In my free time I play the guitar and collect CDs. Self-taught with strong influences of Rock, Blues, and regional folklore."
       },
       {
         "title": "Fishing 🎣",
+        "icon": "fish",
+        "color": "rose",
         "description": "A hobby I shared with my family for a long time and nowadays enjoy with my friends."
       }
     ],
