@@ -157,6 +157,65 @@ export default function TechIcon({ name, className = 'w-6 h-6', size }: TechIcon
           <path fill="#FFF" d="M30 40h68v14H71v44H57V54H30V40z"/>
         </svg>
       )
+    case 'vite':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <defs>
+            <linearGradient id="vite_grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#41D1FF" />
+              <stop offset="100%" stopColor="#BD34FE" />
+            </linearGradient>
+            <linearGradient id="vite_grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFEA83" />
+              <stop offset="8%" stopColor="#FFDD35" />
+              <stop offset="100%" stopColor="#FFA800" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#vite_grad1)" d="M122.9 19.3L67.7 118.8c-.8 1.4-2.7 1.4-3.5 0L8.9 19.3c-.9-1.6.5-3.5 2.3-3.1l52.6 10.6c.4.1.8.1 1.2 0l55.6-10.6c1.8-.4 3.2 1.5 2.3 3.1z"/>
+          <path fill="url(#vite_grad2)" d="M84.7 7.7L46.9 23.3c-.4.2-.7.6-.7 1l-3.3 54.4c-.1 1.3 1.3 2.1 2.3 1.3l12.4-9.8c.4-.3.9-.4 1.4-.2l11 4.7c1.1.5 2.4-.4 2.2-1.7l-4.5-23.7 18.2-12.7c1.1-.8.8-2.6-.5-2.9L73 31.8c-.4-.1-.8-.4-.9-.8L84.7 7.7z"/>
+        </svg>
+      )
+    case 'shadcn':
+    case 'shadcnui':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <rect width="128" height="128" rx="24" fill="#09090B"/>
+          <path d="M38 90L90 38" stroke="#FFFFFF" strokeWidth="12" strokeLinecap="round" />
+          <path d="M38 38L64 38L38 64Z" fill="#FFFFFF"/>
+        </svg>
+      )
+    case 'responsivedesign':
+    case 'responsive':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <rect width="128" height="128" rx="24" fill="#0F172A"/>
+          <rect x="20" y="28" width="56" height="42" rx="4" fill="none" stroke="#38BDF8" strokeWidth="6"/>
+          <path d="M48 70v16M36 86h24" stroke="#38BDF8" strokeWidth="6" strokeLinecap="round"/>
+          <rect x="76" y="44" width="32" height="56" rx="6" fill="#1E293B" stroke="#38BDF8" strokeWidth="6"/>
+          <circle cx="92" cy="92" r="3" fill="#38BDF8"/>
+        </svg>
+      )
+    case 'uxui':
+    case 'uiux':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <rect width="128" height="128" rx="24" fill="#4F46E5"/>
+          <rect x="24" y="24" width="36" height="36" rx="8" stroke="#FFF" strokeWidth="6" fill="none"/>
+          <rect x="68" y="24" width="36" height="36" rx="8" fill="#818CF8"/>
+          <circle cx="42" cy="86" r="18" stroke="#FFF" strokeWidth="6" fill="none"/>
+          <path d="M68 86h36M86 68v36" stroke="#818CF8" strokeWidth="6" strokeLinecap="round"/>
+        </svg>
+      )
+    case 'postman':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <circle cx="64" cy="64" r="64" fill="#FF6C37"/>
+          <path fill="#FFF" d="M92.2 40.8c-1.4-1.4-3.7-1.4-5.1 0L59.3 68.6l-13.4-13.4c-1.4-1.4-3.7-1.4-5.1 0s-1.4 3.7 0 5.1l15.9 15.9c1.4 1.4 3.7 1.4 5.1 0l30.4-30.3c1.4-1.4 1.4-3.7 0-5.1z"/>
+          <path fill="#FFF" d="M64 24c-22.1 0-40 17.9-40 40s17.9 40 40 40 40-17.9 40-40-17.9-40-40-40zm0 72c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32z"/>
+        </svg>
+      )
+    case 'gitgithub':
+    case 'github':
     case 'git':
       return (
         <svg viewBox="0 0 128 128" className={className} style={style}>
@@ -197,13 +256,39 @@ export default function TechIcon({ name, className = 'w-6 h-6', size }: TechIcon
           <path fill="#FFF" d="M63.9 52.8h18.7l-1.8 19.6-16.9 4.6v14.4l29.4-8.1 3.4-38.3H63.9zM63.9 24v14.1h38.7l1.3-14.1z"/>
         </svg>
       )
+    case 'n8n':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <rect width="128" height="128" rx="24" fill="#EA4B71"/>
+          <circle cx="40" cy="64" r="14" fill="#FFF"/>
+          <circle cx="88" cy="40" r="14" fill="#FFF"/>
+          <circle cx="88" cy="88" r="14" fill="#FFF"/>
+          <path d="M40 64L88 40M40 64L88 88" stroke="#FFF" strokeWidth="8" strokeLinecap="round"/>
+        </svg>
+      )
+    case 'langchainlanggraph':
+    case 'langchain':
+    case 'langgraph':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <rect width="128" height="128" rx="24" fill="#1C3C3C"/>
+          <circle cx="40" cy="44" r="12" fill="#10B981"/>
+          <circle cx="88" cy="44" r="12" fill="#34D399"/>
+          <circle cx="64" cy="84" r="12" fill="#059669"/>
+          <path d="M40 44L88 44L64 84Z" stroke="#34D399" strokeWidth="6" fill="none" strokeLinejoin="round"/>
+        </svg>
+      )
+    case 'apirestrestfulapis':
+    case 'apirest':
+    case 'restfulapis':
+    case 'apirestfulapis':
     case 'restapis':
     case 'restapi':
     case 'rest':
       return (
         <svg viewBox="0 0 128 128" className={className} style={style}>
-          <rect width="128" height="128" rx="20" fill="#6B7280"/>
-          <text x="64" y="78" fill="#FFF" fontSize="36" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">API</text>
+          <rect width="128" height="128" rx="20" fill="#0EA5E9"/>
+          <text x="64" y="78" fill="#FFF" fontSize="34" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">REST</text>
         </svg>
       )
     case 'graphql':

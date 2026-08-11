@@ -12,62 +12,81 @@
       {
         "degree": "Ingeniería en Informática",
         "institution": "Universidad Católica de Salta",
-        "period": "2020 - Presente",
+        "period": "2022 - 2026",
         "description": "Especialización en desarrollo de software, algoritmos, bases de datos y arquitectura de sistemas distribuidos."
       },
       {
-        "degree": "Bachiller en Economía y Administración",
-        "institution": "Colegio Secundario",
-        "period": "2014 - 2019",
-        "description": "Formación secundaria con orientación en ciencias económicas y administración de empresas."
+        "degree": "Ayudante de Cátedra - Base de Datos I",
+        "institution": "Universidad Católica de Salta",
+        "period": "2026",
+        "description": "Ayudante de cátedra en la materia Base de Datos I, colaborando con los alumnos en consultas sobre diseño de bases de datos, consultas SQL y conceptos de gestión de bases de datos."
+      },
+      {
+        "degree": "Diplomatura en Programación Web Full Stack",
+        "institution": "Universidad Tecnológica Nacional (UTN)",
+        "period": "2024",
+        "description": "Formación en desarrollo web full stack con tecnologías modernas como React, Node.js, Express.js, MySQL, MongoDB y Prisma."
       }
     ],
     "experienceList": [
+      {
+        "role": "Desarrollador de Automatización & IA",
+        "company": "KAIZEN Engineering SRL",
+        "period": "2026 - Actualidad",
+        "description": "Diseñé e implementé un pipeline de automatización para la recepción y pre-evaluación de solicitudes de cotización de servicios de ingeniería."
+      },
+      {
+        "role": "Pasantía en Desarrollo de Software",
+        "company": "Kaizen Group SRL",
+        "period": "2026",
+        "description": "Diseñé la arquitectura técnica de una plataforma SaaS de mantenimiento (EAM/CMMS) para PyMEs con Next.js, Prisma ORM y PostgreSQL bajo un modelo multi-tenant."
+      },
       {
         "role": "Desarrollador Full Stack",
         "company": "Freelance",
         "period": "2023 - Presente",
         "description": "Desarrollo de aplicaciones web a medida para diversos clientes con React, Next.js, Node.js y PostgreSQL/MongoDB."
-      },
-      {
-        "role": "Desarrollador Frontend Jr.",
-        "company": "Tech Startup",
-        "period": "2022 - 2023",
-        "description": "Construcción de interfaces interactivas, desarrollo de componentes reutilizables en React y Tailwind CSS."
       }
     ],
     "interestsList": [
       {
-        "title": "Arquitectura de Software",
+        "title": "Arquitectura de Software ⚙️",
         "description": "Diseño de patrones limpios, principios SOLID y optimización de rendimiento."
       },
       {
-        "title": "Diseño UI/UX Glassmorphic",
-        "description": "Creación de experiencias visuales interactivas y animaciones fluidas con Motion."
+        "title": "Inteligencia Artificial 🤖",
+        "description": "No solo me interesa la IA como herramienta de desarrollo profesional, sino también como una herramienta para mi día a día."
       },
       {
-        "title": "Open Source & Comunidad",
-        "description": "Colaboración en proyectos de código abierto y contribución al ecosistema dev."
+        "title": "Viajar ✈️",
+        "description": "Encuentro en cada viaje, una oportunidad de expandir mi mente, y aprender de diferentes culturas."
       },
       {
-        "title": "Inteligencia Artificial",
-        "description": "Exploración e integración de agentes IA y LLMs en aplicaciones web modernas."
+        "title": "Música 🎸",
+        "description": "En mis tiempos libres toco la guitarra y colecciono CD's. Aprendí de manera autodidacta con mucha influencia sobre el Rock, Blues y Folclore regional."
+      },
+      {
+        "title": "Pescar 🎣",
+        "description": "Un pasatiempo que compartí durante mucho tiempo con mi familia y que hoy en día disfruto junto a mis amigos."
       }
     ],
     "skillsCategories": [
       {
         "category": "Frontend",
         "items": [
-          "JavaScript",
           "TypeScript",
+          "JavaScript",
           "React",
           "Next.js",
-          "Redux",
+          "Vite",
           "Tailwind CSS",
-          "GSAP",
+          "Shadcn",
           "Framer Motion",
-          "Sass",
-          "Bootstrap"
+          "GSAP",
+          "HTML5",
+          "CSS3",
+          "Responsive Design",
+          "UX/UI"
         ]
       },
       {
@@ -76,24 +95,26 @@
           "Node.js",
           "NestJS",
           "Express.js",
-          "MySQL",
           "PostgreSQL",
           "MongoDB",
-          "Prisma"
+          "Prisma",
+          "Postman",
+          "API REST & RESTful APIs"
         ]
       },
       {
         "category": "Herramientas & DevOps",
         "items": [
-          "Git",
+          "Git & GitHub",
           "Docker",
-          "AWS"
+          "N8N",
+          "LangChain, LangGraph"
         ]
       }
     ]
   },
   "en": {
-    "title": "My Trajectory",
+    "title": "My Career",
     "subtitle": "Education, Professional Experience, Technical Skills & Interests.",
     "tabs": {
       "education": "Education",
@@ -103,64 +124,83 @@
     },
     "educationList": [
       {
-        "degree": "Computer Science Engineering",
+        "degree": "Software Engineering",
         "institution": "Universidad Católica de Salta",
-        "period": "2020 - Present",
-        "description": "Specialization in software engineering, algorithms, databases, and distributed systems architecture."
+        "period": "2022 - 2026",
+        "description": "Specialization in software development, algorithms, databases, and distributed systems architecture."
       },
       {
-        "degree": "High School Diploma in Economics",
-        "institution": "Secondary School",
-        "period": "2014 - 2019",
-        "description": "Secondary education focused on economic sciences and business administration."
+        "degree": "Teaching Assistant - Databases I",
+        "institution": "Universidad Católica de Salta",
+        "period": "2026",
+        "description": "Teaching assistant for Databases I, assisting students with database design, SQL queries, and database management concepts."
+      },
+      {
+        "degree": "Diploma in Full Stack Web Development",
+        "institution": "Universidad Tecnológica Nacional (UTN)",
+        "period": "2024",
+        "description": "Full stack web development training with modern technologies such as React, Node.js, Express.js, MySQL, MongoDB, and Prisma."
       }
     ],
     "experienceList": [
       {
+        "role": "Automation & AI Developer",
+        "company": "KAIZEN Engineering SRL",
+        "period": "2026 - Present",
+        "description": "Designed and implemented an automation pipeline for receiving and pre-evaluating engineering service quotation requests."
+      },
+      {
+        "role": "Software Development Internship",
+        "company": "Kaizen Group SRL",
+        "period": "2026",
+        "description": "Designed the technical architecture of a maintenance SaaS platform (EAM/CMMS) for SMBs using Next.js, Prisma ORM, and PostgreSQL under a multi-tenant model."
+      },
+      {
         "role": "Full Stack Developer",
         "company": "Freelance",
         "period": "2023 - Present",
-        "description": "Custom web application development for clients using React, Next.js, Node.js, and PostgreSQL/MongoDB."
-      },
-      {
-        "role": "Junior Frontend Developer",
-        "company": "Tech Startup",
-        "period": "2022 - 2023",
-        "description": "Building interactive user interfaces, developing reusable UI components in React and Tailwind CSS."
+        "description": "Custom web application development for various clients using React, Next.js, Node.js, and PostgreSQL/MongoDB."
       }
     ],
     "interestsList": [
       {
-        "title": "Software Architecture",
+        "title": "Software Architecture ⚙️",
         "description": "Designing clean patterns, SOLID principles, and system performance optimizations."
       },
       {
-        "title": "UI/UX Glassmorphic Design",
-        "description": "Creating interactive visual experiences and smooth animations using Motion."
+        "title": "Artificial Intelligence 🤖",
+        "description": "I am interested in AI not only as a professional development tool, but also as an everyday asset."
       },
       {
-        "title": "Open Source & Community",
-        "description": "Collaborating on open-source projects and contributing to the developer ecosystem."
+        "title": "Traveling ✈️",
+        "description": "In every trip, I find an opportunity to expand my mind and learn from different cultures."
       },
       {
-        "title": "Artificial Intelligence",
-        "description": "Exploring and integrating AI agents and LLMs into modern web applications."
+        "title": "Music 🎸",
+        "description": "In my free time I play the guitar and collect CDs. Self-taught with strong influences of Rock, Blues, and regional folklore."
+      },
+      {
+        "title": "Fishing 🎣",
+        "description": "A hobby I shared with my family for a long time and nowadays enjoy with my friends."
       }
     ],
     "skillsCategories": [
       {
         "category": "Frontend",
         "items": [
-          "JavaScript",
           "TypeScript",
+          "JavaScript",
           "React",
           "Next.js",
-          "Redux",
+          "Vite",
           "Tailwind CSS",
-          "GSAP",
+          "Shadcn",
           "Framer Motion",
-          "Sass",
-          "Bootstrap"
+          "GSAP",
+          "HTML5",
+          "CSS3",
+          "Responsive Design",
+          "UX/UI"
         ]
       },
       {
@@ -169,18 +209,20 @@
           "Node.js",
           "NestJS",
           "Express.js",
-          "MySQL",
           "PostgreSQL",
           "MongoDB",
-          "Prisma"
+          "Prisma",
+          "Postman",
+          "API REST & RESTful APIs"
         ]
       },
       {
         "category": "Tools & DevOps",
         "items": [
-          "Git",
+          "Git & GitHub",
           "Docker",
-          "AWS"
+          "N8N",
+          "LangChain, LangGraph"
         ]
       }
     ]
