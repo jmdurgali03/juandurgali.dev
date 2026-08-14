@@ -7,7 +7,10 @@
       "resume": "Resume",
       "projects": "Projects",
       "contact": "Contact Me",
-      "resumeBtn": "Obtener CV"
+      "resumeBtn": "Obtener CV",
+      "language": "Idioma",
+      "openMenu": "Abrir menú",
+      "closeMenu": "Cerrar menú"
     },
     "home": {
       "greeting": "Hola, soy",
@@ -27,7 +30,7 @@
     "about": {
       "title": "Sobre Mí",
       "subtitle": "Apasionado por la tecnología, solución de problemas y automatización de procesos.",
-      "descriptionParagraph1": "Soy un Ingeniero especializado en desarrollo de software enfocado en la creación de productos digitales modernos, intuitivos y altamente optimizados. Me especializo en el ecosistema JavaScript / TypeScript (React, Next.js, Node.js).",
+      "descriptionParagraph1": "Soy estudiante avanzado de Ingeniería Informática y desarrollador de software enfocado en crear productos digitales modernos, intuitivos y eficientes. Me especializo en el ecosistema JavaScript / TypeScript (React, Next.js, Node.js).",
       "descriptionParagraph2": "Mi objetivo es aportar soluciones reales a problemas complejos, aplicando las mejores prácticas de arquitectura de código, testing, diseño responsive y estéticas modernas.",
       "contactBtn": "Contáctame",
       "resumeBtn": "Obtener CV"
@@ -57,6 +60,7 @@
       "locationValue": "Salta, Argentina",
       "socialsTitle": "Redes Sociales"
     },
+    "projectsCta": "Ver todos los proyectos",
     "footer": {
       "rights": "Todos los derechos reservados."
     }
@@ -69,7 +73,10 @@
       "resume": "Resume",
       "projects": "Projects",
       "contact": "Contact Me",
-      "resumeBtn": "Get Resume"
+      "resumeBtn": "Get Resume",
+      "language": "Language",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu"
     },
     "home": {
       "greeting": "Hello, I am",
@@ -89,7 +96,7 @@
     "about": {
       "title": "About Me",
       "subtitle": "Passionate about technology, problem solving, and process automation.",
-      "descriptionParagraph1": "I am a Software Engineer focused on creating modern, intuitive, and highly optimized digital products. I specialize in the JavaScript / TypeScript ecosystem (React, Next.js, Node.js).",
+      "descriptionParagraph1": "I am a senior Computer Engineering student and software developer focused on creating modern, intuitive, and efficient digital products. I specialize in the JavaScript / TypeScript ecosystem (React, Next.js, Node.js).",
       "descriptionParagraph2": "My goal is to provide real solutions to complex problems by applying code architecture best practices, testing, responsive design, and modern aesthetics.",
       "contactBtn": "Contact Me",
       "resumeBtn": "Get Resume"
@@ -119,6 +126,7 @@
       "locationValue": "Salta, Argentina",
       "socialsTitle": "Social Links"
     },
+    "projectsCta": "View all projects",
     "footer": {
       "rights": "All rights reserved.",
       "builtWith": "Built with Next.js, React, Tailwind CSS & Motion."

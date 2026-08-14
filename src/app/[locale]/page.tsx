@@ -1,5 +1,3 @@
-"use client";
-
 import HomeSection from "@/components/sections/HomeSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ResumeSection from "@/components/sections/ResumeSection";

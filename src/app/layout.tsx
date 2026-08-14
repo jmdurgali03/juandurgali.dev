@@ -9,12 +9,24 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Dev Portfolio | Full Stack Developer",
-  description: "Personal developer portfolio built with Next.js, React, Tailwind CSS & Motion.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://juandurgali.dev"),
+  title: {
+    default: "Juan Martín Durgali | Full Stack Developer",
+    template: "%s | Juan Martín Durgali",
+  },
+  description: "Portfolio de Juan Martín Durgali, desarrollador Full Stack especializado en aplicaciones web, automatización e inteligencia artificial.",
   openGraph: {
     type: "website",
-    title: "Dev Portfolio | Full Stack Developer",
-    description: "Personal developer portfolio built with Next.js, React, Tailwind CSS & Motion.",
+    siteName: "Juan Martín Durgali",
+    title: "Juan Martín Durgali | Full Stack Developer",
+    description: "Desarrollo de aplicaciones web, automatización e inteligencia artificial.",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Juan Martín Durgali | Full Stack Developer",
+    description: "Desarrollo de aplicaciones web, automatización e inteligencia artificial.",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -24,7 +36,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth" className={`${inter.variable} h-full antialiased`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.lang=location.pathname.split('/')[1]==='es'?'es':'en'`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-[#0a101e] text-[#e2e8f0] relative">
         {children}
         <Toaster

@@ -1,80 +1,55 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { escapeHtml, parseContactPayload } from "@/lib/contact";
 
-interface ContactRequestBody {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-}
-
-// Rate Limiting (In-Memory IP tracking)
-const RATE_LIMIT_WINDOW_MS = 30_000; // 30 seconds window
-const requestMap = new Map<string, number>();
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function getErrorMessage(error: unknown) {
-  return error instanceof Error ? error.message : "Ocurrió un error al intentar enviar el mensaje.";
-}
+const MAX_REQUEST_BYTES = 8_000;
 
 export async function POST(req: Request) {
   try {
-    const body: ContactRequestBody = await req.json();
-
-    // 1. IP extraction & Rate Limiting
-    const forwardedFor = req.headers.get("x-forwarded-for");
-    const clientIp = forwardedFor?.split(",")[0]?.trim() || "unknown";
-    const now = Date.now();
-
-    // Clean up expired rate limit records
-    for (const [ip, timestamp] of requestMap.entries()) {
-      if (now - timestamp > RATE_LIMIT_WINDOW_MS) {
-        requestMap.delete(ip);
-      }
-    }
-
-    const lastRequestTime = requestMap.get(clientIp);
-    if (lastRequestTime && now - lastRequestTime < RATE_LIMIT_WINDOW_MS) {
+    if (!req.headers.get("content-type")?.toLowerCase().startsWith("application/json")) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Por favor espera unos segundos antes de enviar otro mensaje.",
-        },
-        { status: 429 }
+        { success: false, error: "El tipo de contenido no es válido." },
+        { status: 415 }
       );
     }
 
-    // 2. Input Sanitization & Trimming
-    const name = body.name?.trim() || "";
-    const email = body.email?.trim() || "";
-    const subject = body.subject?.trim() || "";
-    const message = body.message?.trim() || "";
-
-    // 3. Validation & Length Constraints
-    if (!name || !email || !subject || !message) {
+    const contentLength = Number(req.headers.get("content-length") ?? 0);
+    if (contentLength > MAX_REQUEST_BYTES) {
       return NextResponse.json(
-        { success: false, error: "Todos los campos son obligatorios." },
+        { success: false, error: "La solicitud excede el tamaño máximo permitido." },
+        { status: 413 }
+      );
+    }
+
+    const rawBody = await req.text();
+    if (new TextEncoder().encode(rawBody).length > MAX_REQUEST_BYTES) {
+      return NextResponse.json(
+        { success: false, error: "La solicitud excede el tamaño máximo permitido." },
+        { status: 413 }
+      );
+    }
+
+    let body: unknown;
+    try {
+      body = JSON.parse(rawBody);
+    } catch {
+      return NextResponse.json(
+        { success: false, error: "El cuerpo de la solicitud no es válido." },
         { status: 400 }
       );
     }
 
-    if (name.length > 100 || subject.length > 150 || message.length > 3000) {
-      return NextResponse.json(
-        { success: false, error: "El mensaje o alguno de los campos excede el tamaño máximo permitido." },
-        { status: 400 }
-      );
+    const parsed = parseContactPayload(body);
+    if (!parsed.success) {
+      return NextResponse.json({ success: false, error: parsed.error }, { status: 400 });
     }
 
-    if (!EMAIL_REGEX.test(email)) {
-      return NextResponse.json(
-        { success: false, error: "El correo electrónico no es válido." },
-        { status: 400 }
-      );
+    // Silently accept honeypot submissions so bots cannot tune around it.
+    if (parsed.data.website) {
+      return NextResponse.json({ success: true, message: "¡Mensaje enviado con éxito!" });
     }
 
-    // Record rate limit timestamp
-    requestMap.set(clientIp, now);
+    const { name, email, subject, message } = parsed.data;
 
     // 4. SMTP Configuration
     const host = process.env.SMTP_HOST || "smtp.gmail.com";
@@ -103,7 +78,15 @@ export async function POST(req: Request) {
         user,
         pass,
       },
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 15_000,
     });
+
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeSubject = escapeHtml(subject);
+    const safeMessage = escapeHtml(message);
 
     // 6. Full Dark Mode HTML Mail Content
     const mailOptions = {
@@ -147,24 +130,24 @@ export async function POST(req: Request) {
             <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
               <tr>
                 <td style="padding: 10px 0; border-bottom: 1px solid #1e293b; color: #94a3b8; font-size: 13px; font-weight: 600; width: 100px;">Nombre:</td>
-                <td style="padding: 10px 0; border-bottom: 1px solid #1e293b; color: #ffffff; font-size: 14px; font-weight: 600;">${name}</td>
+                  <td style="padding: 10px 0; border-bottom: 1px solid #1e293b; color: #ffffff; font-size: 14px; font-weight: 600;">${safeName}</td>
               </tr>
               <tr>
                 <td style="padding: 10px 0; border-bottom: 1px solid #1e293b; color: #94a3b8; font-size: 13px; font-weight: 600;">Email:</td>
                 <td style="padding: 10px 0; border-bottom: 1px solid #1e293b; font-size: 14px; font-weight: 600;">
-                  <a href="mailto:${email}" style="color: #c084fc; text-decoration: none;">${email}</a>
+                  <a href="mailto:${safeEmail}" style="color: #c084fc; text-decoration: none;">${safeEmail}</a>
                 </td>
               </tr>
               <tr>
                 <td style="padding: 10px 0; color: #94a3b8; font-size: 13px; font-weight: 600;">Asunto:</td>
-                <td style="padding: 10px 0; color: #ffffff; font-size: 14px; font-weight: 600;">${subject}</td>
+                <td style="padding: 10px 0; color: #ffffff; font-size: 14px; font-weight: 600;">${safeSubject}</td>
               </tr>
             </table>
 
             <!-- Message Content -->
             <div style="background-color: #111827; border: 1px solid #1f2937; border-left: 4px solid #a855f7; border-radius: 14px; padding: 20px; margin-bottom: 28px;">
               <p style="margin: 0 0 10px 0; color: #a855f7; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">Mensaje:</p>
-              <p style="margin: 0; color: #e2e8f0; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">${message}</p>
+              <p style="margin: 0; color: #e2e8f0; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">${safeMessage}</p>
             </div>
 
             <!-- Footer -->
@@ -191,7 +174,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         success: false,
-        error: getErrorMessage(error),
+        error: "No se pudo enviar el mensaje. Inténtalo nuevamente más tarde.",
       },
       { status: 500 }
     );

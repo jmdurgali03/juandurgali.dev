@@ -24,6 +24,11 @@
     isolation: isolate;
   }
 
+  :focus-visible {
+    outline: 2px solid #c084fc;
+    outline-offset: 3px;
+  }
+
   body::before {
     content: "";
     position: fixed;
@@ -92,6 +97,21 @@
 
 .dashed-border-animation {
   animation: dash-rotate 25s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Custom Scrollbar */

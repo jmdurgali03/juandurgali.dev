@@ -16,3 +16,7 @@ export const translations = {
 };
 
 export type Language = "es" | "en";
+
+export function getTranslations(language: Language) {
+  return translations[language];
+}

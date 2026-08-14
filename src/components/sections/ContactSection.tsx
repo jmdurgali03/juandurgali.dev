@@ -16,6 +16,7 @@ export default function ContactSection() {
     email: "",
     subject: "",
     message: "",
+    website: "",
   });
   const [isSending, setIsSending] = useState(false);
 
@@ -36,7 +37,7 @@ export default function ContactSection() {
         toast.success(t.contact.form.success, {
           icon: <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />,
         });
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({ name: "", email: "", subject: "", message: "", website: "" });
       } else {
         toast.error(data.error || t.contact.form.error, {
           icon: <AlertCircle className="w-5 h-5 text-rose-400 shrink-0" />,
@@ -83,13 +84,29 @@ export default function ContactSection() {
           {/* Contact Form Card */}
           <div className="p-6 sm:p-8 rounded-3xl border border-slate-800 bg-slate-900/30 backdrop-blur-md shadow-2xl space-y-5">
             <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="absolute -left-[9999px]" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.website}
+                  onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                />
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2.5 flex flex-col">
-                  <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                  <label htmlFor="contact-name" className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     {t.contact.form.name}
                   </label>
                   <input
                     type="text"
+                    id="contact-name"
+                    name="name"
+                    autoComplete="name"
+                    maxLength={100}
                     required
                     placeholder={t.contact.form.namePlaceholder}
                     value={formData.name}
@@ -98,11 +115,15 @@ export default function ContactSection() {
                   />
                 </div>
                 <div className="space-y-2.5 flex flex-col">
-                  <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                  <label htmlFor="contact-email" className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     {t.contact.form.email}
                   </label>
                   <input
                     type="email"
+                    id="contact-email"
+                    name="email"
+                    autoComplete="email"
+                    maxLength={254}
                     required
                     placeholder={t.contact.form.emailPlaceholder}
                     value={formData.email}
@@ -113,11 +134,14 @@ export default function ContactSection() {
               </div>
 
               <div className="space-y-2.5 flex flex-col">
-                <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                <label htmlFor="contact-subject" className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                   {t.contact.form.subject}
                 </label>
                 <input
                   type="text"
+                  id="contact-subject"
+                  name="subject"
+                  maxLength={150}
                   required
                   placeholder={t.contact.form.subjectPlaceholder}
                   value={formData.subject}
@@ -127,11 +151,14 @@ export default function ContactSection() {
               </div>
 
               <div className="space-y-2.5 flex flex-col">
-                <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                <label htmlFor="contact-message" className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                   {t.contact.form.message}
                 </label>
                 <textarea
                   rows={4}
+                  id="contact-message"
+                  name="message"
+                  maxLength={3000}
                   required
                   placeholder={t.contact.form.messagePlaceholder}
                   value={formData.message}
@@ -143,6 +170,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSending}
+                aria-busy={isSending}
                 className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:bg-purple-800 text-white font-medium text-sm border border-purple-400/30 transition-all active:scale-[0.99] shadow-lg shadow-purple-500/20"
               >
                 {isSending ? (

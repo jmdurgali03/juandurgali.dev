@@ -41,6 +41,16 @@ export default function Navbar() {
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
+    if (!isHomePage) {
+      return;
+    }
+
+    const hashSection = window.location.hash.slice(1);
+    const initialSection = SECTIONS.includes(hashSection as (typeof SECTIONS)[number])
+      ? hashSection
+      : "home";
+    const resetFrame = requestAnimationFrame(() => setActiveSection(initialSection));
+
     SECTIONS.forEach((sectionId) => {
       const element = document.getElementById(sectionId);
       if (!element) return;
@@ -58,8 +68,11 @@ export default function Navbar() {
       observers.push(observer);
     });
 
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
+    return () => {
+      cancelAnimationFrame(resetFrame);
+      observers.forEach((o) => o.disconnect());
+    };
+  }, [isHomePage, pathname]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -140,6 +153,8 @@ export default function Navbar() {
           <div ref={langRef} className="relative inline-flex flex-col items-center">
             <button
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+              aria-label={t.nav.language}
+              aria-expanded={langDropdownOpen}
               className="flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full text-sm font-medium text-slate-300 hover:text-white border border-slate-700 hover:border-slate-500 transition-all bg-slate-900/50"
             >
               <span className="text-base leading-none">{currentLang.flag}</span>
@@ -193,6 +208,8 @@ export default function Navbar() {
           <div ref={mobileLangRef} className="relative inline-flex flex-col items-center">
             <button
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+              aria-label={t.nav.language}
+              aria-expanded={langDropdownOpen}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-slate-300 border border-slate-700 bg-slate-900/50"
             >
               <span>{currentLang.flag}</span>
@@ -230,7 +247,8 @@ export default function Navbar() {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-xl text-slate-300 hover:text-white border border-slate-800 bg-slate-900/50"
-            aria-label="Toggle menu"
+            aria-label={mobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>

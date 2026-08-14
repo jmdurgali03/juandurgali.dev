@@ -162,7 +162,7 @@ export default function ProjectsSection() {
           href={`/${language}/projects`} 
           className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-slate-800 hover:bg-slate-700 text-white font-bold transition-all border border-slate-700 hover:border-slate-500 shadow-xl hover:shadow-2xl hover:-translate-y-1"
         >
-          {t.language === "es" ? "Ver todos los proyectos" : "View all projects"}
+          {t.projectsCta}
           <ArrowRight className="w-5 h-5" />
         </Link>
       </motion.div>
