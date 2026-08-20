@@ -133,7 +133,45 @@ export default function TechIcon({ name, className = 'w-6 h-6', size }: TechIcon
     case 'postgres':
       return (
         <svg viewBox="0 0 128 128" className={className} style={style}>
-          <path fill="#336791" d="M64.7 15.6c-21.7 0-36.8 15.8-37.4 34.6-.4 11.2 5 21.2 14.1 27.2l-3.3 14.6 13.9-7.3c4.1 1.2 8.4 1.8 12.7 1.8 21.7 0 36.8-15.8 37.4-34.6.4-18.8-15.7-36.3-37.4-36.3zm12.3 46.1c-1.3 2.1-3.6 3.4-6.1 3.4h-12c-2.5 0-4.8-1.3-6.1-3.4-1.3-2.1-1.3-4.7 0-6.8l6-10.4c1.3-2.1 3.6-3.4 6.1-3.4s4.8 1.3 6.1 3.4l6 10.4c1.3 2.1 1.3 4.7 0 6.8z"/>
+          <path fill="#336791" d="M64 7C35.3 7 18 20.6 18 43.3c0 10.4 3.7 19.2 10.7 25.5-1.4 7.5-1 17.6 5.3 27.6 4.8 7.5 12.4 13.2 21.5 15.9l3.4-10.8c-6.4-2-11.6-5.8-14.6-10.5-2.8-4.4-3.9-9.1-3.8-13.3 5.7 2.2 12.2 3.4 19.4 3.6l-.4 15.2c-.1 3.2 2.4 5.8 5.5 5.9h.2c3 0 5.6-2.4 5.7-5.5l.4-15.8c3.8-.4 7.3-1.1 10.6-2.2 2.4 7.5 8.8 12.3 17.8 12.3 4.8 0 9.1-1.3 12.9-3.8l-6.3-9.5c-1.9 1.3-4.1 1.9-6.6 1.9-4.8 0-7.1-2.4-7.7-7.5 11.4-7 18-17.2 18-29C110 20.6 92.7 7 64 7Zm18 59.2c-5.4 2.6-12 3.9-19.6 3.9-20.7 0-33-10-33-26.8 0-16.2 12.6-24.9 34.6-24.9 22 0 34.6 8.7 34.6 24.9 0 7.1-2.6 13.3-7.5 18.1-1.8-6.2-5.5-10.3-10.4-10.3-5.6 0-9.5 4.5-9.5 10.8 0 4.5 2.1 8.1 5.7 9.8l5.1-5.5Zm-1.3-5.8c1.1 0 2.1 1.7 2.7 4.6-1.4.5-2.8.9-4.3 1.3-1.3-.8-2-2.2-2-4.3 0-1 .3-1.6.6-1.6h3Z"/>
+        </svg>
+      )
+    case 'python':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <path fill="#3776AB" d="M63 8c-27 0-25.3 11.7-25.3 11.7V32h25.8v4H27.4S10 34 10 61.5 25.2 88 25.2 88h9V75.4s-.5-15.2 15-15.2h25.6s14.4.2 14.4-14V22.5S91.4 8 63 8Zm-14.2 8.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Z"/>
+          <path fill="#FFD43B" d="M65 120c27 0 25.3-11.7 25.3-11.7V96H64.5v-4h36.1S118 94 118 66.5 102.8 40 102.8 40h-9v12.6s.5 15.2-15 15.2H53.2s-14.4-.2-14.4 14v23.7S36.6 120 65 120Zm14.2-8.2a4.8 4.8 0 1 1 0-9.6 4.8 4.8 0 0 1 0 9.6Z"/>
+        </svg>
+      )
+    case 'gemini':
+    case 'googlegemini':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <defs><linearGradient id="gemini-gradient" x1="16" y1="112" x2="112" y2="16" gradientUnits="userSpaceOnUse"><stop stopColor="#1C7DFF"/><stop offset=".48" stopColor="#9B72FF"/><stop offset="1" stopColor="#D96570"/></linearGradient></defs>
+          <path fill="url(#gemini-gradient)" d="M64 8c4.3 30.2 25.8 51.7 56 56-30.2 4.3-51.7 25.8-56 56-4.3-30.2-25.8-51.7-56-56 30.2-4.3 51.7-25.8 56-56Z"/>
+        </svg>
+      )
+    case 'convex':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <circle cx="64" cy="64" r="60" fill="#F3B01C"/>
+          <path fill="#EE342F" d="M61 22c18 0 33.6 10.7 40.5 26.1L78.8 61.2A19 19 0 0 0 61 49.2c-10.5 0-19 8.5-19 19S50.5 87 61 87c7.7 0 14.4-4.6 17.3-11.3l23 13.3A45 45 0 1 1 61 22Z"/>
+          <path fill="#8D2676" d="m78.8 61.2 22.7-13.1a45.3 45.3 0 0 1-.2 40.9l-23-13.3a19 19 0 0 0 .5-14.5Z"/>
+        </svg>
+      )
+    case 'supabase':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <defs><linearGradient id="supabase-gradient" x1="72" y1="10" x2="72" y2="118" gradientUnits="userSpaceOnUse"><stop stopColor="#3ECF8E"/><stop offset="1" stopColor="#3ECF8E" stopOpacity=".45"/></linearGradient></defs>
+          <path fill="url(#supabase-gradient)" d="M70.6 8.8c2.2-3.7 7.9-2.2 7.9 2.1v43.5h35.2c4 0 6 4.8 3.2 7.6l-57.7 57.2c-3.1 3.1-8.4.2-7.4-4.1l9.7-41.5H24.3c-3.9 0-6-4.4-3.7-7.5l50-57.3Z"/>
+        </svg>
+      )
+    case 'threejs':
+    case 'three':
+      return (
+        <svg viewBox="0 0 128 128" className={className} style={style}>
+          <path d="M17 13 111 37 43 112 17 13Z" fill="none" stroke="#FFF" strokeWidth="7" strokeLinejoin="round"/>
+          <path d="m40 45 47 12-34 38-13-50Zm0 0 14 50m33-38L54 95M40 45l47 12" fill="none" stroke="#FFF" strokeWidth="6" strokeLinejoin="round"/>
         </svg>
       )
     case 'mongodb':

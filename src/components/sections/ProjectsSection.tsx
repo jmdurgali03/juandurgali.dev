@@ -2,11 +2,12 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Calendar, Star, Code2, ArrowRight } from "lucide-react";
+import { ExternalLink, Calendar, Star, ArrowRight } from "lucide-react";
 import { GithubIcon } from "@/components/icons/SocialIcons";
 import { useLanguage } from "@/context/LanguageContext";
 import TechIcon from "@/components/icons/TechIcon";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProjectsSection() {
   const { t, language } = useLanguage();
@@ -39,10 +40,8 @@ export default function ProjectsSection() {
         className="mb-10"
       >
         <div className="rounded-2xl border border-slate-800 bg-slate-900/30 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center group hover:border-purple-500/30 transition-all shadow-xl backdrop-blur-md">
-          {/* Image Placeholder */}
-          <div className="lg:col-span-5 aspect-video rounded-xl bg-slate-800/60 border border-slate-700/50 flex flex-col items-center justify-center p-6 text-center group-hover:border-purple-500/30 transition-all">
-            <Code2 className="w-14 h-14 text-purple-400/50 mb-2" />
-            <span className="text-xs text-slate-500 font-mono">[Project Image]</span>
+          <div className="relative lg:col-span-5 aspect-video overflow-hidden rounded-xl bg-slate-800/60 border border-slate-700/50 group-hover:border-purple-500/30 transition-all">
+            <Image src={t.projects.featuredProject.image} alt={t.projects.featuredProject.title} fill priority sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
           </div>
 
           {/* Info */}
@@ -97,7 +96,7 @@ export default function ProjectsSection() {
 
       {/* 3-Column Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {t.projects.projectList.map((project, idx) => (
+        {t.projects.projectList.filter((project) => project.showOnLanding).map((project, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 20 }}
@@ -107,10 +106,8 @@ export default function ProjectsSection() {
             className="rounded-2xl border border-slate-800 bg-slate-900/30 p-5 flex flex-col justify-between group hover:border-purple-500/30 transition-all shadow-lg backdrop-blur-md"
           >
             <div className="space-y-4">
-              {/* Image Placeholder */}
-              <div className="aspect-video rounded-xl bg-slate-800/60 border border-slate-700/50 flex flex-col items-center justify-center p-4 text-center group-hover:border-purple-500/30 transition-all">
-                <Code2 className="w-10 h-10 text-purple-400/40 mb-1" />
-                <span className="text-xs text-slate-600 font-mono">[Image]</span>
+              <div className="relative aspect-video overflow-hidden rounded-xl bg-slate-800/60 border border-slate-700/50 group-hover:border-purple-500/30 transition-all">
+                <Image src={project.image!} alt={project.title} fill sizes="(min-width: 1024px) 30vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
               </div>
 
               <div className="space-y-2">
@@ -137,15 +134,17 @@ export default function ProjectsSection() {
                 ))}
               </div>
 
-              <Link
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg border border-slate-700 text-slate-400 hover:text-white hover:border-purple-500/30 transition-all"
-                aria-label={t.projects.viewGithub}
-              >
-                <GithubIcon className="w-4 h-4" />
-              </Link>
+              {project.githubUrl && (
+                <Link
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg border border-slate-700 text-slate-400 hover:text-white hover:border-purple-500/30 transition-all"
+                  aria-label={`${t.projects.viewGithub}: ${project.title}`}
+                >
+                  <GithubIcon className="w-4 h-4" />
+                </Link>
+              )}
             </div>
           </motion.div>
         ))}

@@ -1,73 +1,249 @@
 {
   "es": {
-    "title": "Mis Proyectos",
-    "subtitle": "Una selección de trabajos desarrollados con código limpio y mejores prácticas.",
+    "title": "Proyectos",
+    "subtitle": "Una selección de productos, experiencias full-stack y proyectos con los que consolidé nuevas tecnologías.",
     "featuredBadge": "DESTACADO",
     "viewGithub": "Ver en GitHub",
     "featuredProject": {
-      "title": "Next.js Personal Portfolio",
-      "date": "2024-12-20",
-      "description": "Portfolio personal SSR de alto rendimiento construido con Next.js 16, React 19 y TypeScript. Incluye sistema de diseño Dark Glassmorphism, enrutamiento i18n (es/en), animaciones dinámicas y componentes altamente optimizados.",
-      "githubUrl": "https://github.com/AlejoTorres2001/React-SSR-Personal-Portfolio",
-      "techIcons": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"]
+      "title": "Juan Durgali — Portfolio",
+      "date": "2026-07-30",
+      "description": "Mi portfolio personal, diseñado y desarrollado desde cero con Next.js, React y TypeScript. Reúne mi experiencia, proyectos y formas de contacto en una experiencia bilingüe, accesible, optimizada para SEO y con animaciones cuidadas.",
+      "githubUrl": "https://github.com/jmdurgali03/juandurgali.dev",
+      "image": "/assets/projects/portfolio.png",
+      "techIcons": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion"
+      ]
     },
     "projectList": [
       {
-        "title": "Chat.io — Real-time Messenger",
-        "date": "2023-06-10",
-        "description": "Aplicación de mensajería en tiempo real inspirada en WhatsApp Web. Construida con Node.js, Express, Socket.IO, MongoDB en backend y React en frontend.",
-        "githubUrl": "https://github.com",
-        "techIcons": ["React", "Node.js", "Express.js", "MongoDB"]
+        "title": "Feria Emprender",
+        "date": "2026-05-06",
+        "description": "Landing page diseñada para un emprendimiento propio. Presenta la propuesta de la feria, sus actividades y un flujo de inscripción mediante una experiencia moderna, responsiva y orientada a conversión.",
+        "showOnLanding": true,
+        "image": "/assets/projects/feria.png",
+        "techIcons": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS"
+        ]
       },
       {
-        "title": "URL Shortener Dev Platform",
-        "date": "2023-08-02",
-        "description": "Acortador de URLs completo con entorno de desarrollo en contenedores DevContainers. Construido con Next.js, Prisma ORM y API REST con métricas.",
-        "githubUrl": "https://github.com",
-        "techIcons": ["Next.js", "TypeScript", "Prisma", "PostgreSQL"]
+        "title": "ERP SaaS - Suplementos Deportivos",
+        "date": "2026-04-29",
+        "description": "ERP SaaS propuesto como tesis universitaria para gestionar ventas, inventario por lotes, sucursales, traspasos, clientes y promociones. Incluye control de acceso y una arquitectura multiempresa sobre PostgreSQL.",
+        "showOnLanding": true,
+        "image": "/assets/projects/saas-supl.jpg",
+        "techIcons": [
+          "Next.js",
+          "TypeScript",
+          "Prisma",
+          "PostgreSQL"
+        ]
       },
       {
-        "title": "JWT Authentication FullStack",
-        "date": "2023-06-14",
-        "description": "Estrategia completa de autenticación JWT segura. Cubre mejores prácticas: refresh tokens, cookies httpOnly, rotación de tokens y protección de rutas.",
-        "githubUrl": "https://github.com",
-        "techIcons": ["Node.js", "Express.js", "React", "TypeScript"]
+        "title": "CV Analyzer con IA",
+        "date": "2026-08-12",
+        "description": "Analizador de currículums que extrae texto desde archivos PDF y compara cada perfil con una descripción de puesto. Utiliza LangChain, Gemini y respuestas estructuradas para identificar experiencia, habilidades, fortalezas y porcentaje de ajuste.",
+        "showOnLanding": true,
+        "image": "/assets/projects/cv-an.jpeg",
+        "techIcons": [
+          "Python",
+          "LangChain",
+          "Gemini",
+          "Streamlit"
+        ]
+      },
+      {
+        "title": "Expense Tracker",
+        "date": "2025-09-05",
+        "description": "Aplicación full-stack de finanzas personales con autenticación, categorías, filtros, gráficos y exportación de movimientos. Uno de mis primeros proyectos con Next.js y una base clave para aprender arquitectura web moderna.",
+        "githubUrl": "https://github.com/jmdurgali03/Expense-Tracker-Web",
+        "image": "/assets/projects/tracker.jpg",
+        "techIcons": [
+          "Next.js",
+          "TypeScript",
+          "Prisma",
+          "PostgreSQL"
+        ]
+      },
+      {
+        "title": "Notion Clone",
+        "date": "2025-08-18",
+        "description": "Editor colaborativo inspirado en Notion, con documentos jerárquicos, edición por bloques, publicación y gestión de archivos. Me permitió profundizar en estado, persistencia en tiempo real y componentes complejos.",
+        "images": ["/assets/projects/notion2.png", "/assets/projects/notion.png"],
+        "techIcons": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Convex"
+        ]
+      },
+      {
+        "title": "Trello Clone",
+        "date": "2025-09-16",
+        "description": "Gestor de tareas inspirado en Trello con tableros, listas y tarjetas reordenables mediante drag and drop. Un proyecto enfocado en modelado de datos, interacciones optimistas y fundamentos de aplicaciones colaborativas.",
+        "image": "/assets/projects/trello.jpg",
+        "techIcons": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Supabase"
+        ]
+      },
+      {
+        "title": "MacBook Experience — GSAP",
+        "date": "2025-10-13",
+        "description": "Experiencia interactiva de producto inspirada en MacBook, con animaciones ligadas al scroll y una escena 3D. Fue mi introducción práctica a GSAP, React Three Fiber y animación web de alto impacto.",
+        "githubUrl": "https://github.com/jmdurgali03/gap-macbook-page",
+        "image": "/assets/projects/macbook.png",
+        "techIcons": [
+          "React",
+          "Vite",
+          "GSAP",
+          "Three.js"
+        ]
+      },
+      {
+        "title": "SPYLT Landing — GSAP",
+        "date": "2025-10-19",
+        "description": "Landing inmersiva para una bebida energética, con desplazamiento suave, parallax, tipografía cinética y animaciones responsivas. Consolidé el uso de ScrollTrigger, ScrollSmoother y SplitText.",
+        "githubUrl": "https://github.com/jmdurgali03/gsap-splyt",
+        "image": "/assets/projects/splyt.png",
+        "techIcons": [
+          "React",
+          "Vite",
+          "GSAP",
+          "Tailwind CSS"
+        ]
       }
     ]
   },
   "en": {
-    "title": "My Projects",
-    "subtitle": "A curated selection of projects built with clean code and best practices.",
+    "title": "Projects",
+    "subtitle": "A selection of products, full-stack experiences, and projects through which I consolidated new technologies.",
     "featuredBadge": "FEATURED",
     "viewGithub": "View on GitHub",
     "featuredProject": {
-      "title": "Next.js Personal Portfolio",
-      "date": "2024-12-20",
-      "description": "High-performance personal SSR portfolio built with Next.js 16, React 19, and TypeScript. Features Dark Glassmorphism design system, i18n routing (es/en), dynamic animations, and highly optimized components.",
-      "githubUrl": "https://github.com/AlejoTorres2001/React-SSR-Personal-Portfolio",
-      "techIcons": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"]
+      "title": "Juan Durgali — Portfolio",
+      "date": "2026-07-30",
+      "description": "My personal portfolio, designed and developed from scratch with Next.js, React, and TypeScript. It brings together my experience, projects, and contact channels in a bilingual, accessible, SEO-friendly experience with carefully crafted animations.",
+      "githubUrl": "https://github.com/jmdurgali03/juandurgali.dev",
+      "image": "/assets/projects/portfolio.png",
+      "techIcons": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion"
+      ]
     },
     "projectList": [
       {
-        "title": "Chat.io — Real-time Messenger",
-        "date": "2023-06-10",
-        "description": "Real-time messaging application inspired by WhatsApp Web. Built with Node.js, Express, Socket.IO, MongoDB on backend, and React on frontend.",
-        "githubUrl": "https://github.com",
-        "techIcons": ["React", "Node.js", "Express.js", "MongoDB"]
+        "title": "Feria Emprender",
+        "date": "2026-05-06",
+        "description": "A landing page designed for my own entrepreneurial venture. It presents the event, its activities, and a registration flow through a modern, responsive, conversion-focused experience.",
+        "showOnLanding": true,
+        "image": "/assets/projects/feria.png",
+        "techIcons": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS"
+        ]
       },
       {
-        "title": "URL Shortener Dev Platform",
-        "date": "2023-08-02",
-        "description": "Full-featured URL shortener with containerized dev environment using VS Code DevContainers. Built with Next.js, Prisma ORM, and REST API.",
-        "githubUrl": "https://github.com",
-        "techIcons": ["Next.js", "TypeScript", "Prisma", "PostgreSQL"]
+        "title": "ERP SaaS - Supplements Shop",
+        "date": "2026-04-29",
+        "description": "A SaaS ERP proposed as my university thesis to manage sales, batch-based inventory, branches, transfers, customers, and promotions. It features access control and a multi-tenant architecture built on PostgreSQL.",
+        "showOnLanding": true,
+        "image": "/assets/projects/saas-supl.jpg",
+        "techIcons": [
+          "Next.js",
+          "TypeScript",
+          "Prisma",
+          "PostgreSQL"
+        ]
       },
       {
-        "title": "JWT Authentication FullStack",
-        "date": "2023-06-14",
-        "description": "Complete fullstack example of a secure JWT authentication strategy. Covers best practices: refresh tokens, httpOnly cookies, token rotation, and route protection.",
-        "githubUrl": "https://github.com",
-        "techIcons": ["Node.js", "Express.js", "React", "TypeScript"]
+        "title": "AI CV Analyzer",
+        "date": "2026-08-12",
+        "description": "A résumé analyzer that extracts text from PDF files and compares each candidate with a job description. It uses LangChain, Gemini, and structured outputs to identify experience, skills, strengths, and an overall match score.",
+        "showOnLanding": true,
+        "image": "/assets/projects/cv-an.jpeg",
+        "techIcons": [
+          "Python",
+          "LangChain",
+          "Gemini",
+          "Streamlit"
+        ]
+      },
+      {
+        "title": "Expense Tracker",
+        "date": "2025-09-05",
+        "description": "A full-stack personal finance application with authentication, categories, filters, charts, and transaction exports. One of my first Next.js projects and a key foundation for learning modern web architecture.",
+        "githubUrl": "https://github.com/jmdurgali03/Expense-Tracker-Web",
+        "image": "/assets/projects/tracker.jpg",
+        "techIcons": [
+          "Next.js",
+          "TypeScript",
+          "Prisma",
+          "PostgreSQL"
+        ]
+      },
+      {
+        "title": "Notion Clone",
+        "date": "2025-08-18",
+        "description": "A Notion-inspired collaborative editor featuring nested documents, block-based editing, publishing, and file management. It helped me explore state, real-time persistence, and complex component design.",
+        "images": ["/assets/projects/notion2.png", "/assets/projects/notion.png"],
+        "techIcons": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Convex"
+        ]
+      },
+      {
+        "title": "Trello Clone",
+        "date": "2025-09-16",
+        "description": "A Trello-inspired task manager with boards, lists, and drag-and-drop cards. This project focused on data modeling, optimistic interactions, and the foundations of collaborative applications.",
+        "image": "/assets/projects/trello.jpg",
+        "techIcons": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Supabase"
+        ]
+      },
+      {
+        "title": "MacBook Experience — GSAP",
+        "date": "2025-10-13",
+        "description": "An interactive MacBook-inspired product experience featuring scroll-driven animation and a 3D scene. It was my practical introduction to GSAP, React Three Fiber, and high-impact web animation.",
+        "githubUrl": "https://github.com/jmdurgali03/gap-macbook-page",
+        "image": "/assets/projects/macbook.png",
+        "techIcons": [
+          "React",
+          "Vite",
+          "GSAP",
+          "Three.js"
+        ]
+      },
+      {
+        "title": "SPYLT Landing — GSAP",
+        "date": "2025-10-19",
+        "description": "An immersive landing page for an energy drink, with smooth scrolling, parallax, kinetic typography, and responsive animation. It consolidated my use of ScrollTrigger, ScrollSmoother, and SplitText.",
+        "githubUrl": "https://github.com/jmdurgali03/gsap-splyt",
+        "image": "/assets/projects/splyt.png",
+        "techIcons": [
+          "React",
+          "Vite",
+          "GSAP",
+          "Tailwind CSS"
+        ]
       }
     ]
   }
