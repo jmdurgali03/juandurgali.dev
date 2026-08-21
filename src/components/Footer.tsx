@@ -19,7 +19,7 @@ export default function Footer() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="https://github.com"
+            href="https://github.com/jmdurgali03"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full border border-slate-800 text-slate-500 hover:text-white hover:border-slate-600 transition-all"
@@ -28,7 +28,7 @@ export default function Footer() {
             <GithubIcon className="w-4 h-4" />
           </Link>
           <Link
-            href="https://linkedin.com"
+            href="https://linkedin.com/in/juan-martin-durgali"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full border border-slate-800 text-slate-500 hover:text-white hover:border-slate-600 transition-all"

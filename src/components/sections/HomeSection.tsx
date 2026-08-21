@@ -6,11 +6,13 @@ import { FileText, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
 import DashedBorder from "@/components/DashedBorder";
 import { useLanguage } from "@/context/LanguageContext";
+import { useResumeUrl } from "@/hooks/useResumeUrl";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function HomeSection() {
   const { t } = useLanguage();
+  const resumeUrl = useResumeUrl();
   const [solutionIndex, setSolutionIndex] = useState(0);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ export default function HomeSection() {
           {/* Social Links */}
           <div className="flex items-center gap-3">
             <Link
-              href="https://github.com"
+              href="https://github.com/jmdurgali03"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-all"
@@ -42,7 +44,7 @@ export default function HomeSection() {
               <GithubIcon className="w-4 h-4" />
             </Link>
             <Link
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/juan-martin-durgali"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-all"
@@ -94,7 +96,7 @@ export default function HomeSection() {
             </button>
 
             <Link
-              href="/resume.pdf"
+              href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-medium text-sm border border-purple-400/30 transition-all hover:scale-105 active:scale-95"

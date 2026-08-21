@@ -215,7 +215,7 @@ export default function ContactSection() {
             {/* Social Buttons */}
             <div className="flex sm:flex-col items-center gap-3 w-full sm:w-auto shrink-0 border-t sm:border-t-0 sm:border-l border-slate-800 pt-4 sm:pt-0 sm:pl-6">
               <Link
-                href="https://github.com"
+                href="https://github.com/jmdurgali03"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:border-purple-500/40 transition-all text-xs font-semibold"
@@ -224,7 +224,7 @@ export default function ContactSection() {
                 GitHub
               </Link>
               <Link
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/juan-martin-durgali"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:border-purple-500/40 transition-all text-xs font-semibold"

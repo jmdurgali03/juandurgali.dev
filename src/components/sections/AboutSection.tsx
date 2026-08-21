@@ -5,11 +5,13 @@ import { motion } from "framer-motion";
 import { FileText, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
 import { useLanguage } from "@/context/LanguageContext";
+import { useResumeUrl } from "@/hooks/useResumeUrl";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function AboutSection() {
   const { t } = useLanguage();
+  const resumeUrl = useResumeUrl();
 
   return (
     <section id="about" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-24">
@@ -76,7 +78,7 @@ export default function AboutSection() {
               </button>
 
               <Link
-                href="/resume.pdf"
+                href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-medium text-sm border border-purple-400/30 transition-all hover:scale-105 active:scale-95 shadow-md"
@@ -87,7 +89,7 @@ export default function AboutSection() {
 
               <div className="flex items-center gap-2.5 sm:ml-auto">
                 <Link
-                  href="https://github.com"
+                  href="https://github.com/jmdurgali03"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-all"
@@ -96,7 +98,7 @@ export default function AboutSection() {
                   <GithubIcon className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/in/juan-martin-durgali"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-all"

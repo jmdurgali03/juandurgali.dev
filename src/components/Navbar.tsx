@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, FileText, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useResumeUrl } from "@/hooks/useResumeUrl";
 import type { Language } from "@/i18n/translations";
 import { localizedPath } from "@/i18n/routing";
 import { useRouter, usePathname } from "next/navigation";
@@ -13,6 +14,7 @@ const SECTIONS = ["home", "about", "resume", "projects", "contact"] as const;
 
 export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
+  const resumeUrl = useResumeUrl();
   const router = useRouter();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -192,7 +194,7 @@ export default function Navbar() {
 
           {/* Resume CTA */}
           <Link
-            href="/resume.pdf"
+            href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white text-xs font-medium border border-purple-400/30 transition-all hover:scale-105 active:scale-95 shadow-md"
@@ -281,7 +283,7 @@ export default function Navbar() {
               );
             })}
             <Link
-              href="/resume.pdf"
+              href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 text-white text-sm font-medium"
