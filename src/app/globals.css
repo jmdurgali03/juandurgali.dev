@@ -89,6 +89,90 @@
   background: linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.3) 30%, rgba(99, 102, 241, 0.3) 70%, transparent 100%);
 }
 
+/* Scroll-stacked project cards, adapted to the portfolio's dark visual system. */
+.project-stack {
+  display: grid;
+  grid-auto-rows: 1fr;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-stack__card {
+  position: sticky;
+  top: calc(92px + var(--card-index) * 18px);
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  min-height: 520px;
+  margin-bottom: 34px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 24px;
+  background: rgba(12, 19, 35, 0.96);
+  box-shadow:
+    0 -8px 28px rgba(2, 6, 23, 0.34),
+    0 28px 70px rgba(2, 6, 23, 0.42);
+  animation: project-card-enter linear both;
+  animation-range: entry 0% cover 30%;
+  animation-timeline: view(block);
+}
+
+.project-stack__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  padding: clamp(28px, 4vw, 56px);
+  background:
+    radial-gradient(circle at 0 0, rgba(168, 85, 247, 0.13), transparent 42%),
+    linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(10, 16, 30, 0.98));
+}
+
+.project-stack__visual {
+  position: relative;
+  min-width: 0;
+  background: #111827;
+}
+
+.project-stack__visual-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(10, 16, 30, 0.24), transparent 22%),
+    linear-gradient(0deg, rgba(10, 16, 30, 0.2), transparent 35%);
+}
+
+@keyframes project-card-enter {
+  from {
+    transform: scale(0.965) translateY(42px);
+  }
+  to {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 767px) {
+  .project-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .project-stack__card {
+    position: relative;
+    top: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .project-stack__visual {
+    aspect-ratio: 16 / 10;
+  }
+}
+
 /* Animated dashed border */
 @keyframes dash-rotate {
   0% { stroke-dashoffset: 0; }
