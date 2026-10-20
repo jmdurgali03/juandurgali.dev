@@ -1,60 +1,54 @@
 "use client";
 
-import React, { type CSSProperties } from "react";
+import React from "react";
+import { useLanguage } from "@/context/LanguageContext";
+import { ArrowLeft, Calendar, Code2, ExternalLink, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Code2, ExternalLink, Star } from "lucide-react";
-
 import TechIcon from "@/components/icons/TechIcon";
 import { GithubIcon } from "@/components/icons/SocialIcons";
-import { useLanguage } from "@/context/LanguageContext";
 
 export default function ProjectsPage() {
   const { t, language } = useLanguage();
-  const allProjects = [
-    { ...t.projects.featuredProject, featured: true },
-    ...t.projects.projectList.map((project) => ({ ...project, featured: false })),
-  ];
+  const allProjects = [t.projects.featuredProject, ...t.projects.projectList];
 
   return (
-    <main className="min-h-screen bg-[#0a101e] px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <main className="min-h-screen">
+      <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-10">
         <Link
           href={`/${language}`}
-          className="group mb-10 inline-flex items-center gap-2 font-medium text-slate-400 transition-colors hover:text-white"
+          className="group mb-12 inline-flex items-center gap-2 text-sm font-medium text-slate-400 transition-colors hover:text-white"
         >
-          <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
-          Volver atrás
+          <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+          {t.nav.home}
         </Link>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-16"
-        >
-          <h1 className="mb-4 text-4xl font-extrabold text-white sm:text-5xl">
+        <header className="mb-20 max-w-2xl">
+          <h1 className="mb-6 text-4xl font-medium tracking-tight text-white sm:text-6xl">
             {t.projects.title}
           </h1>
-          <p className="text-slate-400">{t.projects.subtitle}</p>
-        </motion.div>
+          <p className="text-lg leading-relaxed text-slate-400">
+            {t.projects.subtitle}
+          </p>
+        </header>
 
-        <ul className="project-stack" aria-label={t.projects.title}>
+        {/* The project-stack CSS handles the sticky overlapping cards (defined in globals.css) */}
+        <ul className="project-stack">
           {allProjects.map((project, idx) => {
-            const image = project.image ?? ("images" in project ? project.images?.[0] : undefined);
+            const isFeatured = idx === 0;
+            const image = project.image;
 
             return (
               <li
-                key={project.title}
-                className="project-stack__card group"
-                style={{ "--card-index": idx } as CSSProperties}
+                key={idx}
+                className="project-stack__card"
+                style={{ "--card-index": idx } as React.CSSProperties}
               >
                 <div className="project-stack__content">
                   <div>
-                    <div className="mb-5 flex flex-wrap items-center gap-3">
-                      {project.featured && (
-                        <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-emerald-400">
+                    <div className="mb-4 flex items-center justify-between">
+                      {isFeatured && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/[0.06] px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-400">
                           <Star className="h-3 w-3 fill-emerald-400" />
                           {t.projects.featuredBadge}
                         </span>
@@ -65,10 +59,10 @@ export default function ProjectsPage() {
                       </span>
                     </div>
 
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-purple-400">
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
                       {String(idx + 1).padStart(2, "0")} / {String(allProjects.length).padStart(2, "0")}
                     </p>
-                    <h2 className="mb-4 text-2xl font-bold text-white transition-colors group-hover:text-purple-300 sm:text-3xl">
+                    <h2 className="mb-4 text-2xl font-bold text-white transition-colors group-hover:text-emerald-300 sm:text-3xl">
                       {project.title}
                     </h2>
                     <p className="max-w-xl text-sm leading-relaxed text-slate-400 sm:text-base">
@@ -82,7 +76,7 @@ export default function ProjectsPage() {
                         <div
                           key={techName}
                           title={techName}
-                          className="flex items-center gap-2 rounded-xl border border-slate-700/70 bg-slate-800/70 px-2.5 py-2 text-xs text-slate-300"
+                          className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.04] px-2.5 py-2 text-xs text-slate-300"
                         >
                           <TechIcon name={techName} className="h-4 w-4" />
                           <span>{techName}</span>
@@ -95,7 +89,7 @@ export default function ProjectsPage() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex w-fit items-center gap-2 rounded-full border border-purple-400/30 bg-purple-600 px-4 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-purple-500"
+                        className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#090d16] shadow-md transition-all hover:-translate-y-0.5 hover:bg-slate-200 active:scale-95"
                       >
                         <GithubIcon className="h-4 w-4" />
                         {t.projects.viewGithub}
@@ -116,8 +110,8 @@ export default function ProjectsPage() {
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
                     />
                   ) : (
-                    <div className="flex h-full min-h-64 items-center justify-center bg-[radial-gradient(circle_at_30%_20%,rgba(168,85,247,0.22),transparent_45%),linear-gradient(145deg,#1e293b,#0f172a)]">
-                      <Code2 className="h-16 w-16 text-purple-300/55" />
+                    <div className="flex h-full min-h-64 items-center justify-center bg-[radial-gradient(circle_at_30%_20%,rgba(52,211,153,0.1),transparent_45%),linear-gradient(145deg,#0c1120,#090d16)]">
+                      <Code2 className="h-16 w-16 text-slate-500/40" />
                     </div>
                   )}
                   <div className="project-stack__visual-shade" />

@@ -1,12 +1,23 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 
-const inter = Inter({
+const geist = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
 });
+
+const geistMono = Geist_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+});
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#101312",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://juandurgali.dev"),
@@ -36,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth" className={`${geist.variable} ${geistMono.variable} h-full antialiased`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -44,19 +55,19 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#0a101e] text-[#e2e8f0] relative">
+      <body className="min-h-full flex flex-col bg-[#090d16] text-[#e2e8f0] relative">
         {children}
         <Toaster
           position="bottom-center"
           theme="dark"
           toastOptions={{
             style: {
-              background: "#090d16",
-              color: "#ffffff",
-              border: "1px solid #1e293b",
-              borderRadius: "16px",
+              background: "#0c1120",
+              color: "#f1f5f9",
+              border: "1px solid rgba(255, 255, 255, 0.08)",
+              borderRadius: "12px",
               padding: "14px 18px",
-              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)",
+              boxShadow: "0 20px 40px -12px rgba(0, 0, 0, 0.6)",
             },
           }}
         />

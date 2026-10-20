@@ -41,38 +41,38 @@ export default function Navbar() {
   const currentLang = languages.find((l) => l.code === language) || languages[0];
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-
-    if (!isHomePage) {
-      return;
-    }
+    if (!isHomePage) return;
 
     const hashSection = window.location.hash.slice(1);
     const initialSection = SECTIONS.includes(hashSection as (typeof SECTIONS)[number])
       ? hashSection
       : "home";
     const resetFrame = requestAnimationFrame(() => setActiveSection(initialSection));
+    let observer: IntersectionObserver;
 
-    SECTIONS.forEach((sectionId) => {
-      const element = document.getElementById(sectionId);
-      if (!element) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSection(sectionId);
-          }
+    const observeSections = () => {
+      observer?.disconnect();
+      const topInset = Math.min(100, window.innerHeight * 0.2);
+      const bottomInset = Math.max(0, window.innerHeight - topInset - 150);
+      observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries.filter((entry) => entry.isIntersecting);
+          if (visible.length) setActiveSection(visible[visible.length - 1].target.id);
         },
-        { threshold: 0.3, rootMargin: "-80px 0px 0px 0px" }
+        { threshold: 0, rootMargin: `-${topInset}px 0px -${bottomInset}px 0px` }
       );
+      SECTIONS.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) observer.observe(element);
+      });
+    };
 
-      observer.observe(element);
-      observers.push(observer);
-    });
-
+    observeSections();
+    window.addEventListener("resize", observeSections);
     return () => {
       cancelAnimationFrame(resetFrame);
-      observers.forEach((o) => o.disconnect());
+      observer.disconnect();
+      window.removeEventListener("resize", observeSections);
     };
   }, [isHomePage, pathname]);
 
@@ -98,9 +98,13 @@ export default function Navbar() {
     }
 
     setTimeout(() => {
+      if (id === "home") {
+        window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+        return;
+      }
       const el = document.getElementById(id);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        el.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
       }
     }, 50);
   };
@@ -115,24 +119,25 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full glass-nav px-4 lg:px-8 py-3 transition-all">
+    <header className="sticky top-3 z-50 glass-nav mx-3 sm:mx-6 lg:mx-auto lg:w-[calc(100%-80px)] lg:max-w-[1200px] px-4 lg:px-6 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Brand */}
         <button onClick={() => scrollToSection("home")} className="flex items-center gap-2 group">
-          <span className="text-xl font-bold tracking-tight text-white italic">
-            {t.nav.brand}<span className="text-purple-400">.</span>
+          <span className="text-lg font-semibold tracking-tight text-white">
+            {t.nav.brand}<span className="text-emerald-400">.</span>
           </span>
         </button>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        {/* Desktop Nav - Pill Container */}
+        <nav className="hidden lg:flex items-center gap-0.5">
           {navLinks.map((link) => {
             const isActive = isHomePage && activeSection === link.id;
             return (
               <button
                 key={link.id}
+                aria-current={isActive ? "location" : undefined}
                 onClick={() => scrollToSection(link.id)}
-                className={`relative px-4 py-1.5 text-sm font-medium transition-colors ${
+                className={`relative px-4 py-1.5 text-sm font-medium transition-colors rounded-full ${
                   isActive ? "text-white" : "text-slate-400 hover:text-slate-200"
                 }`}
               >
@@ -140,8 +145,9 @@ export default function Navbar() {
                 {isActive && (
                   <motion.div
                     layoutId="activeNav"
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-5 bg-purple-500 rounded-full"
+                    className="absolute inset-0 rounded-full bg-white/[0.08] border border-white/[0.06]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    style={{ zIndex: -1 }}
                   />
                 )}
               </button>
@@ -150,14 +156,14 @@ export default function Navbar() {
         </nav>
 
         {/* Right Controls: Lang Dropdown + Resume */}
-        <div className="hidden md:flex items-center gap-3">
-          {/* Centered Language Dropdown */}
+        <div className="hidden lg:flex items-center gap-3">
+          {/* Language Dropdown */}
           <div ref={langRef} className="relative inline-flex flex-col items-center">
             <button
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
               aria-label={t.nav.language}
               aria-expanded={langDropdownOpen}
-              className="flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full text-sm font-medium text-slate-300 hover:text-white border border-slate-700 hover:border-slate-500 transition-all bg-slate-900/50"
+              className="flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full text-sm font-medium text-slate-300 hover:text-white border border-white/[0.06] hover:border-white/[0.12] transition-all bg-white/[0.03]"
             >
               <span className="text-base leading-none">{currentLang.flag}</span>
               <span className="font-bold text-xs">{currentLang.label}</span>
@@ -171,7 +177,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -4, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute top-full mt-2 left-1/2 -translate-x-1/2 py-1 rounded-2xl bg-[#0f172a] border border-slate-700 shadow-2xl min-w-[110px] overflow-hidden z-50 text-center"
+                  className="absolute top-full mt-2 left-1/2 -translate-x-1/2 py-1 rounded-xl bg-[#0c1120] border border-white/[0.08] shadow-2xl min-w-[110px] overflow-hidden z-50 text-center"
                 >
                   {languages.map((lang) => (
                     <button
@@ -179,8 +185,8 @@ export default function Navbar() {
                       onClick={() => switchLanguage(lang.code)}
                       className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold transition-colors ${
                         language === lang.code
-                          ? "bg-purple-600/20 text-purple-300"
-                          : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                          ? "bg-emerald-500/10 text-emerald-300"
+                          : "text-slate-300 hover:bg-white/[0.04] hover:text-white"
                       }`}
                     >
                       <span className="text-base">{lang.flag}</span>
@@ -197,7 +203,7 @@ export default function Navbar() {
             href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white text-xs font-medium border border-purple-400/30 transition-all hover:scale-105 active:scale-95 shadow-md"
+            className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-[#090d16] text-xs font-semibold transition-all hover:bg-slate-200 active:scale-95"
           >
             <FileText className="w-3.5 h-3.5" />
             <span>{t.nav.resumeBtn}</span>
@@ -205,14 +211,14 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Controls */}
-        <div className="flex md:hidden items-center gap-2">
-          {/* Centered Mobile Lang Toggle */}
+        <div className="flex lg:hidden items-center gap-2">
+          {/* Mobile Lang Toggle */}
           <div ref={mobileLangRef} className="relative inline-flex flex-col items-center">
             <button
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
               aria-label={t.nav.language}
               aria-expanded={langDropdownOpen}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-slate-300 border border-slate-700 bg-slate-900/50"
+              className="flex items-center gap-1.5 px-3 py-1.5 min-h-11 rounded-full text-xs font-bold text-slate-300 border border-white/[0.06] bg-white/[0.03]"
             >
               <span>{currentLang.flag}</span>
               <span>{currentLang.label}</span>
@@ -225,7 +231,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: -4, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -4, scale: 0.95 }}
-                  className="absolute top-full mt-2 left-1/2 -translate-x-1/2 py-1 rounded-2xl bg-[#0f172a] border border-slate-700 shadow-2xl min-w-[100px] z-50 text-center"
+                  className="absolute top-full mt-2 left-1/2 -translate-x-1/2 py-1 rounded-xl bg-[#0c1120] border border-white/[0.08] shadow-2xl min-w-[100px] z-50 text-center"
                 >
                   {languages.map((lang) => (
                     <button
@@ -233,8 +239,8 @@ export default function Navbar() {
                       onClick={() => switchLanguage(lang.code)}
                       className={`w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold ${
                         language === lang.code
-                          ? "bg-purple-600/20 text-purple-300"
-                          : "text-slate-300 hover:bg-slate-800"
+                          ? "bg-emerald-500/10 text-emerald-300"
+                          : "text-slate-300 hover:bg-white/[0.04]"
                       }`}
                     >
                       <span>{lang.flag}</span>
@@ -248,7 +254,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl text-slate-300 hover:text-white border border-slate-800 bg-slate-900/50"
+            className="p-2 min-h-11 min-w-11 rounded-xl text-slate-300 hover:text-white border border-white/[0.06] bg-white/[0.03]"
             aria-label={mobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
             aria-expanded={mobileMenuOpen}
           >
@@ -264,7 +270,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-3 border-t border-slate-800 pt-3 flex flex-col gap-1 overflow-hidden"
+            className="mobile-nav-drawer lg:hidden mt-3 border-t border-white/[0.06] pt-3 flex flex-col gap-1 overflow-hidden"
           >
             {navLinks.map((link) => {
               const isActive = isHomePage && activeSection === link.id;
@@ -274,8 +280,8 @@ export default function Navbar() {
                   onClick={() => scrollToSection(link.id)}
                   className={`text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
                     isActive
-                      ? "bg-purple-600/20 text-purple-300 font-semibold border border-purple-500/30"
-                      : "text-slate-400 hover:bg-slate-800/50 hover:text-white"
+                      ? "bg-white/[0.06] text-white font-semibold border border-white/[0.08]"
+                      : "text-slate-400 hover:bg-white/[0.03] hover:text-white"
                   }`}
                 >
                   {link.label}
@@ -286,7 +292,7 @@ export default function Navbar() {
               href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 text-white text-sm font-medium"
+              className="mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-[#090d16] text-sm font-semibold"
             >
               <FileText className="w-4 h-4" />
               {t.nav.resumeBtn}

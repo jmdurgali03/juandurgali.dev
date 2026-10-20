@@ -36,9 +36,9 @@ export default function Globe() {
       diffuse: 1.2,
       mapSamples: 12000,
       mapBrightness: 6,
-      baseColor: [0.15, 0.18, 0.28],
-      markerColor: [0.65, 0.35, 0.95],
-      glowColor: [0.12, 0.1, 0.25],
+      baseColor: [0.12, 0.14, 0.22],
+      markerColor: [0.2, 0.83, 0.6],
+      glowColor: [0.06, 0.15, 0.12],
       markers: [
         // Salta, Argentina coordinates
         { location: [-24.7821, -65.4232], size: 0.08 },
@@ -155,11 +155,11 @@ export default function Globe() {
             pointerInteractionMovement.current = delta * 0.01;
           }
         }}
-        className="w-full h-full opacity-0 transition-opacity duration-1000 cursor-grab touch-none"
+        className="w-full h-full opacity-0 transition-opacity duration-1000 cursor-grab touch-pan-y"
       />
       {/* Location badge overlay */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-slate-900/80 border border-purple-500/30 backdrop-blur-md text-xs font-semibold text-white flex items-center gap-2 shadow-lg pointer-events-none">
-        <span className="w-2.5 h-2.5 rounded-full bg-purple-500 motion-safe:animate-ping" />
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-[#0c1120]/80 border border-emerald-500/20 backdrop-blur-md text-xs font-semibold text-white flex items-center gap-2 shadow-lg pointer-events-none">
+        <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 motion-safe:animate-ping" />
         <span>Salta, Argentina</span>
       </div>
     </div>

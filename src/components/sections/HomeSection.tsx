@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FileText, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, ArrowDown, FileText } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
-import DashedBorder from "@/components/DashedBorder";
 import { useLanguage } from "@/context/LanguageContext";
 import { useResumeUrl } from "@/hooks/useResumeUrl";
 import Link from "next/link";
@@ -13,124 +12,63 @@ import Image from "next/image";
 export default function HomeSection() {
   const { t } = useLanguage();
   const resumeUrl = useResumeUrl();
+  const reducedMotion = useReducedMotion();
   const [solutionIndex, setSolutionIndex] = useState(0);
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(pointerY, [-0.5, 0.5], [5, -5]), { stiffness: 160, damping: 25 });
+  const rotateY = useSpring(useTransform(pointerX, [-0.5, 0.5], [-6, 6]), { stiffness: 160, damping: 25 });
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setSolutionIndex((prev) => (prev + 1) % t.home.solutions.length);
-    }, 3200);
+    if (reducedMotion) return;
+    const timer = setInterval(() => setSolutionIndex((prev) => (prev + 1) % t.home.solutions.length), 4000);
     return () => clearInterval(timer);
-  }, [t.home.solutions.length]);
+  }, [t.home.solutions.length, reducedMotion]);
 
   return (
-    <section id="home" className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-20">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
-        {/* Left: Text */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4 }}
-          className="lg:col-span-7 flex flex-col items-center lg:items-start gap-5 text-center lg:text-left"
-        >
-          {/* Social Links */}
-          <div className="flex items-center gap-3">
-            <Link
-              href="https://github.com/jmdurgali03"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-all"
-              aria-label="GitHub"
-            >
-              <GithubIcon className="w-4 h-4" />
-            </Link>
-            <Link
-              href="https://linkedin.com/in/juan-martin-durgali"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-all"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon className="w-4 h-4" />
-            </Link>
-          </div>
-
-          {/* Greeting */}
-          <span className="text-sm font-semibold tracking-widest uppercase text-purple-400">
-            {t.home.greeting}
-          </span>
-
-          {/* Name */}
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-            {t.home.name}
+    <section id="home" className="hero-section max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+      <div className="hero-layout">
+        <div className="hero-copy">
+          <p className="hero-greeting">{t.home.greeting}<span className="hero-greeting-line" /></p>
+          <h1 className="hero-name">
+            {t.home.name.split(" ").slice(0, -1).join(" ")}<br />
+            <span>{t.home.name.split(" ").at(-1)}<span className="hero-period">.</span></span>
           </h1>
-
-          {/* Animated Solution Text - always on a separate line */}
-          <div className="h-10 sm:h-12 overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={solutionIndex}
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -30, opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="text-lg sm:text-xl font-medium text-slate-400"
-              >
+          <div className="hero-role" aria-label={t.home.solutions[0]}>
+            <span className="status-dot" aria-hidden="true" />
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.p key={solutionIndex} initial={{ y: 12, opacity: 0, filter: "blur(4px)" }} animate={{ y: 0, opacity: 1, filter: "blur(0px)" }} exit={{ y: -12, opacity: 0, filter: "blur(4px)" }} transition={{ duration: 0.25 }} aria-hidden="true">
                 {t.home.solutions[solutionIndex]}
               </motion.p>
             </AnimatePresence>
           </div>
-
-          {/* Description */}
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-lg">
-            {t.home.description}
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-3 pt-2">
-            <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm border border-slate-600 transition-all hover:scale-105 active:scale-95"
-            >
-              <Mail className="w-4 h-4" />
-              {t.home.contactBtn}
-            </button>
-
-            <Link
-              href={resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-medium text-sm border border-purple-400/30 transition-all hover:scale-105 active:scale-95"
-            >
-              <FileText className="w-4 h-4" />
-              {t.home.resumeBtn}
-            </Link>
+          <p className="hero-description">{t.home.description}</p>
+          <div className="flex flex-wrap gap-3 mt-8">
+            <a href="#contact" className="action-button action-button--primary">{t.home.contactBtn}<ArrowUpRight size={18} /></a>
+            <Link href={resumeUrl} target="_blank" rel="noopener noreferrer" className="action-button action-button--secondary"><FileText size={16} />{t.home.resumeBtn}</Link>
           </div>
-        </motion.div>
-
-        {/* Right: Profile Image with Dashed Border */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-5 flex justify-center order-first lg:order-last"
-        >
-          <div className="relative flex items-center justify-center">
-            {/* Small dashed border for mobile */}
-            <DashedBorder size={220} className="sm:hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-            {/* Large dashed border for sm+ screens */}
-            <DashedBorder size={410} className="hidden sm:block top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-            <div className="w-48 h-48 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-slate-800/60 border border-slate-700/50 flex items-center justify-center overflow-hidden shadow-2xl shadow-purple-500/10">
-              <Image
-                src="/assets/images/home.webp"
-                alt={t.home.name}
-                width={500}
-                height={500}
-                className="w-full h-full object-cover"
-                priority
-              />
-            </div>
-          </div>
-        </motion.div>
+        </div>
+        <div className="hero-portrait-area" style={{ perspective: 1000 }}>
+          <div className="portrait-outline" aria-hidden="true" />
+          <motion.div className="hero-portrait" style={{ rotateX: reducedMotion ? 0 : rotateX, rotateY: reducedMotion ? 0 : rotateY }} onPointerMove={(event) => {
+            if (event.pointerType !== "mouse" || reducedMotion) return;
+            const rect = event.currentTarget.getBoundingClientRect();
+            pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
+            pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
+          }} onPointerLeave={() => { pointerX.set(0); pointerY.set(0); }}>
+            <Image src="/assets/images/home.webp" alt={t.home.name} fill className="object-cover" sizes="(min-width: 1024px) 440px, (min-width: 640px) 380px, 85vw" priority />
+            <div className="portrait-shade" />
+            <div className="portrait-caption"><span>{t.contact.locationValue}</span><ArrowUpRight size={20} /></div>
+          </motion.div>
+          <div className="portrait-mark" aria-hidden="true"><svg viewBox="0 0 60 60" fill="none"><path d="M30 0v60M0 30h60M9 9l42 42M9 51 51 9" stroke="currentColor" strokeWidth="2" /></svg></div>
+        </div>
+      </div>
+      <div className="hero-bottom">
+        <div className="flex items-center gap-5">
+          <Link href="https://github.com/jmdurgali03" target="_blank" rel="noopener noreferrer" className="social-link"><GithubIcon className="w-4 h-4" />GitHub<ArrowUpRight size={12} /></Link>
+          <Link href="https://linkedin.com/in/juan-martin-durgali" target="_blank" rel="noopener noreferrer" className="social-link"><LinkedinIcon className="w-4 h-4" />LinkedIn<ArrowUpRight size={12} /></Link>
+        </div>
+        <a href="#projects" className="hero-explore">{t.nav.projects}<ArrowDown size={16} /></a>
       </div>
     </section>
   );

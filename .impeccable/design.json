@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T13:18:57.533452+00:00",
+  "title": "Design System: Juan Durgali V3",
+  "extensions": {
+    "shadows": [
+      {
+        "name": "floating-navigation",
+        "value": "0 10px 32px #0002",
+        "purpose": "Soft separation beneath the floating navigation."
+      },
+      {
+        "name": "stacked-project",
+        "value": "0 20px 48px #0003",
+        "purpose": "Depth beneath the all-projects route cards."
+      }
+    ],
+    "motion": [
+      {
+        "name": "editorial-ease",
+        "value": "cubic-bezier(0.16,1,0.3,1)",
+        "purpose": "Hero entrances and gallery image scaling."
+      },
+      {
+        "name": "portrait-spring",
+        "value": "stiffness:160; damping:25",
+        "purpose": "Mouse-driven portrait rotation; disabled for reduced motion."
+      },
+      {
+        "name": "role-transition",
+        "value": "250ms",
+        "purpose": "Blur and vertical slide every four seconds; cycling stops for reduced motion."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Disable CSS animation and smooth scrolling; MotionConfig and component guards respect the preference."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "gallery-and-hero",
+        "value": "640px"
+      },
+      {
+        "name": "project-stack",
+        "value": "1024px",
+        "purpose": "Vertical image-first cards below this width; sticky stacking requires viewport height of at least 900px."
+      },
+      {
+        "name": "desktop-hero",
+        "value": "1024px"
+      },
+      {
+        "name": "project-stack-height",
+        "value": "900px",
+        "purpose": "Minimum height for sticky stacking on desktop widths of at least 1024px."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "description": "Primary Action extracted from the portfolio styling.",
+      "html": "<button class=\"ds-primary\">Contact <span aria-hidden=\"true\">\u2197</span></button>",
+      "css": ".ds-primary { display:inline-flex; align-items:center; gap:12px; min-height:48px; padding:12px 21px; border:0; border-radius:9px; background:var(--accent,#a4e8c4); color:#15271c; font:550 14px Geist,sans-serif; transition:background .2s,transform .2s; } .ds-primary:hover { background:#c0f4d7; } .ds-primary:active { transform:scale(.97); } .ds-primary:focus-visible { outline: 2px solid #a4e8c4; outline-offset: 4px; }",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Secondary Action",
+      "kind": "button",
+      "description": "Secondary Action extracted from the portfolio styling.",
+      "html": "<button class=\"ds-secondary\">Resume</button>",
+      "css": ".ds-secondary { min-height:48px; padding:12px 21px; border:1px solid #ffffff24; border-radius:9px; background:transparent; color:#eef2ee; font:550 14px Geist,sans-serif; transition:background .2s,transform .2s; } .ds-secondary:hover { background:#ffffff08; } .ds-secondary:active { transform:scale(.97); } .ds-secondary:focus-visible { outline: 2px solid #a4e8c4; outline-offset: 4px; }"
+    },
+    {
+      "name": "Contact Field",
+      "kind": "input",
+      "description": "Contact Field extracted from the portfolio styling.",
+      "html": "<label class=\"ds-label\" for=\"ds-name\">Name</label><input id=\"ds-name\" class=\"ds-field\" placeholder=\"Your name\">",
+      "css": ".ds-label { display:block; margin-bottom:8px; color:#a2a9ae; font:600 12px Geist,sans-serif; text-transform:uppercase; letter-spacing:.05em; } .ds-field { padding:12px 16px; background:#111713; border:1px solid #ffffff20; border-radius:7px; color:#f0f2ef; caret-color:var(--accent,#a4e8c4); font:16px Geist,sans-serif; } .ds-field:focus-visible { outline: 2px solid #a4e8c4; outline-offset: 4px; }"
+    },
+    {
+      "name": "Floating Navigation",
+      "kind": "nav",
+      "description": "Floating Navigation extracted from the portfolio styling.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Preview\"><a href=\"#home\">Home</a><a href=\"#projects\">Projects</a></nav>",
+      "css": ".ds-nav { display:flex; gap:24px; padding:12px 20px; background:#171b19ed; border:1px solid #ffffff14; border-radius:16px; backdrop-filter:blur(18px); box-shadow:0 10px 32px #0002; } .ds-nav a { color:#a2a9ae; text-decoration:none; font:500 14px Geist,sans-serif; } .ds-nav a:hover { color:#f0f2ef; } .ds-nav a:focus-visible { outline: 2px solid #a4e8c4; outline-offset: 4px; }"
+    },
+    {
+      "name": "Featured Badge",
+      "kind": "chip",
+      "description": "Featured Badge extracted from the portfolio styling.",
+      "html": "<span class=\"ds-badge\">Featured project</span>",
+      "css": ".ds-badge { display:inline-block; padding:8px 13px; background:#101a14ed; border:1px solid #a4e8c42e; border-radius:6px; color:#c7f0d7; font:12px Geist,sans-serif; }"
+    },
+    {
+      "name": "Resume Surface",
+      "kind": "card",
+      "description": "Resume Surface extracted from the portfolio styling.",
+      "html": "<article class=\"ds-resume\"><h3>Experience</h3><p>Resume content</p></article>",
+      "css": ".ds-resume { padding:24px 20px; background:#181d19; border-radius:12px; color:#f0f2ef; font:14px Geist,sans-serif; } .ds-resume h3 { margin:0 0 12px; font-size:20px; } .ds-resume p { color:#a2a9ae; margin:0; }"
+    }
+  ],
+  "narrative": {
+    "overview": "Dark, high-contrast presentation requested by the user. An editorial composition prioritizes the developer's name, portrait and actual project images. Copy, translations and functionality remain sourced from existing data.",
+    "dos": [
+      "Preserve factual content, CV links, bilingual routes and contact API.",
+      "Use actual project imagery.",
+      "Keep interactive targets visible and keyboard focus clear."
+    ],
+    "donts": [
+      "Avoid adding invented metrics, repeated decorative icons between sections, cards within cards, and new animation libraries for effects supported by the existing Motion stack."
+    ]
+  }
+}

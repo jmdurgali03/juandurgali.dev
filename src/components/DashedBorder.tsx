@@ -27,7 +27,7 @@ export default function DashedBorder({
         cx={size / 2}
         cy={size / 2}
         r={r}
-        stroke="rgba(168, 85, 247, 0.35)"
+        stroke="rgba(255, 255, 255, 0.12)"
         strokeWidth="2"
         strokeDasharray="12 8"
         className="dashed-border-animation"

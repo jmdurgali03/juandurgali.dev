@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
+import PortfolioMotion from "@/components/ui/PortfolioMotion";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { isLocale, locales } from "@/i18n/routing";
@@ -54,9 +55,11 @@ export default async function LocaleLayout({
 
   return (
     <LanguageProvider initialLanguage={locale}>
+      <PortfolioMotion>
       <Navbar />
       <div className="flex-1">{children}</div>
       <Footer />
+      </PortfolioMotion>
     </LanguageProvider>
   );
 }
