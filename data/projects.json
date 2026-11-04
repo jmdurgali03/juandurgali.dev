@@ -5,32 +5,33 @@
     "featuredBadge": "DESTACADO",
     "viewGithub": "Ver en GitHub",
     "featuredProject": {
-      "title": "Mail Assistant",
-      "date": "2026-11-04",
-      "description": "Asistente de correo open source con Python y SQLite. Clasifica prioridades con IA, prepara resúmenes y notifica por Telegram mediante OpenClaw. Integra lectura de Gmail, acciones locales y controles de identidad y deduplicación, con 352 pruebas sintéticas y una demo sin credenciales.",
-      "githubUrl": "https://github.com/jmdurgali03/mail-assistant",
-      "image": "/assets/projects/mail-assistant.svg",
+      "title": "Juan Durgali — Portfolio",
+      "date": "2026-07-30",
+      "description": "Mi portfolio personal, diseñado y desarrollado desde cero con Next.js, React y TypeScript. Reúne mi experiencia, proyectos y formas de contacto en una experiencia bilingüe, accesible, optimizada para SEO y con animaciones cuidadas.",
+      "githubUrl": "https://github.com/jmdurgali03/juandurgali.dev",
+      "image": "/assets/projects/portfolio.png",
       "techIcons": [
-        "Python",
-        "JavaScript",
-        "Node.js",
-        "SQLite"
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion"
       ]
     },
     "projectList": [
       {
-        "title": "Juan Durgali — Portfolio",
-        "date": "2026-07-30",
-        "description": "Mi portfolio personal, diseñado y desarrollado desde cero con Next.js, React y TypeScript. Reúne mi experiencia, proyectos y formas de contacto en una experiencia bilingüe, accesible, optimizada para SEO y con animaciones cuidadas.",
-        "githubUrl": "https://github.com/jmdurgali03/juandurgali.dev",
-        "image": "/assets/projects/portfolio.png",
+        "title": "Mail Assistant",
+        "date": "2026-11-04",
+        "description": "Asistente de correo open source con Python y SQLite. Clasifica prioridades con IA, prepara resúmenes y notifica por Telegram mediante OpenClaw. Integra lectura de Gmail, acciones locales y controles de identidad y deduplicación, con 352 pruebas sintéticas y una demo sin credenciales.",
+        "githubUrl": "https://github.com/jmdurgali03/mail-assistant",
+        "image": "/assets/projects/mail-assistant-cover.webp",
         "techIcons": [
-          "Next.js",
-          "React",
-          "TypeScript",
-          "Tailwind CSS",
-          "Framer Motion"
-        ]
+          "Python",
+          "JavaScript",
+          "Node.js",
+          "SQLite"
+        ],
+        "showOnLanding": true
       },
       {
         "title": "Feria Emprender",
@@ -145,32 +146,33 @@
     "featuredBadge": "FEATURED",
     "viewGithub": "View on GitHub",
     "featuredProject": {
-      "title": "Mail Assistant",
-      "date": "2026-11-04",
-      "description": "An open-source email assistant built with Python and SQLite. It uses AI to classify priorities, prepare summaries and deliver Telegram notifications through OpenClaw. Includes read-only Gmail integration, local actions, identity checks and deduplication, with 352 synthetic tests and a credential-free demo.",
-      "githubUrl": "https://github.com/jmdurgali03/mail-assistant",
-      "image": "/assets/projects/mail-assistant.svg",
+      "title": "Juan Durgali — Portfolio",
+      "date": "2026-07-30",
+      "description": "My personal portfolio, designed and developed from scratch with Next.js, React, and TypeScript. It brings together my experience, projects, and contact channels in a bilingual, accessible, SEO-friendly experience with carefully crafted animations.",
+      "githubUrl": "https://github.com/jmdurgali03/juandurgali.dev",
+      "image": "/assets/projects/portfolio.png",
       "techIcons": [
-        "Python",
-        "JavaScript",
-        "Node.js",
-        "SQLite"
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion"
       ]
     },
     "projectList": [
       {
-        "title": "Juan Durgali — Portfolio",
-        "date": "2026-07-30",
-        "description": "My personal portfolio, designed and developed from scratch with Next.js, React, and TypeScript. It brings together my experience, projects, and contact channels in a bilingual, accessible, SEO-friendly experience with carefully crafted animations.",
-        "githubUrl": "https://github.com/jmdurgali03/juandurgali.dev",
-        "image": "/assets/projects/portfolio.png",
+        "title": "Mail Assistant",
+        "date": "2026-11-04",
+        "description": "An open-source email assistant built with Python and SQLite. It uses AI to classify priorities, prepare summaries and deliver Telegram notifications through OpenClaw. Includes read-only Gmail integration, local actions, identity checks and deduplication, with 352 synthetic tests and a credential-free demo.",
+        "githubUrl": "https://github.com/jmdurgali03/mail-assistant",
+        "image": "/assets/projects/mail-assistant-cover.webp",
         "techIcons": [
-          "Next.js",
-          "React",
-          "TypeScript",
-          "Tailwind CSS",
-          "Framer Motion"
-        ]
+          "Python",
+          "JavaScript",
+          "Node.js",
+          "SQLite"
+        ],
+        "showOnLanding": true
       },
       {
         "title": "Feria Emprender",
