@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+  <defs>
+    <linearGradient id="bg" x2="1280" y2="720" gradientUnits="userSpaceOnUse"><stop stop-color="#181d19"/><stop offset="1" stop-color="#101312"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#77ab91" stop-opacity=".22"/><stop offset="1" stop-color="#77ab91" stop-opacity="0"/></radialGradient>
+    <linearGradient id="accent"><stop stop-color="#a4e8c4"/><stop offset="1" stop-color="#a4e8c4"/></linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  
+  <rect x="60" y="58" width="1160" height="604" rx="28" fill="#101312" fill-opacity=".85" stroke="#35433a"/>
+  <path d="M60 126h1160" stroke="#35433a"/>
+  <g fill="#64748b"><circle cx="96" cy="93" r="7"/><circle cx="120" cy="93" r="7"/><circle cx="144" cy="93" r="7"/></g>
+  <text x="180" y="100" fill="#94a3b8" font-family="monospace" font-size="19">mail-assistant / local-first</text>
+  <rect x="959" y="77" width="225" height="32" rx="16" fill="#064e3b"/>
+  <text x="1071" y="99" text-anchor="middle" fill="#6ee7b7" font-family="sans-serif" font-size="16" font-weight="600">OPEN SOURCE · MIT</text>
+  <g stroke="url(#accent)" stroke-width="5" stroke-linejoin="round"><rect x="108" y="178" width="76" height="56" rx="12"/><path d="m112 185 34 26 34-26"/></g>
+  <text x="108" y="310" fill="#f8fafc" font-family="sans-serif" font-size="68" font-weight="750" letter-spacing="-2">Mail Assistant</text>
+  <text x="111" y="355" fill="#94a3b8" font-family="sans-serif" font-size="25">Email intelligence. Local control.</text>
+  <g font-family="monospace" font-size="18" fill="#a4e8c4"><text x="112" y="409">Python</text><text x="224" y="409">/</text><text x="257" y="409">SQLite</text><text x="365" y="409">/</text><text x="398" y="409">OpenClaw</text></g>
+  <g stroke="#77ab91" stroke-width="2"><path d="M344 510h96m336 0h96"/><path d="m430 504 10 6-10 6m432-12 10 6-10 6"/></g>
+  <g font-family="sans-serif" text-anchor="middle">
+    <rect x="108" y="470" width="236" height="80" rx="16" fill="#181d19" stroke="#35433a"/>
+    <text x="226" y="504" fill="#e2e8f0" font-size="22" font-weight="600">Gmail</text><text x="226" y="530" fill="#94a3b8" font-size="16">Read-only evidence</text>
+    <rect x="440" y="470" width="336" height="80" rx="16" fill="#202f26" stroke="#77ab91"/>
+    <text x="608" y="504" fill="#f0f2ef" font-size="22" font-weight="600">AI analysis</text><text x="608" y="530" fill="#a4e8c4" font-size="16">Prepare → Decide → Summarize</text>
+    <rect x="872" y="470" width="300" height="80" rx="16" fill="#202f26" stroke="#547662"/>
+    <text x="1022" y="504" fill="#f0f2ef" font-size="22" font-weight="600">Telegram</text><text x="1022" y="530" fill="#a4e8c4" font-size="16">Private notifications</text>
+  </g>
+  <text x="110" y="610" fill="#64748b" font-family="monospace" font-size="17">SYNTHETIC DEMO · NO CREDENTIALS REQUIRED</text>
+</svg>
