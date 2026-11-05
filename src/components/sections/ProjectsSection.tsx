@@ -20,10 +20,10 @@ export default function ProjectsSection() {
       <div className="project-gallery">
         {projects.map((project, index) => (
           <motion.article key={project.title} className={`gallery-project group ${index === 0 ? "gallery-project--featured" : ""}`} initial={{ y: 24 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}>
-            <div className="gallery-image">
-              {project.image && <Image src={project.image} alt={project.title} fill sizes={index === 0 ? "(min-width: 1024px) 1100px, 100vw" : "(min-width: 768px) 550px, 100vw"} className="object-cover" />}
+            <div className={`gallery-image ${"diagramUrl" in project ? "project-diagram" : ""}`}>
+              {project.image && <Image src={project.image} alt={project.title} fill sizes={index === 0 ? "(min-width: 1024px) 1100px, 100vw" : "(min-width: 768px) 550px, 100vw"} className={"diagramUrl" in project ? "object-contain" : "object-cover"} />}
               {index === 0 && <span className="gallery-featured-label">{t.projects.featuredBadge}</span>}
-              {project.githubUrl && <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.viewGithub}: ${project.title}`} className="gallery-open"><ArrowUpRight size={22} /></Link>}
+              {project.githubUrl && <Link href={"diagramUrl" in project ? String(project.diagramUrl) : project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`${"diagramUrl" in project ? (language === "es" ? "Ver diagrama" : "View diagram") : t.projects.viewGithub}: ${project.title}`} className="gallery-open"><ArrowUpRight size={22} /></Link>}
             </div>
             <div className="gallery-content">
               <div className="gallery-title-row"><h3>{project.title}</h3>{project.githubUrl && <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="gallery-github" aria-label={`${t.projects.viewGithub}: ${project.title}`}><GithubIcon className="w-5 h-5" /></Link>}</div>

@@ -24,14 +24,15 @@
         "date": "2026-11-04",
         "description": "Asistente de correo open source con Python y SQLite. Clasifica prioridades con IA, prepara resúmenes y notifica por Telegram mediante OpenClaw. Integra lectura de Gmail, acciones locales y controles de identidad y deduplicación, con 352 pruebas sintéticas y una demo sin credenciales.",
         "githubUrl": "https://github.com/jmdurgali03/mail-assistant",
-        "image": "/assets/projects/mail-assistant-cover.webp",
+        "image": "/assets/projects/mail-assistant-architecture.png",
         "techIcons": [
           "Python",
           "JavaScript",
           "Node.js",
           "SQLite"
         ],
-        "showOnLanding": true
+        "showOnLanding": true,
+        "diagramUrl": "/assets/projects/mail-assistant-architecture.png"
       },
       {
         "title": "Feria Emprender",
@@ -165,14 +166,15 @@
         "date": "2026-11-04",
         "description": "An open-source email assistant built with Python and SQLite. It uses AI to classify priorities, prepare summaries and deliver Telegram notifications through OpenClaw. Includes read-only Gmail integration, local actions, identity checks and deduplication, with 352 synthetic tests and a credential-free demo.",
         "githubUrl": "https://github.com/jmdurgali03/mail-assistant",
-        "image": "/assets/projects/mail-assistant-cover.webp",
+        "image": "/assets/projects/mail-assistant-architecture.png",
         "techIcons": [
           "Python",
           "JavaScript",
           "Node.js",
           "SQLite"
         ],
-        "showOnLanding": true
+        "showOnLanding": true,
+        "diagramUrl": "/assets/projects/mail-assistant-architecture.png"
       },
       {
         "title": "Feria Emprender",

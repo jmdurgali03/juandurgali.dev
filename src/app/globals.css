@@ -250,3 +250,7 @@ button:not(:disabled), a { cursor: pointer; }
  .hero-layout { min-height: 440px; }
  .project-gallery { gap: 40px 24px; }
 }
+
+/* Architecture diagrams stay uncropped and readable in both project views. */
+.gallery-image.project-diagram, .project-stack__visual.project-diagram { background: #f8fafc; }
+.gallery-project:hover .project-diagram img { transform: none; }

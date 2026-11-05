@@ -99,7 +99,7 @@ export default function ProjectsPage() {
                   </div>
                 </div>
 
-                <div className="project-stack__visual">
+                <div className={`project-stack__visual ${"diagramUrl" in project ? "project-diagram" : ""}`}>
                   {image ? (
                     <Image
                       src={image}
@@ -107,14 +107,14 @@ export default function ProjectsPage() {
                       fill
                       priority={idx === 0}
                       sizes="(min-width: 1024px) 46vw, 100vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+                      className={"diagramUrl" in project ? "object-contain" : "object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"}
                     />
                   ) : (
                     <div className="flex h-full min-h-64 items-center justify-center bg-[radial-gradient(circle_at_30%_20%,rgba(52,211,153,0.1),transparent_45%),linear-gradient(145deg,#0c1120,#090d16)]">
                       <Code2 className="h-16 w-16 text-slate-500/40" />
                     </div>
                   )}
-                  <div className="project-stack__visual-shade" />
+                  {"diagramUrl" in project ? <Link href={String(project.diagramUrl)} target="_blank" rel="noopener noreferrer" className="absolute inset-0" aria-label={language === "es" ? "Ver diagrama de arquitectura de Mail Assistant" : "View Mail Assistant architecture diagram"} /> : <div className="project-stack__visual-shade" />}
                 </div>
               </li>
             );
