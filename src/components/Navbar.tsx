@@ -177,7 +177,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -4, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute top-full mt-2 left-1/2 -translate-x-1/2 py-1 rounded-xl bg-[#0c1120] border border-white/[0.08] shadow-2xl min-w-[110px] overflow-hidden z-50 text-center"
+                  className="absolute top-full mt-2 left-1/2 -translate-x-1/2 py-1 rounded-xl bg-[var(--surface)] border border-white/[0.08] shadow-2xl min-w-[110px] overflow-hidden z-50 text-center"
                 >
                   {languages.map((lang) => (
                     <button
@@ -185,7 +185,7 @@ export default function Navbar() {
                       onClick={() => switchLanguage(lang.code)}
                       className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold transition-colors ${
                         language === lang.code
-                          ? "bg-emerald-500/10 text-emerald-300"
+                          ? "bg-[color:var(--accent)]/10 text-[var(--accent)]"
                           : "text-slate-300 hover:bg-white/[0.04] hover:text-white"
                       }`}
                     >
@@ -231,7 +231,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: -4, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -4, scale: 0.95 }}
-                  className="absolute top-full mt-2 left-1/2 -translate-x-1/2 py-1 rounded-xl bg-[#0c1120] border border-white/[0.08] shadow-2xl min-w-[100px] z-50 text-center"
+                  className="absolute top-full mt-2 left-1/2 -translate-x-1/2 py-1 rounded-xl bg-[var(--surface)] border border-white/[0.08] shadow-2xl min-w-[100px] overflow-hidden z-50 text-center"
                 >
                   {languages.map((lang) => (
                     <button
@@ -239,7 +239,7 @@ export default function Navbar() {
                       onClick={() => switchLanguage(lang.code)}
                       className={`w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold ${
                         language === lang.code
-                          ? "bg-emerald-500/10 text-emerald-300"
+                          ? "bg-[color:var(--accent)]/10 text-[var(--accent)]"
                           : "text-slate-300 hover:bg-white/[0.04]"
                       }`}
                     >
