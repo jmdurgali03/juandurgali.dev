@@ -21,6 +21,13 @@ const certificates = [
     verification: "https://www.udemy.com/certificate/UC-8432151c-a6c8-4e68-8c44-b41c33f78fbb/",
     code: "",
   },
+  {
+    id: "n8n-mcp", mark: "n8n", tag: "IA · MCP", issuer: "Udemy · Fernando Herrera",
+    title: "n8n + MCP: Automatización y agentes de IA inteligentes", date: "2026-11-06", hours: 19,
+    color: "#c4b5fd", width: 1600, height: 1190,
+    verification: "https://www.udemy.com/certificate/UC-66eaedb8-595e-402b-817e-07b06493503b/",
+    code: "",
+  },
 ];
 
 export default function CertificatesSection() {
@@ -164,7 +171,7 @@ export default function CertificatesSection() {
       </div>
       <div className="credentials-controls">
         <p>{es ? "Arrastrá para explorar · Clic para abrir" : "Drag to explore · Click to open"}</p>
-        <div className="credentials-navigation"><button ref={previous} type="button" aria-label={es ? "Insignia anterior" : "Previous badge"}><ArrowLeft size={18} /></button><span aria-live="polite" aria-atomic="true">{String(active + 1).padStart(2, "0")} / 02</span><button ref={next} type="button" aria-label={es ? "Insignia siguiente" : "Next badge"}><ArrowRight size={18} /></button></div>
+        <div className="credentials-navigation"><button ref={previous} type="button" aria-label={es ? "Insignia anterior" : "Previous badge"}><ArrowLeft size={18} /></button><span aria-live="polite" aria-atomic="true">{String(active + 1).padStart(2, "0")} / {String(certificates.length).padStart(2, "0")}</span><button ref={next} type="button" aria-label={es ? "Insignia siguiente" : "Next badge"}><ArrowRight size={18} /></button></div>
       </div>
       <dialog ref={dialog} className="certificate-dialog" aria-labelledby="certificate-title" onClose={() => setOpened(null)} onClick={e => {
         if (e.target !== e.currentTarget) return;

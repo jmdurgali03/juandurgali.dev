@@ -44,7 +44,8 @@ La sección `#certificates` usa una galería curva de insignias inspirada en el 
 
 - UTN: Diplomatura en Programación Web Full Stack, 150 horas, 30/12/2024.
 - Udemy / Fernando Herrera: Nest: Desarrollo backend escalable con Node, 24 horas, 31/03/2026.
+- Udemy / Fernando Herrera: n8n + MCP: Automatización y agentes de IA inteligentes, 19 horas, 06/11/2026.
 
 El PDF público de UTN tiene el DNI redactado de forma irreversible; no sustituirlo por el original sin anonimizar. La vista previa se genera desde esa copia redactada. Las insignias son una representación visual propia, no badges oficiales del emisor.
 
-La galería admite arrastre, scroll horizontal, un desplazamiento sutil al recorrer la página, flechas y teclado (←/→/Home/End). Con movimiento reducido muestra ambas insignias sin animación. El diálogo permite Escape, restaura el foco y enlaza el PDF y la verificación del emisor.
+La galería admite arrastre, scroll horizontal, un desplazamiento sutil al recorrer la página, flechas y teclado (←/→/Home/End). Con movimiento reducido muestra todas las insignias sin animación. El diálogo permite Escape, restaura el foco y enlaza el PDF y la verificación del emisor.
