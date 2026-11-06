@@ -173,7 +173,7 @@ export default function CertificatesSection() {
       }}>
         {chosen && <>
           <header className="certificate-header"><div><p>{chosen.issuer}</p><h3 id="certificate-title">{chosen.title}</h3><p>{date(chosen.date)} · {chosen.hours} {es ? "horas" : "hours"}</p></div><button type="button" autoFocus aria-label={es ? "Cerrar certificado" : "Close certificate"} onClick={() => setOpened(null)}><X size={22} /></button></header>
-          <div className="certificate-preview"><Image src={`/assets/certificates/${chosen.id}.png`} alt={`${es ? "Certificado de" : "Certificate for"} Juan Martín Durgali: ${chosen.title}`} width={chosen.width} height={chosen.height} sizes="(max-width: 900px) 95vw, 1000px" /></div>
+          <div className="certificate-preview"><Image src={`/assets/certificates/${chosen.id}.png`} alt={`${es ? "Certificado de" : "Certificate for"} Juan Martín Durgali: ${chosen.title}`} width={chosen.width} height={chosen.height} sizes="(max-width: 844px) calc(100vw - 24px), 820px" /></div>
           <footer className="certificate-footer"><a href={`/assets/certificates/${chosen.id}.pdf`} target="_blank" rel="noopener noreferrer"><FileText size={16} />{es ? "Abrir PDF" : "Open PDF"}</a><a href={chosen.verification} target="_blank" rel="noopener noreferrer"><ExternalLink size={16} />{es ? "Verificar credencial" : "Verify credential"}</a>{chosen.code && <p>{es ? "Código de verificación" : "Verification code"}: <span>{chosen.code}</span></p>}</footer>
         </>}
       </dialog>
