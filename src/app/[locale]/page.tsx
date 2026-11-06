@@ -2,6 +2,7 @@ import HomeSection from "@/components/sections/HomeSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ResumeSection from "@/components/sections/ResumeSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import CertificatesSection from "@/components/sections/CertificatesSection";
 import ContactSection from "@/components/sections/ContactSection";
 import SectionDivider from "@/components/SectionDivider";
 
@@ -15,6 +16,8 @@ export default function LocalePage() {
       <ResumeSection />
       <SectionDivider variant="monitor" />
       <ProjectsSection />
+      <SectionDivider variant="terminal" />
+      <CertificatesSection />
       <SectionDivider variant="cpu" />
       <ContactSection />
     </main>
