@@ -45,6 +45,7 @@ La sección `#certificates` usa una galería curva de insignias inspirada en el 
 - UTN: Diplomatura en Programación Web Full Stack, 150 horas, 30/12/2024.
 - Udemy / Fernando Herrera: Nest: Desarrollo backend escalable con Node, 24 horas, 31/03/2026.
 - Udemy / Fernando Herrera: n8n + MCP: Automatización y agentes de IA inteligentes, 19 horas, 06/11/2026.
+- Udemy / Fernando Herrera / DevTalles: SQL de cero: Tu guía práctica con PostgreSQL, 16 horas, 24/11/2026.
 
 El PDF público de UTN tiene el DNI redactado de forma irreversible; no sustituirlo por el original sin anonimizar. La vista previa se genera desde esa copia redactada. Las insignias son una representación visual propia, no badges oficiales del emisor.
 

@@ -28,6 +28,13 @@ const certificates = [
     verification: "https://www.udemy.com/certificate/UC-66eaedb8-595e-402b-817e-07b06493503b/",
     code: "",
   },
+  {
+    id: "sql-postgresql", mark: "SQL", tag: "PostgreSQL", issuer: "Udemy · Fernando Herrera · DevTalles",
+    title: "SQL de cero: Tu guía práctica con PostgreSQL", date: "2026-11-24", hours: 16,
+    color: "#9fc5e8", width: 1600, height: 1190,
+    verification: "https://www.udemy.com/certificate/UC-0235c882-3101-4a2e-a918-29d80a817b34/",
+    code: "",
+  },
 ];
 
 export default function CertificatesSection() {
