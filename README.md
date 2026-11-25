@@ -40,13 +40,13 @@ El endpoint de contacto incluye validación, límite de payload y honeypot. Si a
 
 ## Certificaciones
 
-La sección `#certificates` usa una galería curva de insignias inspirada en el prototipo aprobado (Circular Gallery de React Bits), implementada con DOM/CSS sin nuevas dependencias. Los datos y enlaces están en `src/components/sections/CertificatesSection.tsx`; los certificados y sus vistas previas están en `public/assets/certificates/`.
+La sección `#certificates` implementa la opción 2 aprobada: un carrusel horizontal en perspectiva. El certificado central gana protagonismo y los laterales se inclinan. Se navega con gesto táctil, trackpad, botones o teclado (flechas, Inicio y Fin); no hay autoplay ni captura del scroll vertical. Conserva una altura estable al agregar certificados y no agrega dependencias. Los datos y enlaces están en `src/components/sections/CertificatesSection.tsx`; los certificados y sus vistas previas están en `public/assets/certificates/`.
 
 - UTN: Diplomatura en Programación Web Full Stack, 150 horas, 30/12/2024.
 - Udemy / Fernando Herrera: Nest: Desarrollo backend escalable con Node, 24 horas, 31/03/2026.
 - Udemy / Fernando Herrera: n8n + MCP: Automatización y agentes de IA inteligentes, 19 horas, 06/11/2026.
 - Udemy / Fernando Herrera / DevTalles: SQL de cero: Tu guía práctica con PostgreSQL, 16 horas, 24/11/2026.
 
-El PDF público de UTN tiene el DNI redactado de forma irreversible; no sustituirlo por el original sin anonimizar. La vista previa se genera desde esa copia redactada. Las insignias son una representación visual propia, no badges oficiales del emisor.
+El PDF público de UTN tiene el DNI redactado de forma irreversible; no sustituirlo por el original sin anonimizar. La vista previa se genera desde esa copia redactada.
 
-La galería admite arrastre, scroll horizontal, un desplazamiento sutil al recorrer la página, flechas y teclado (←/→/Home/End). Con movimiento reducido muestra todas las insignias sin animación. El diálogo permite Escape, restaura el foco y enlaza el PDF y la verificación del emisor.
+Cada tarjeta muestra temática y emisor; el diálogo agrega título completo, fecha y horas. Se puede abrir con clic, toque, Enter o Espacio. El diálogo permite Escape, restaura el foco y enlaza el PDF y la verificación del emisor. La perspectiva responde exclusivamente al desplazamiento horizontal. Con movimiento reducido se desactivan perspectiva, atenuación y transiciones; la navegación es inmediata.

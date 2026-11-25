@@ -2,36 +2,35 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import type { CSSProperties } from "react";
-import { ArrowLeft, ArrowRight, ExternalLink, FileText, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink, FileText, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const certificates = [
   {
-    id: "utn-full-stack", mark: "UTN", tag: "Full Stack", issuer: "UTN · Buenos Aires",
+    id: "utn-full-stack", tone: "mint", label: "Full Stack", tag: "Full Stack", issuer: "UTN · Buenos Aires",
     title: "Diplomatura en Programación Web Full Stack", date: "2024-12-30", hours: 150,
-    color: "#a4e8c4", width: 1432, height: 1012,
+    width: 1432, height: 1012,
     verification: "https://sysgestion.frba.utn.edu.ar/alumnos/validar_certificado",
     code: "CER-L98JR3JF-107479",
   },
   {
-    id: "nestjs-backend", mark: "Nest", tag: "Backend", issuer: "Udemy · Fernando Herrera",
+    id: "nestjs-backend", tone: "coral", label: "NestJS", tag: "Backend", issuer: "Udemy · Fernando Herrera",
     title: "Nest: Desarrollo backend escalable con Node", date: "2026-03-31", hours: 24,
-    color: "#e8b5af", width: 2720, height: 2023,
+    width: 2720, height: 2023,
     verification: "https://www.udemy.com/certificate/UC-8432151c-a6c8-4e68-8c44-b41c33f78fbb/",
     code: "",
   },
   {
-    id: "n8n-mcp", mark: "n8n", tag: "IA · MCP", issuer: "Udemy · Fernando Herrera",
+    id: "n8n-mcp", tone: "violet", label: "n8n + MCP", tag: "IA · MCP", issuer: "Udemy · Fernando Herrera",
     title: "n8n + MCP: Automatización y agentes de IA inteligentes", date: "2026-11-06", hours: 19,
-    color: "#c4b5fd", width: 1600, height: 1190,
+    width: 1600, height: 1190,
     verification: "https://www.udemy.com/certificate/UC-66eaedb8-595e-402b-817e-07b06493503b/",
     code: "",
   },
   {
-    id: "sql-postgresql", mark: "SQL", tag: "PostgreSQL", issuer: "Udemy · Fernando Herrera · DevTalles",
+    id: "sql-postgresql", tone: "blue", label: "PostgreSQL", tag: "PostgreSQL", issuer: "Udemy · Fernando Herrera · DevTalles",
     title: "SQL de cero: Tu guía práctica con PostgreSQL", date: "2026-11-24", hours: 16,
-    color: "#9fc5e8", width: 1600, height: 1190,
+    width: 1600, height: 1190,
     verification: "https://www.udemy.com/certificate/UC-0235c882-3101-4a2e-a918-29d80a817b34/",
     code: "",
   },
@@ -40,109 +39,54 @@ const certificates = [
 export default function CertificatesSection() {
   const { language } = useLanguage();
   const es = language === "es";
-  const viewport = useRef<HTMLDivElement>(null);
-  const previous = useRef<HTMLButtonElement>(null);
-  const next = useRef<HTMLButtonElement>(null);
+  const rail = useRef<HTMLOListElement>(null);
+  const [active, setActive] = useState(0);
   const dialog = useRef<HTMLDialogElement>(null);
   const lastTrigger = useRef<HTMLButtonElement | null>(null);
   const [opened, setOpened] = useState<number | null>(null);
-  const [active, setActive] = useState(0);
   const chosen = opened === null ? null : certificates[opened];
-  const date = (value: string) => new Intl.DateTimeFormat(es ? "es-AR" : "en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }).format(new Date(value));
+  const date = (value: string, compact = false) => new Intl.DateTimeFormat(es ? "es-AR" : "en-US", { year: "numeric", month: compact ? "short" : "long", day: "numeric", timeZone: "UTC" }).format(new Date(value));
+
+  const goTo = (index: number) => {
+    const track = rail.current;
+    const item = track?.children[Math.max(0, Math.min(certificates.length - 1, index))] as HTMLElement | undefined;
+    if (!track || !item) return;
+    track.scrollTo({
+      left: item.offsetLeft - (track.clientWidth - item.clientWidth) / 2,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+    });
+  };
 
   useEffect(() => {
-    const area = viewport.current;
-    if (!area) return;
-    const badges = Array.from(area.querySelectorAll<HTMLButtonElement>(".credential-badge"));
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-    const controller = new AbortController();
-    const signal = controller.signal;
-    let position = .5, target = .5, raf = 0, lastTime = 0, selected = -1;
-    let previousScroll = window.scrollY;
-    let ignoreClick = false;
-    let drag: { id: number; x: number; y: number; last: number; time: number; speed: number; start: number; moved: boolean } | null = null;
-    const clamp = (n: number) => Math.max(0, Math.min(badges.length - 1, n));
-    const spacing = () => Math.min(310, area.clientWidth * .68);
-    const draw = (now: number) => {
-      raf = 0;
-      const dt = Math.min(50, now - (lastTime || now - 16));
-      lastTime = now;
-      position = reduced.matches ? target : position + (target - position) * (1 - Math.pow(.86, dt / 16.67));
-      if (!reduced.matches) {
-        const radius = Math.max(640, area.clientWidth * .9);
-        badges.forEach((badge, i) => {
-          const x = (i - position) * spacing();
-          const y = radius - Math.sqrt(radius * radius - x * x);
-          const angle = Math.asin(x / radius) * 180 / Math.PI;
-          badge.style.transform = `translate3d(${x}px,${y}px,0) rotate(${angle}deg)`;
-        });
-      }
-      const index = Math.round(position);
-      if (index !== selected) { selected = index; setActive(index); }
-      if (previous.current) previous.current.disabled = target <= 0;
-      if (next.current) next.current.disabled = target >= badges.length - 1;
-      if (Math.abs(target - position) > .0005) raf = requestAnimationFrame(draw);
-      else { position = target; lastTime = 0; }
+    const track = rail.current;
+    if (!track) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let nearest = 0;
+      let distance = Infinity;
+      Array.from(track.children).forEach((child, index) => {
+        const item = child as HTMLElement;
+        const delta = (item.offsetLeft + item.clientWidth / 2 - center) / item.clientWidth;
+        const amount = Math.min(1, Math.abs(delta));
+        item.style.setProperty("--angle", `${-Math.max(-1, Math.min(1, delta)) * 25}deg`);
+        item.style.setProperty("--scale", String(1 - amount * .13));
+        item.style.setProperty("--opacity", String(1 - amount * .3));
+        if (Math.abs(delta) < distance) { distance = Math.abs(delta); nearest = index; }
+      });
+      setActive(nearest);
     };
-    const wake = () => { if (!raf) raf = requestAnimationFrame(draw); };
-    const go = (index: number) => { target = clamp(index); wake(); };
-    previous.current?.addEventListener("click", () => go(Math.ceil(target) - 1), { signal });
-    next.current?.addEventListener("click", () => go(Math.floor(target) + 1), { signal });
-    area.addEventListener("pointerdown", e => {
-      if (reduced.matches || e.button !== 0) return;
-      ignoreClick = false;
-      drag = { id: e.pointerId, x: e.clientX, y: e.clientY, last: e.clientX, time: performance.now(), speed: 0, start: target, moved: false };
-    }, { signal });
-    area.addEventListener("pointermove", e => {
-      if (!drag || drag.id !== e.pointerId) return;
-      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
-      if (!drag.moved && Math.max(Math.abs(dx), Math.abs(dy)) > 8) {
-        if (Math.abs(dy) > Math.abs(dx)) { drag = null; return; }
-        drag.moved = true; area.setPointerCapture(e.pointerId);
-      }
-      if (!drag.moved) return;
-      const now = performance.now();
-      drag.speed = (e.clientX - drag.last) / Math.max(8, now - drag.time);
-      drag.last = e.clientX; drag.time = now;
-      target = clamp(drag.start - dx / spacing()); ignoreClick = true; wake();
-    }, { signal });
-    const release = (e: PointerEvent) => {
-      if (!drag || drag.id !== e.pointerId) return;
-      const d = drag; drag = null;
-      if (area.hasPointerCapture(e.pointerId)) area.releasePointerCapture(e.pointerId);
-      if (d.moved) go(Math.round(target - (performance.now() - d.time < 100 ? d.speed : 0) * 140 / spacing()));
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const observer = new ResizeObserver(schedule);
+    observer.observe(track);
+    track.addEventListener("scroll", schedule, { passive: true });
+    schedule();
+    return () => {
+      observer.disconnect();
+      track.removeEventListener("scroll", schedule);
+      cancelAnimationFrame(frame);
     };
-    area.addEventListener("pointerup", release, { signal });
-    area.addEventListener("pointercancel", e => {
-      if (drag?.id === e.pointerId) { drag = null; go(Math.round(target)); }
-    }, { signal });
-    area.addEventListener("click", e => {
-      if (ignoreClick && e.detail > 0) { e.stopImmediatePropagation(); e.preventDefault(); ignoreClick = false; }
-    }, { capture: true, signal });
-    area.addEventListener("wheel", e => {
-      if (reduced.matches || e.ctrlKey || Math.abs(e.deltaY) >= Math.abs(e.deltaX) && !e.shiftKey) return;
-      e.preventDefault(); target = clamp(target + (e.deltaX || e.deltaY) / spacing()); wake();
-    }, { passive: false, signal });
-    window.addEventListener("scroll", () => {
-      const delta = window.scrollY - previousScroll;
-      previousScroll = window.scrollY;
-      const box = area.getBoundingClientRect();
-      if (!reduced.matches && !drag && !dialog.current?.open && box.top < window.innerHeight && box.bottom > 0) {
-        target = clamp(target + delta / 850); wake();
-      }
-    }, { passive: true, signal });
-    area.addEventListener("keydown", e => {
-      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
-      e.preventDefault();
-      const index = e.key === "Home" ? 0 : e.key === "End" ? badges.length - 1 : clamp(Math.round(target) + (e.key === "ArrowRight" ? 1 : -1));
-      go(index); badges[index].focus({ preventScroll: true });
-    }, { signal });
-    badges.forEach((badge, index) => badge.addEventListener("focus", () => go(index), { signal }));
-    const layout = () => { badges.forEach(b => { b.style.transform = ""; }); wake(); };
-    const observer = new ResizeObserver(layout); observer.observe(area);
-    reduced.addEventListener("change", layout, { signal });
-    wake();
-    return () => { controller.abort(); observer.disconnect(); cancelAnimationFrame(raf); };
   }, []);
 
   useEffect(() => {
@@ -160,25 +104,43 @@ export default function CertificatesSection() {
 
   return (
     <section id="certificates" aria-labelledby="certificates-title" className="credentials-section max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-24">
-      <div className="section-heading">
+      <div className="credentials-heading">
         <p className="credentials-eyebrow">{es ? "Formación continua" : "Always learning"}</p>
-        <h2 id="certificates-title" className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">{es ? "Aprender. Crear. Evolucionar" : "Learn. Build. Evolve"}<span className="heading-dot">.</span></h2>
-        <p className="credentials-intro">{es ? "Cada aprendizaje, una nueva perspectiva. Explorá mis certificaciones." : "Every learning experience, a new perspective. Explore my certifications."}</p>
+        <h2 id="certificates-title">{es ? "Certificaciones" : "Certifications"}<span className="heading-dot">.</span></h2>
+        <p className="credentials-intro">{es ? "Deslizá o usá las flechas →" : "Swipe or use the arrows →"}</p>
       </div>
-      <div ref={viewport} className="credentials-viewport" role="region" aria-roledescription={es ? "carrusel" : "carousel"} aria-label={es ? "Certificaciones" : "Certifications"}>
+      <div className="credentials-carousel" role="region" aria-roledescription={es ? "carrusel" : "carousel"} aria-label={es ? "Certificados" : "Certificates"}>
+      <ol id="certificates-rail" ref={rail} className="credentials-rail" tabIndex={0} aria-label={es ? "Certificados: desplazamiento horizontal" : "Certificates: horizontal scrolling"} onKeyDown={event => {
+        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        goTo(event.key === "Home" ? 0 : event.key === "End" ? certificates.length - 1 : active + (event.key === "ArrowRight" ? 1 : -1));
+      }}>
         {certificates.map((cert, index) => (
-          <button key={cert.id} className="credential-badge" style={{ "--badge-accent": cert.color, "--badge-index": index } as CSSProperties} aria-haspopup="dialog" aria-label={`${es ? "Ver certificado" : "View certificate"}: ${cert.title}`} onClick={event => { lastTrigger.current = event.currentTarget; setOpened(index); }}>
-            <span className="credential-seal" aria-hidden="true"><span className="credential-coin"><strong>{cert.mark}</strong><small>{cert.tag}</small></span></span>
-            <span className="credential-issuer">{cert.issuer}</span>
-            <span className="credential-name">{cert.title}</span>
-            <span className="credential-meta">{cert.hours} {es ? "horas" : "hours"} · {cert.date.slice(0, 4)}</span>
-            <span className="credential-open">{es ? "Ver certificado" : "View certificate"} ↗</span>
-          </button>
+          <li key={cert.id} aria-current={active === index ? "true" : undefined}>
+            <button type="button" className={`credential-card credential-card--${cert.tone}`} aria-haspopup="dialog" aria-label={`${es ? "Ver certificado" : "View certificate"}: ${cert.title}`} onFocus={() => goTo(index)} onClick={event => { lastTrigger.current = event.currentTarget; setOpened(index); }}>
+              <span className="credential-art">
+                <span className="credential-orbit credential-orbit--one" aria-hidden="true" />
+                <span className="credential-orbit credential-orbit--two" aria-hidden="true" />
+                <span className="credential-corner" aria-hidden="true">{String(index + 1).padStart(2, "0")} / {String(certificates.length).padStart(2, "0")}</span>
+                <span className="credential-paper-back" aria-hidden="true" />
+                <span className="credential-paper">
+                  <Image src={`/assets/certificates/${cert.id}.png`} alt={cert.title} width={cert.width} height={cert.height} sizes="(max-width: 639px) 197px, 263px" />
+                </span>
+                <span className="credential-art-open" aria-hidden="true"><ArrowUpRight size={23} /></span>
+              </span>
+              <span className="credential-caption"><span className="credential-name">{cert.label}</span><span className="credential-issuer">{index === 0 ? "UTN · Buenos Aires" : "Udemy · Fernando Herrera"}</span></span>
+            </button>
+          </li>
         ))}
-      </div>
+      </ol>
       <div className="credentials-controls">
-        <p>{es ? "Arrastrá para explorar · Clic para abrir" : "Drag to explore · Click to open"}</p>
-        <div className="credentials-navigation"><button ref={previous} type="button" aria-label={es ? "Insignia anterior" : "Previous badge"}><ArrowLeft size={18} /></button><span aria-live="polite" aria-atomic="true">{String(active + 1).padStart(2, "0")} / {String(certificates.length).padStart(2, "0")}</span><button ref={next} type="button" aria-label={es ? "Insignia siguiente" : "Next badge"}><ArrowRight size={18} /></button></div>
+        <span className="credentials-count" role="status" aria-live="polite" aria-atomic="true"><span className="sr-only">{es ? "Certificado" : "Certificate"} </span>{String(active + 1).padStart(2, "0")} / {String(certificates.length).padStart(2, "0")}</span>
+        <span className="credentials-progress" aria-hidden="true"><span style={{ width: `${(active + 1) / certificates.length * 100}%` }} /></span>
+        <div className="credentials-arrows">
+          <button type="button" aria-label={es ? "Certificado anterior" : "Previous certificate"} aria-controls="certificates-rail" disabled={active === 0} onClick={() => goTo(active - 1)}><ArrowLeft size={20} /></button>
+          <button type="button" aria-label={es ? "Certificado siguiente" : "Next certificate"} aria-controls="certificates-rail" disabled={active === certificates.length - 1} onClick={() => goTo(active + 1)}><ArrowRight size={20} /></button>
+        </div>
+      </div>
       </div>
       <dialog ref={dialog} className="certificate-dialog" aria-labelledby="certificate-title" onClose={() => setOpened(null)} onClick={e => {
         if (e.target !== e.currentTarget) return;
