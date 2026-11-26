@@ -17,6 +17,13 @@
         "tags": ["Algoritmos", "Bases de Datos", "Sistemas Distribuidos"]
       },
       {
+        "degree": "Beca de Excelencia POSCO",
+        "institution": "POSCO TJ Park Foundation · POSCO Argentina · UCASAL",
+        "period": "2026",
+        "description": "Seleccionado para la beca POSCO Scholarship for Global Universities 2026. Reconocimiento de POSCO Argentina por completar exitosamente el proceso de selección, recibido en Salta el 25 de noviembre de 2026.",
+        "tags": ["Excelencia académica", "Beca internacional"]
+      },
+      {
         "degree": "Ayudante de Cátedra - Base de Datos I",
         "institution": "Universidad Católica de Salta",
         "period": "2026",
@@ -152,6 +159,13 @@
         "period": "2022 - 2026",
         "description": "Specialization in software development, algorithms, databases, and distributed systems architecture.",
         "tags": ["Algorithms", "Databases", "Distributed Systems"]
+      },
+      {
+        "degree": "POSCO Excellence Scholarship",
+        "institution": "POSCO TJ Park Foundation · POSCO Argentina · UCASAL",
+        "period": "2026",
+        "description": "Selected for the POSCO Scholarship for Global Universities 2026. Recognized by POSCO Argentina for successfully completing the selection process, in Salta on November 25, 2026.",
+        "tags": ["Academic excellence", "International scholarship"]
       },
       {
         "degree": "Teaching Assistant - Databases I",
