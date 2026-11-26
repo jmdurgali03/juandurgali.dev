@@ -135,7 +135,6 @@ export default function CertificatesSection() {
       </ol>
       <div className="credentials-controls">
         <span className="credentials-count" role="status" aria-live="polite" aria-atomic="true"><span className="sr-only">{es ? "Certificado" : "Certificate"} </span>{String(active + 1).padStart(2, "0")} / {String(certificates.length).padStart(2, "0")}</span>
-        <span className="credentials-progress" aria-hidden="true"><span style={{ width: `${(active + 1) / certificates.length * 100}%` }} /></span>
         <div className="credentials-arrows">
           <button type="button" aria-label={es ? "Certificado anterior" : "Previous certificate"} aria-controls="certificates-rail" disabled={active === 0} onClick={() => goTo(active - 1)}><ArrowLeft size={20} /></button>
           <button type="button" aria-label={es ? "Certificado siguiente" : "Next certificate"} aria-controls="certificates-rail" disabled={active === certificates.length - 1} onClick={() => goTo(active + 1)}><ArrowRight size={20} /></button>
